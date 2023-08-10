@@ -3,24 +3,27 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-def equation_to_solve(x):
-    return 3.53961 * np.cos(x) + 0.881903 * np.sin(x) - 2.98910707445551
-
-# Initial guess for the solution (you can change this if needed)
-initial_guess = 0.0
-
-# Using fsolve to find the solution
-solution = fsolve(equation_to_solve, initial_guess)
-
-print("Approximate solution for x:", solution[0])
+def equation_to_solve(theta):
+    return 3.53961 * np.cos(theta) + 0.881903 * np.sin(theta) - 2.98910707445551
 
 df = pd.read_csv(r'fits\corr_small.csv')
 
 # Extract X and Y columns from DataFrame
-ra = df['index_ra']
-dec = df['index_dec']
-x = df['index_x'] 
-y = -df['index_y']
+ra = df['field_ra']
+dec = df['field_dec']
+x = df['field_x'] 
+y = -df['field_y']
 
-print(dec[1], dec[0])
-print(dec[1]-dec[0])
+# Initial guess for the solution (you can change this if needed)
+initial_guess = 0.8
+
+for i in range(len(ra)):
+    for j in range(i + 1, len(ra)):
+        global x_equation
+        x_equation = x[i]-x[j]
+        global y_equation
+        y_equation = y[i]-y[j]
+        global dec_equation
+        dec_equation = dec[i]-y[j]
+        solution = fsolve(equation_to_solve, initial_guess)
+        print(solution)

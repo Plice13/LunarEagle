@@ -1,0 +1,15 @@
+Field X,Y Index RA,DEC
+Mean Multiplier: 0.003800046043066653
+Median Multiplier: 0.003758764679678452
+
+Field X,Y Field RA,DEC
+Mean Multiplier: 0.0038020201675881627
+Median Multiplier: 0.003764988004863472
+
+Index X,Y Field RA,DEC
+Mean Multiplier: 0.003804054066401557
+Median Multiplier: 0.0037727072333135036
+
+Index X,Y Index RA,DEC
+Mean Multiplier: 0.0038020178247311913
+Median Multiplier: 0.0037661477450682676
