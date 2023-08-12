@@ -44,7 +44,7 @@ def deg2HMS(ra='', dec='', round=False):
   else:
     return RA or DEC
   
-df = pd.read_csv(r'fits\corr.fits.csv')
+df = pd.read_csv(r'fits\corr_small.csv')
 
 # Extract X and Y columns from DataFrame
 ra = df['field_ra']
@@ -54,7 +54,7 @@ y = -df['field_y']
 
 # Initial guess for the solution (you can change this if needed)
 initial_guess = 0.8
-multiplier = 0.003764988004863472
+multiplier = 0.0037661477450682676
 solutions = []
 
 for i in range(len(ra)):
@@ -79,7 +79,8 @@ median_solution = np.median(solutions)
 print('Mean', mean_solution, 'Median', median_solution)
 a=multiplier*(3898.43017578125-x[0]) * np.cos(median_solution)
 b=multiplier*(-1495.77490234375-y[0]) * np.sin(median_solution)
-pollux_ra = multiplier*(2685-x[0]) * np.cos(median_solution) - multiplier*(-1818-y[0]) * np.sin(median_solution)
+median_solution = 0.799684138983047
+pollux_ra = multiplier*(y[0]-y[1]) * np.cos(median_solution) - multiplier*(x[0]-x[1]) * np.sin(median_solution)+ra[1]
 print('Rektascenze Polluxe je', pollux_ra, x[0], y[0])
 
 # Example usage
