@@ -1,0 +1,5 @@
+Phase 1: ovládání foťáku přes python
+Phase 2: porozumění zpracování obrázku a určení středu obrázku
+Phase 3: malý model kde místo fotoaparátu je malá kamera a laser, cíl je aby laser cílil na zadané hvězdy
+Phase 4: stejným způsobem větší stativ na foťák
+Phase 5: sell $$$
