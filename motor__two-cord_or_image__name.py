@@ -2,6 +2,8 @@ from astroquery.simbad import Simbad
 from astropy.coordinates import SkyCoord
 import astropy.units as u
 
+import client2
+
 #set motors parameters
 number_of_zubu_osa_Azimuth = 8192
 number_of_zubu_motor_Azimuth = 16
@@ -20,7 +22,7 @@ def find_star(name_of_star):
         ra_str = result_table['RA'][0]
         dec_str = result_table['DEC'][0]
 
-        # Convert RA and DEC from sexagesimal format to degrees
+        # Convert from sexagesimal format to degrees
         coords = SkyCoord(ra=ra_str, dec=dec_str, unit=(u.hourangle, u.deg))
 
         print(name_of_star, "má souřadnice: ", coords.ra.deg, coords.dec.deg)
@@ -29,7 +31,7 @@ def find_star(name_of_star):
         return None, None
 
 def calculate_movement(observed_tuple, target_name):
-    Azimuth_target, height_target = find_star(star_name)
+    Azimuth_target, height_target = find_star(target_name)
     Azimuth_observed, height_observed = observed_tuple
     
     #first calculate Azimuth, then height
@@ -59,13 +61,22 @@ def calculate_movement(observed_tuple, target_name):
     print("Motor se musí ve výšce otáčet", time_for_move_height, "sekund")
 
 
+#ask if we want manually set Azimuth_observed, height_observed or we have image either fits
+mode = input('MANually or AUTOmatically: ')
+
 #get input values
-Azimuth_observed, height_observed, star_name = input("Azimuth_observed, height_observed, star to target: ").split(', ')
+if mode == 'AUTO':
+    #implemented uploading picture
+    #get Azimuth_observed, height_observed from image
 
-#convert string to int
-Azimuth_observed = int(Azimuth_observed)
-height_observed = int(height_observed)
+    #CRVAL1, CRVAL2, scale_degrees = client2.run('bordel\Pictures\IMG_1124.JPG')
 
+    #get Azimuth_observed, height_observed from fits file, that mean we already run image processing either we have some fits
+    Azimuth_observed, height_observed, scale_degrees = client2.get_middle('fits\wcs_automatic.fits')
+else:
+    Azimuth_observed, height_observed = map(int, input("Azimuth_observed, height_observed: ").split(', '))
+
+star_name = input("Star to target: ")
 
 calculate_movement((Azimuth_observed, height_observed),star_name)
 

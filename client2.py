@@ -28,6 +28,10 @@ from email.mime.application  import MIMEApplication
 
 from email.encoders import encode_noop
 
+from astropy.io import fits
+
+import numpy as np
+
 import json
 def json2python(data):
     try:
@@ -488,9 +492,11 @@ def run(image_path):
     if opt.myjobs:
         jobs = c.myjobs()
         print(jobs)
+    print('--------DONE--------')
     get_middle(wcs_output_path)
 
 def get_middle(fits_file_path):
+    print('inside')
     # Open the FITS file
     hdul = fits.open(fits_file_path)
 
@@ -522,8 +528,10 @@ def get_middle(fits_file_path):
     CD2_2 = header['CD2_2']
     global scale_degrees
     scale_degrees = np.sqrt(abs(CD1_1 * CD2_2 - CD1_2 * CD2_1)) 
-
+    return CRVAL1, CRVAL2, scale_degrees
 
 if __name__ == '__main__':
     path_to_image = 'bordel\Pictures\IMG_1124.JPG'
-    run(path_to_image)
+    #run(path_to_image)
+    CRVAL1, CRVAL2, scale_degrees = get_middle('fits\wcs_automatic.fits')
+    print(CRVAL1, CRVAL2, scale_degrees)
