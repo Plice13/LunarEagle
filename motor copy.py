@@ -39,7 +39,7 @@ def calculate_movement(observed_tuple, target_name):
     move_number_of_zubu_osa_Azimuth = Azimuth_move/360*number_of_zubu_osa_Azimuth
     print("Obě ozubená kola se v azimutu musí otočit o", move_number_of_zubu_osa_Azimuth, "zubů")
 
-    move_number_of_rotations_motor_Azimuth = number_of_zubu_osa_Azimuth/number_of_zubu_motor_Azimuth 
+    move_number_of_rotations_motor_Azimuth = move_number_of_zubu_osa_Azimuth/number_of_zubu_motor_Azimuth 
     print("Motor musí vykonat v azimutu", move_number_of_rotations_motor_Azimuth, "otáček")
     
     time_for_move_Azimuth = move_number_of_rotations_motor_Azimuth/speed_of_motor_Azimuth
@@ -47,16 +47,16 @@ def calculate_movement(observed_tuple, target_name):
 
     #now height
     height_move = height_target-height_observed
-    print("Stativ se musí otočit v azimutu o", height_move, "stupňů doprava")
+    print("Stativ se musí otočit ve výšce o", height_move, "stupňů doprava")
 
     move_number_of_zubu_osa_height = height_move/360*number_of_zubu_osa_height
-    print("Obě ozubená kola se v azimutu musí otočit o", move_number_of_zubu_osa_height, "zubů")
+    print("Obě ozubená kola se ve výšce musí otočit o", move_number_of_zubu_osa_height, "zubů")
 
-    move_number_of_rotations_motor_height = number_of_zubu_osa_height/number_of_zubu_motor_height 
-    print("Motor musí vykonat v azimutu", move_number_of_rotations_motor_height, "otáček")
+    move_number_of_rotations_motor_height = move_number_of_zubu_osa_height/number_of_zubu_motor_height 
+    print("Motor musí vykonat ve výšce", move_number_of_rotations_motor_height, "otáček")
     
     time_for_move_height = move_number_of_rotations_motor_height/speed_of_motor_height
-    print("Motor se musí v azimutu otáčet", time_for_move_height, "sekund")
+    print("Motor se musí ve výšce otáčet", time_for_move_height, "sekund")
 
 
 #get input values
