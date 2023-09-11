@@ -2,7 +2,9 @@ from astroquery.simbad import Simbad
 from astropy.coordinates import SkyCoord
 import astropy.units as u
 
-import client2
+#POTŘEBOVAL BYCH NĚJAK SPRÁVNĚ UDĚLAT TOHLE VNOŘENÍ DO SUBSLOŽEK, VŮBEC NEVÍM JESTLI TO TAK JE SPRÁVNĚ
+import bordel.API.client3 as client
+
 
 #set motors parameters
 number_of_zubu_osa_Azimuth = 8192
@@ -25,7 +27,7 @@ def find_star(name_of_star):
         # Convert from sexagesimal format to degrees
         coords = SkyCoord(ra=ra_str, dec=dec_str, unit=(u.hourangle, u.deg))
 
-        print(name_of_star, "má souřadnice: ", coords.ra.deg, coords.dec.deg)
+        print(result_table['MAIN_ID'][0], "má souřadnice: ", coords.ra.deg, coords.dec.deg)
         return coords.ra.deg, coords.dec.deg
     else:
         return None, None
@@ -69,10 +71,11 @@ if mode == 'AUTO':
     #implemented uploading picture
     #get Azimuth_observed, height_observed from image
 
-    #CRVAL1, CRVAL2, scale_degrees = client2.run('bordel\Pictures\IMG_1124.JPG')
+    #CRVAL1, CRVAL2, scale_degrees = client.run('bordel\Pictures\IMG_1124.JPG')
 
     #get Azimuth_observed, height_observed from fits file, that mean we already run image processing either we have some fits
-    Azimuth_observed, height_observed, scale_degrees = client2.get_middle('fits\wcs_automatic.fits')
+    Azimuth_observed, height_observed, scale_degrees = client.get_middle('fits\wcs_automatic.fits')
+    
 else:
     Azimuth_observed, height_observed = map(int, input("Azimuth_observed, height_observed: ").split(', '))
 
