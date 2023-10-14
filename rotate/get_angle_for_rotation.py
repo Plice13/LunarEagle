@@ -30,10 +30,10 @@ def calculate_y_in_x_middle_from_polar(r, theta, x_value):
     y_value = a * x_value + y_intersect
     return y_value, y_intersect
 
-def main(image_path, mode=0):
+def main(image_path, mode=0, ratio_of_interest = 0.8):
     image = cv2.imread(image_path)
     
-    ratio_of_interest = 0.8 # in what area around middle I want to search for line
+    # ratio_of_interest = in what area around middle I want to search for line
 
     height, width = image.shape[:2]
     roi_x_start = int((1-ratio_of_interest)/2 * width) # (1+-ratio_of_interest)/2 is for focusing the Region Of Interest arround the middle
@@ -105,5 +105,5 @@ def main(image_path, mode=0):
 
 if __name__ == "__main__":
     mode = 1 # 0 (for nonvisualization) or 1 (visualization)
-    image_path = '230926dr.jpg' #path for image
+    image_path = '230926dr - Copy.jpg' #path for image
     print(f"Úhel natočení Slunce je {main(image_path, mode)} stupňů")
