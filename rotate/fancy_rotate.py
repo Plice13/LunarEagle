@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import get_angle_for_rotation
 
 def rotate_image(image, angle):
     # grab the dimensions of the image and then determine the center
@@ -22,11 +23,17 @@ def rotate_image(image, angle):
     # perform the actual rotation and return the rotated image
     return cv2.warpAffine(image, M, (nW, nH))
 
-# load the image
-image = cv2.imread("230926dr.jpg")
+def main(image_path):
+    # load the image
+    image = cv2.imread(image_path)
 
-# rotate the image by 45 degrees
-rotated_image = rotate_image(image, 15.7)
+    # rotate the image by 45 degrees
+    rotated_image = rotate_image(image, 15.7)
 
-# save the rotated image
-cv2.imwrite("profi.jpg", rotated_image)
+    # save the rotated image
+    cv2.imwrite("profi.jpg", rotated_image)
+
+if __name__ == "__main__":
+    image_path = '230926dr.jpg' #path for image
+    
+    print(f"Úhel natočení Slunce je {main(image_path, mode)} stupňů")
