@@ -33,10 +33,10 @@ def main(image_path):
 
         if len(approx) == 4:
             x, y, w, h = cv2.boundingRect(cnt)
-            img_with_contours = cv2.drawContours(img_with_contours, [cnt], -1, (0, 255, 0), 3)
+            img_with_contours = cv2.drawContours(img_with_contours, [cnt], -1, (0, 255, 255), 3)
 
     show_image(img_with_contours)
 
 if __name__ == "__main__":
-    image_path = r'rotate\rotated_images\rotated_image.png'
+    image_path = r'lena_black_spots_mask.png'
     main(image_path)

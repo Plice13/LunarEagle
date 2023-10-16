@@ -31,7 +31,7 @@ def main(image_path):
     img_with_contours = img.copy()
 
     for cnt in contours:
-        approx = cv2.approxPolyDP(cnt, 0.01 * cv2.arcLength(cnt, True), True)
+        approx = cv2.approxPolyDP(cnt, 100 * cv2.arcLength(cnt, True), True)
         img_with_contours = cv2.drawContours(img_with_contours, [cnt], -1, (0, 255, 0), 1)
 
         if len(approx) == 4:

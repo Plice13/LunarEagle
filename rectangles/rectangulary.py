@@ -15,7 +15,7 @@ def show_image(picture, screen=1):
     cv2.destroyWindow('resized_picture')
 
 # Load the image
-image = cv2.imread('230926dr.jpg')
+image = cv2.imread('lena_black_spots_mask.png')
 
 # Convert the image to grayscale
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -38,7 +38,7 @@ if not os.path.exists("extracted_rectangles"):
 # Loop through the detected contours and find rectangles
 for i, contour in enumerate(contours):
     cv2.drawContours(image, [contour], 0, (0,255,0), 3)
-    show_image(image)
+    #show_image(image)
     # Approximate the contour to a polygon
     epsilon = 0.04 * cv2.arcLength(contour, True)
     approx = cv2.approxPolyDP(contour, epsilon, True)

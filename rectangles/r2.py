@@ -1,6 +1,6 @@
 import cv2
 
-def show_image(picture, screen=1):
+def show_image(picture, screen=0):
     #screen 0 notebook, screen 1 monitor
     height, width = picture.shape[:2]
     if screen == 0:
@@ -13,8 +13,8 @@ def show_image(picture, screen=1):
     cv2.waitKey()
     cv2.destroyWindow('resized_picture')
 
-image = cv2.imread(r'rotate\rotated_images\rotated_image.png')
-image = image[1150:1450,1700:1980]
+image = cv2.imread(r'lena_black_spots_mask.png')
+#image = image[1150:1450,1700:1980]
 blur = cv2.pyrMeanShiftFiltering(image, 11, 21)
 show_image(blur)
 gray = cv2.cvtColor(blur, cv2.COLOR_BGR2GRAY)
