@@ -14,13 +14,7 @@ mask = cv2.inRange(img, low, high)
 mask = 255 - mask
 show.show_image(mask, 0)
 
-'''# find black coordinates
-coords = np.argwhere(mask==0)
-for p in coords:
-    pt = (p[0],p[1])
-    print (pt)
-'''
-# save output¨
+# save output
 blured = cv2.GaussianBlur(mask,(3,3),cv2.BORDER_DEFAULT)
 show.show_image(blured,0)
 mask2 = cv2.inRange(blured, 0, 200)
