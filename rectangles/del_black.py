@@ -5,8 +5,10 @@ import show
 # read input
 img = cv2.imread("230926dr.jpg")
 
+k=225
+
 low = (0,0,0)
-high = (200,200,200)
+high = (k,k,k)
 
 mask = cv2.inRange(img, low, high)
 mask = 255 - mask
@@ -26,5 +28,5 @@ show.show_image(mask2, 0)
 
 mask2 = 255 - mask2
 
-cv2.imwrite('lena_black_spots_mask.png', mask2)
+cv2.imwrite(f'zkous{k}.png', mask2)
 show.show_image(mask2, 0)
