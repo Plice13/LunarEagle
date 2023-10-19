@@ -43,10 +43,10 @@ def find_rectangles(img, colored, base):
 
     for i, cnt in enumerate(contours):
         approx = cv2.approxPolyDP(cnt, 0.01 * cv2.arcLength(cnt, True), True)
-        #colored = cv2.drawContours(colored, [cnt], -1, (0, 255, 0), 1)
+        colored = cv2.drawContours(colored, [cnt], -1, (0, 255, 0), 1)
 
         if len(approx) == 4:
-            #colored = cv2.drawContours(colored, [cnt], -1, (0, 0, 255), 3)
+            colored = cv2.drawContours(colored, [cnt], -1, (0, 0, 255), 3)
             x, y, w, h = cv2.boundingRect(approx)
             if w+h>20:
                 roi = base[y:y+h, x:x+w]
@@ -56,7 +56,7 @@ def find_rectangles(img, colored, base):
                 cv2.imwrite(filename, roi)
 
     
-    cv2.imshow("cv2_image", colored)
+    cv2.imshow("colored", colored)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
     return colored
