@@ -3,7 +3,7 @@ import os
 from tqdm import tqdm
 
 # Path to the subfolder containing your images
-subfolder_path = r'C:\Users\PlicEduard\ondrejov\small'
+subfolder_path = r'C:\Users\PlicEduard\ondrejov'
 
 # Output folder for saving the blended images
 output_folder = '.'
@@ -16,7 +16,7 @@ if not os.path.exists(output_folder):
 image_files = [f for f in os.listdir(subfolder_path) if os.path.isfile(os.path.join(subfolder_path, f))]
 
 # Set the transparency level (alpha value) for blending
-alpha = 1-1/len(image_files)  # Adjust this value as needed
+alpha = 0.01  # Adjust this value as needed
 
 # Load the base image (the first image in the subfolder)
 base_image = cv2.imread(os.path.join(subfolder_path, image_files[0]))
@@ -28,13 +28,13 @@ pbar = tqdm(total=len(image_files) - 1, desc="Processing images")
 for image_file in image_files[1:]:
     next_image = cv2.imread(os.path.join(subfolder_path, image_file))
     next_image = cv2.resize(next_image, (base_image.shape[1], base_image.shape[0]))
-    base_image = cv2.addWeighted(base_image, 0.9, next_image, 0.1, 0)
+    base_image = cv2.addWeighted(base_image, 1-alpha, next_image, alpha, 0)
     pbar.update(1)
 
 pbar.close()
 
 # Save the final blended image
-output_path = os.path.join(output_folder, 'blended_image.jpg')
+output_path = os.path.join(output_folder, f'blended_image_{alpha}.jpg')
 cv2.imwrite(output_path, base_image)
 
 # Display the blended image (optional)
