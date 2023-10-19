@@ -30,7 +30,7 @@ def calculate_y_in_x_middle_from_polar(r, theta, x_value):
     y_value = a * x_value + y_intersect
     return y_value, y_intersect
 
-def main(image, mode=0, ratio_of_interest = 0.8):
+def main(image, mode=1, ratio_of_interest = 0.8):
 
     # ratio_of_interest = in what area around middle I want to search for line
 
