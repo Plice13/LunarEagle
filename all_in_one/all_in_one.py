@@ -44,18 +44,36 @@ def find_rectangles(img, colored, base):
     for i, cnt in enumerate(contours):
         approx = cv2.approxPolyDP(cnt, 0.01 * cv2.arcLength(cnt, True), True)
         colored = cv2.drawContours(colored, [cnt], -1, (0, 255, 0), 1)
-
+        
         if len(approx) == 4:
+            
             colored = cv2.drawContours(colored, [cnt], -1, (0, 0, 255), 3)
             x, y, w, h = cv2.boundingRect(approx)
-            if w+h>20:
-                roi = base[y:y+h, x:x+w]
-                
-                # Save the extracted rectangle
-                filename = f"all_in_one\extracted_rectangles/rectangle_{i}.jpg"
-                cv2.imwrite(filename, roi)
+            if 20 < w + h < 2000:
+                print(w+h, '\n.\n')
+                # Vytvořte masku obdélníka na základě jeho souřadnic
+                mask = np.zeros(base.shape[:2], dtype=np.uint8)
+                cv2.drawContours(mask, [approx], -1, (255), thickness=cv2.FILLED)
+                # Aplikujte masku na původní obrazq
+                cv2.imshow("base",mask)
+                cv2.waitKey(0)
+                cv2.destroyAllWindows()
+                roi_whole_image = cv2.bitwise_and(base, base, mask=mask)
+                roi_small=roi_whole_image[y:y+h, x:x+w]
+                # Získání rozměrů roi_small
+                height, width = roi_small.shape[:2]
 
-    
+                # Vytvoření masky pro černé pixely
+                black_pixels = roi_small == 0
+
+                # Nastavení všech černých pixelů na bílou barvu
+                roi_small[black_pixels] = 255
+
+                # Uložte výřez
+                filename = f"all_in_one/extracted_rectangles/rectangle_{i}.jpg"
+                cv2.imwrite(filename, roi_small)
+
+
     cv2.imshow("colored", colored)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
@@ -88,11 +106,12 @@ if __name__ == '__main__':
     enhanced = enhance_image(pic2_cv2)
     w_rectangles = find_rectangles(enhanced, pic2_cv2, image_cv2)
     cv2.imwrite("all_in_one/final_1.png",w_rectangles)
-    rotated = rotate_drawing(pic2_cv2, pic2)
+   
+    '''rotated = rotate_drawing(pic2_cv2, pic2)
     rotated_cv2 = cv2.cvtColor(np.array(rotated), cv2.COLOR_RGBA2BGR)
     enhanced_2_cv2 = enhance_image(rotated_cv2) 
     w_contours_cv2 = find_rectangles(enhanced_2_cv2,rotated_cv2, rotated_cv2)
     cv2.imshow("cv2_image", w_contours_cv2)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-    cv2.imwrite("all_in_one/final_2.png",w_contours_cv2)
+    cv2.imwrite("all_in_one/final_2.png",w_contours_cv2)'''
