@@ -8,4 +8,4 @@ center = (width / 2, height / 2)
 draw = ImageDraw.Draw(image)
 draw.ellipse([center[0] - 5, center[1] - 5, center[0] + 5, center[1] + 5], fill='red')
 
-image.save('image_with_center.jpg')
+image.save('sun\image_with_center.jpg')
