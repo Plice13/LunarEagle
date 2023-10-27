@@ -106,12 +106,3 @@ if __name__ == '__main__':
     enhanced = enhance_image(pic2_cv2)
     w_rectangles = find_rectangles(enhanced, pic2_cv2, image_cv2)
     cv2.imwrite("all_in_one/final_1.png",w_rectangles)
-   
-    '''rotated = rotate_drawing(pic2_cv2, pic2)
-    rotated_cv2 = cv2.cvtColor(np.array(rotated), cv2.COLOR_RGBA2BGR)
-    enhanced_2_cv2 = enhance_image(rotated_cv2) 
-    w_contours_cv2 = find_rectangles(enhanced_2_cv2,rotated_cv2, rotated_cv2)
-    cv2.imshow("cv2_image", w_contours_cv2)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-    cv2.imwrite("all_in_one/final_2.png",w_contours_cv2)'''

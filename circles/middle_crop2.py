@@ -4,7 +4,7 @@ import statistics
 import os
 from tqdm import tqdm
 
-path = '000103dr.jpg'
+path = '230926dr.jpg'
 
 image = cv2.imread(path)
 height, width = image.shape[:2]

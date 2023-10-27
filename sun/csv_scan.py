@@ -49,9 +49,6 @@ df_filtered['distance'] = np.sqrt((df_filtered['l'] - target_l) ** 2 + (df_filte
 # Najděte řádek s nejmenší vzdáleností
 nearest_row = df_filtered[df_filtered['distance'] == df_filtered['distance'].min()]
 
-# Výpis nejbližšího řádku
-print(nearest_row)
-
 # Výpis nejbližšího řádku s hodnotou vzdálenosti
 print("Nejbližší řádek:")
 print(nearest_row[['Datum', 'čas', 'min', 'Q', 'č', 'typ', 'skv', 'l', 'b', 'plo', 'pol', 'CV', 'SN', 'RB', 'distance']])
