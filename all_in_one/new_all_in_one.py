@@ -163,7 +163,7 @@ class Calculations:
                     # Extract the region of interest
                     roi_small = roi_whole_image[y:y+h, x:x+w]
 
-                    filename = r'C:\Users\PlicEduard\proof\cuts/' + picture_small_path + str(i) + str((w, h))+ '.png'
+                    filename = r'C:\Users\PlicEduard\proof\cuts/' + picture_small_path +'_'+ str(i) +'_'+ str((x, y, w, h))+'_'+ '.png'
                     cv2.imwrite(filename, roi_small)
 
         if visualisation == True:
