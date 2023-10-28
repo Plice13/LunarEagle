@@ -43,6 +43,13 @@ class Adjustment:
                 x_list.append(x)
                 y_list.append(y)    
                 r_list.append(r)
+                if visualisation == True:
+                    cv2.circle(image, (x, y), r, (0, 255, 0), 1)
+                    cv2.circle(image, (x, y), radius=2, color=(0, 128, 255), thickness=-1)
+        if visualisation == True:
+            cv2.imshow("image", image)
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
 
         # find small circle
         circles = cv2.HoughCircles(gray, cv2.HOUGH_GRADIENT, dp=1, minDist=2, param1=1, param2=40, minRadius=300, maxRadius=400)
@@ -51,14 +58,28 @@ class Adjustment:
             for (x, y, r) in circles:
                 x_list.append(x)
                 y_list.append(y)    
+                if visualisation == True:
+                    cv2.circle(image, (x, y), r, (255, 0, 0), 1)
+                    cv2.circle(image, (x, y), radius=2, color=(128, 0, 255), thickness=-1)
+        if visualisation == True:
+            cv2.imshow("image", image)
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
 
         # get center of all circles
         x_med,y_med = (int(statistics.median(x_list)), int(statistics.median(y_list)))
         move_x = int(width/2-x_med)
         move_y = int(height/2-y_med)
         r_min = int(min(r_list))
-        r_max = int(max(r_list))    
-        cv2.circle(image, (x_med,y_med), int(statistics.median(r_list)), (255, 255, 255), int((r_max-r_min)/2)+15)
+        r_max = int(max(r_list))
+        if visualisation == False:    
+            cv2.circle(image, (x_med,y_med), int(statistics.median(r_list)), (255, 255, 255), int((r_max-r_min)/2)+15)
+        else:
+            cv2.circle(image, (x_med,y_med), 4, (0, 0, 255), -1)
+            cv2.circle(image, (x_med,y_med), int(statistics.median(r_list)), (0, 0, 255), int((r_max-r_min)/2)+15)
+            cv2.imshow("image", image)
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
 
         return move_x, move_y, 
 
@@ -81,6 +102,8 @@ class Adjustment:
         result = Image.new("RGBA", image_PIL.size)
         result.paste(image_PIL.convert("RGBA"), (0,0))
         result.paste((255,255,255,255), (0, 0), mask)
+        if visualisation == True:
+            result.show()   
         return result
 
     def enhance_image_cv2(img):
@@ -91,11 +114,26 @@ class Adjustment:
 
         mask = cv2.inRange(img, low, high)
         mask = 255 - mask
+        if visualisation == True:
+            cv2.imshow("mask", mask)
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
 
         blured = cv2.GaussianBlur(mask,(3,3),cv2.BORDER_DEFAULT)
+        if visualisation == True:
+            cv2.imshow("blured", blured)
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
+
+
         mask2 = cv2.inRange(blured, 0, 200)
 
         mask2 = 255 - mask2
+        if visualisation == True:
+            cv2.imshow("mask2", mask2)
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
+
 
         return mask2
 
@@ -108,30 +146,37 @@ class Calculations:
         # scanning contours
         for i, cnt in enumerate(contours):
             approx = cv2.approxPolyDP(cnt, 0.01 * cv2.arcLength(cnt, True), True)
+            if visualisation == True:
+                cv2.drawContours(base, [cnt], -1, (0, 0, 122), 1)
             if len(approx) == 4:
                 x, y, w, h = cv2.boundingRect(approx)
-                if 20 < w + h < 2000:
-                    # make mask of rectangle with his coordinates
-                    mask = np.zeros(base.shape[:2], dtype=np.uint8)
-                    cv2.drawContours(mask, [approx], -1, (255), thickness=cv2.FILLED)
-                    # use mask on image
-                    roi_whole_image = cv2.bitwise_and(base, base, mask=mask)
-                    roi_small=roi_whole_image[y:y+h, x:x+w]
-                    # get size for roi only with rectangle
-                    height, width = roi_small.shape[:2]
+                if visualisation == True:
+                    cv2.drawContours(base, [cnt], -1, (122, 122, 122), 3)
 
-                    # mask for black pixels in roi
-                    black_pixels = roi_small == 0
+                if 10 < w < 1600 and 10 < h < 1600:
+                    # make mask of rectangle with its coordinates # hodne dlouhomi to zabralo :(((
+                    mask = np.zeros_like(base, dtype=np.uint8)
+                    cv2.drawContours(mask, [approx], -1, color=(255,255,255), thickness=cv2.FILLED)                    
+                    mask_inverted = ~mask
+                    roi_whole_image = cv2.bitwise_or(base, mask_inverted)
 
-                    # set all black to white pixels
-                    roi_small[black_pixels] = 255
+                    # Extract the region of interest
+                    roi_small = roi_whole_image[y:y+h, x:x+w]
 
-                    # save it
-                    filename = r'C:\Users\PlicEduard\proof\cuts/'+picture_small_path+str(i)+'.png'
+                    filename = r'C:\Users\PlicEduard\proof\cuts/' + picture_small_path + str(i) + str((w, h))+ '.png'
                     cv2.imwrite(filename, roi_small)
+
+        if visualisation == True:
+            cv2.imshow("base", base)
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
+
 
 
 if __name__ == '__main__':
+    global visualisation
+    visualisation = False
+
     folder_path = r'C:\Users\PlicEduard\ondrejov'
     log_path = 'log.txt'
 
@@ -141,10 +186,9 @@ if __name__ == '__main__':
     x=0
     for pic in tqdm(os.listdir(folder_path), total=len(os.listdir(folder_path))):
         # process only every ...th picture
-        if x == 5:
+        if x == 300:
             # repeat code for every image in folder
             picture_small_path = pic.split('.')[0]
-            print(picture_small_path)
             picture_full_path=folder_path+'/'+picture_small_path+'.jpg'
             try:
                 picture_cv2 = cv2.imread(picture_full_path)
