@@ -17,15 +17,15 @@ class Maintenance:
         return cv2.cvtColor(np.array(image_PIL), cv2.COLOR_RGBA2BGR)
 
 class Adjustment:
-    def center_the_image_and_remove_big_circle_cv2(image_cv2):
-        x_move, y_move = Adjustment.find_circles_in_image_cv2(image_cv2)
+    def center_the_image_and_remove_big_circle_cv2(image_cv2, visualisation=False):
+        x_move, y_move = Adjustment.find_circles_in_image_cv2(image_cv2, visualisation=visualisation)
         image_PIL = Maintenance.cv2_to_PIL(image_cv2)
         image_PIL = Adjustment.move_image_PIL(image_PIL, x_move, y_move)
         final_image_cv2 = Maintenance.PIL_to_cv2(image_PIL)
 
         return final_image_cv2
 
-    def find_circles_in_image_cv2(image):
+    def find_circles_in_image_cv2(image, visualisation=False):
         x_list = []
         y_list = []
         r_list = []
@@ -91,7 +91,7 @@ class Adjustment:
 
         return new_image
 
-    def remove_tables_PIL(image_PIL, mask = Image.open("mask_table_pro.png")):
+    def remove_tables_PIL(image_PIL, mask = Image.open("mask_table_pro.png"), visualisation=False):
         mask = mask.convert("RGBA")
 
         # make sure that mask and image are same size
@@ -103,10 +103,12 @@ class Adjustment:
         result.paste(image_PIL.convert("RGBA"), (0,0))
         result.paste((255,255,255,255), (0, 0), mask)
         if visualisation == True:
+            # having the mask purple 
+            result.paste((128,0,128,255), (0, 0), mask)
             result.show()   
         return result
 
-    def enhance_image_cv2(img):
+    def enhance_image_cv2(img, visualisation=False):
         # if not too dark then make it white
         k=220
         low = (0,0,0)
@@ -138,7 +140,7 @@ class Adjustment:
         return mask2
 
 class Calculations:
-    def find_rectangles(enhanced, base):
+    def find_rectangles(enhanced, base, visualisation=False):
         # some more adjustments
         thresh = cv2.adaptiveThreshold(enhanced, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 11, 2)
         contours, hierarchy = cv2.findContours(thresh, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
@@ -151,7 +153,7 @@ class Calculations:
             if len(approx) == 4:
                 x, y, w, h = cv2.boundingRect(approx)
                 if visualisation == True:
-                    cv2.drawContours(base, [cnt], -1, (122, 122, 122), 3)
+                    cv2.drawContours(base, [cnt], -1, (0, 255, 122), 3)
 
                 if 10 < w < 1600 and 10 < h < 1600:
                     # make mask of rectangle with its coordinates # hodne dlouhomi to zabralo :(((
@@ -174,8 +176,7 @@ class Calculations:
 
 
 if __name__ == '__main__':
-    global visualisation
-    visualisation = False
+    visualisation = True
 
     folder_path = r'C:\Users\PlicEduard\ondrejov'
     log_path = 'log.txt'
@@ -186,7 +187,7 @@ if __name__ == '__main__':
     x=0
     for pic in tqdm(os.listdir(folder_path), total=len(os.listdir(folder_path))):
         # process only every ...th picture
-        if x == 300:
+        if x == 2:
             # repeat code for every image in folder
             picture_small_path = pic.split('.')[0]
             picture_full_path=folder_path+'/'+picture_small_path+'.jpg'
@@ -197,7 +198,7 @@ if __name__ == '__main__':
                 picture = Adjustment.remove_tables_PIL(picture)
                 picture = Maintenance.PIL_to_cv2(picture)
                 enhanced_picture = Adjustment.enhance_image_cv2(picture)
-                Calculations.find_rectangles(enhanced_picture,picture)
+                Calculations.find_rectangles(enhanced_picture,picture,visualisation=visualisation)
             except Exception as e:
                 log_file = open(log_path, 'w', encoding='utf-8')
                 log_file.write(f'Obrázek {pic} nemohl být zpracován protože vyhodil chybu: {e}')
