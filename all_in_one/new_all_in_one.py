@@ -91,7 +91,8 @@ class Adjustment:
         r_min = int(min(r_list))
         r_max = int(max(r_list))
         if visualisation == False:    
-            cv2.circle(image, (x_med,y_med), int(statistics.median(r_list)), (255, 255, 255), int((r_max-r_min)/2)+15)
+            pass
+            #cv2.circle(image, (x_med,y_med), int(statistics.median(r_list)), (255, 255, 255), int((r_max-r_min)/2)+15)
         else:
             cv2.circle(image, (x_med,y_med), 4, (0, 0, 255), -1)
             cv2.circle(image, (x_med,y_med), int(statistics.median(r_list)), (0, 0, 255), int((r_max-r_min)/2)+15)
@@ -191,37 +192,6 @@ class Calculations:
             cv2.waitKey(0)
             cv2.destroyAllWindows()
 
-    def calculate_Q(point2):
-        middle_point = (1000, 874)    
-
-        # Spočtěte úhel vůči svislé ose
-        angle = np.degrees(np.arctan2(point2[0] - middle_point[0], -(point2[1] - middle_point[1])))
-
-        if angle < 0:
-            angle = angle+360
-        elif angle >360:
-            angle = angle-360
-        else:
-            angle=angle
-
-        print(f'Úhel vůči svislé ose: {angle} stupňů')
-        return angle
-
-    def calculate_middle_of_sunspot(part_of_name):
-        values = part_of_name.split(',')
-        x, y, w, h = map(int, values)
-        middle = (x+w/2, y+h/2)
-        return middle
-
-    def calculate_rho(point2):
-        radius_of_sun = 750 #px
-        middle_point = (1000, 874) 
-        distance_to_middle = np.sqrt((point2[0] - middle_point[0]) ** 2 + (point2[1] - middle_point[1]) ** 2)
-        rho=np.arcsin(distance_to_middle/radius_of_sun)
-        print(distance_to_middle, radius_of_sun)
-        print(f'Rho je přesněji: {rho} psích jazíčků')
-        return rho
-
 class Reading:
     def get_day_from_image(image_name):
         image_string = str(image_name).replace('dr.jpg','')
@@ -250,29 +220,9 @@ class Reading:
        
         return hour_from_csv.zfill(2)+min_from_csv.zfill(2)+'00'
 
-    def get_closest_match(target_b, target_l, full_date, csv_path):
-        input_date  = datetime.strptime(full_date, '%Y%m%d%H%M%S')  # Parse the input string as a datetime object
-        target_date = input_date.strftime('%Y-%m-%d')  # Format the datetime object to 'YYYY-MM-DD' format
-
-        df = pd.read_csv(csv_path, delimiter=';', encoding='Windows-1250')
-        df.columns = ['Datum', 'čas', 'min', 'Q', 'č', 'typ', 'skv', 'l', 'b', 'plo', 'pol', 'CV', 'SN', 'RB']
-
-        df['l'] = pd.to_numeric(df['l'], errors='coerce')
-        df['b'] = pd.to_numeric(df['b'], errors='coerce')
-        df['Datum'] = pd.to_datetime(df['Datum'], format='%d.%m.%Y', errors='coerce')
-
-        df_filtered = df[df['Datum'] == target_date]
-
-        df_filtered['distance'] = np.sqrt((df_filtered['l'] - target_l) ** 2 + (df_filtered['b'] - target_b) ** 2)
-
-        nearest_row = df_filtered[df_filtered['distance'] == df_filtered['distance'].min()]
-
-        print("Nejbližší řádek:")
-        print(nearest_row[['Datum', 'čas', 'min', 'Q', 'č', 'typ', 'skv', 'l', 'b', 'plo', 'pol', 'CV', 'SN', 'RB', 'distance']])
-        print()
 
 if __name__ == '__main__':
-    visualisation = True
+    visualisation = False
 
     folder_path = r'C:\Users\PlicEduard\ondrejov'
     sunspot_path = r'C:\Users\PlicEduard\proof\sunspots'
@@ -280,18 +230,19 @@ if __name__ == '__main__':
 
     #Maintenance.erase_log(log_path)
     pictures = [pic for pic in os.listdir(folder_path) if pic.endswith(".jpg")]
-    x=0
-    '''
+    x=3
+
     for pic in tqdm(os.listdir(folder_path), total=len(os.listdir(folder_path))):
         # process only every ...th picture
-        if pic == 'lool':
+        if x == 3:
             # repeat code for every image in folder
-            picture_day = Reading.get_day_from_image(pic) #yyyymmdd
-            picture_time = Reading.get_time_from_csv(picture_day, 'Ondrejov_data_kresba.CSV') #hhmmss
-            global picture_date
-            picture_date = picture_day+ picture_time #yyyymmmddhhmmss
-            picture_full_path=folder_path+'/'+picture_day[2:]+'dr.jpg' #picture_day[2:] for format yymmdd
             try:
+                picture_day = Reading.get_day_from_image(pic) #yyyymmdd
+                picture_time = Reading.get_time_from_csv(picture_day, 'Ondrejov_data_kresba.CSV') #hhmmss
+                global picture_date
+                picture_date = picture_day+ picture_time #yyyymmmddhhmmss
+                picture_full_path=folder_path+'/'+picture_day[2:]+'dr.jpg' #picture_day[2:] for format yymmdd
+                
                 picture_cv2 = cv2.imread(picture_full_path)
                 picture = Adjustment.center_the_image_and_remove_big_circle_cv2(picture_cv2)
                 picture = Maintenance.cv2_to_PIL(picture)
@@ -301,37 +252,9 @@ if __name__ == '__main__':
                 Calculations.find_rectangles(enhanced_picture,picture,visualisation=visualisation)
                 #saveing every sunspot groop              
             except Exception as e:
-                log_file = open(log_path, 'w', encoding='utf-8')
-                log_file.write(f'Obrázek {pic} nemohl být zpracován protože vyhodil chybu: {e}')
+                log_file = open(log_path, 'a', encoding='utf-8')
+                log_file.write(f'Obrázek {pic} nemohl být zpracován protože vyhodil chybu: {e}\n')
                 log_file.close()
             x=0
         else:
             x+=1
-    '''
-    sunspots = [sunspot for sunspot in os.listdir(sunspot_path) if sunspot.endswith(".png")]
-
-    for sunspot in tqdm(os.listdir(sunspot_path), total=len(os.listdir(sunspot_path))):
-        sunspot_date = sunspot.split('_')[0]
-        sunspot_coordinates = sunspot.split('_')[1]
-        
-        # get sun information in that time
-        B0 = math.radians(Maintenance.str_to_dec_degree(sunpy.coordinates.sun.B0(time=sunspot_date)))
-        P = math.radians(Maintenance.str_to_dec_degree(sunpy.coordinates.sun.P(time=sunspot_date)))
-        L0 = math.radians(Maintenance.str_to_dec_degree(sunpy.coordinates.sun.L0(time=sunspot_date)))
-
-        # get Q and rho
-        midpoint_of_sunspot = Calculations.calculate_middle_of_sunspot('787,573,82,82')
-        Q = math.radians(Calculations.calculate_Q(midpoint_of_sunspot))
-        rho = math.asin(Calculations.calculate_rho(midpoint_of_sunspot))
-
-        #get b and l
-        b = math.asin(math.sin(B0) * math.cos(rho) + math.cos(B0) * math.sin(rho) * math.cos(P - Q))
-        l = (math.asin((math.sin(rho) * math.sin(P - Q)) / math.cos(b)) + L0)
-
-        b = math.degrees(b)
-        l = math.degrees(l)
-
-        print(b,l)
-        #get match
-        Reading.get_closest_match(b, l, sunspot_date, 'Ondrejov_data_kresba.CSV')
-
