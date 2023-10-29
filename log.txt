@@ -1,0 +1,1 @@
+Obrázek 230926dr.jpg nemohl být zpracován protože vyhodil chybu: str() takes at most 3 arguments (4 given)

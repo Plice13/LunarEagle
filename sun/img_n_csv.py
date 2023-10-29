@@ -23,8 +23,8 @@ def get_l_b():
 
     def calculate_rho():
         radius_of_sun = 750 #px
-        middle_point = (1000, 900)  
-        point2 = (830, 666)
+        middle_point = (1000, 874)  
+        point2 = (828, 614)
         distance_to_middle = np.sqrt((point2[0] - middle_point[0]) ** 2 + (point2[1] - middle_point[1]) ** 2)
         rho=np.arcsin(distance_to_middle/radius_of_sun)
         print(distance_to_middle, radius_of_sun)
