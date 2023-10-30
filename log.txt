@@ -5453,3 +5453,386 @@ Skvrna 20031011121100_1672,1056,41,67_.png nemohla být zpracován protože vyho
 Skvrna 20101001090500_1416,1284,87,78_.png nemohla být zpracován protože vyhodila chybu: math domain error
 Skvrna 20220205080000_1405,373,150,112_.png nemohla být zpracován protože vyhodila chybu: math domain error
 Skvrna 20230619114200_1665,903,62,72_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19871208082000_1229,1224,77,77_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19871208082000_1282,657,49,64_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19881105075000_350,821,76,42_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19881105075000_718,1006,91,91_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19881105075000_977,995,91,90_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19890919115700_703,945,68,68_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19890919115700_739,306,174,150_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19890919115700_855,512,75,47_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19900720064500_568,410,176,102_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19920229140200_1017,1028,125,104_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19920229140200_1190,653,132,112_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19920229140200_1304,667,18,33_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19920229140200_1359,591,117,95_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19920229140200_1444,659,82,81_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19920229140200_1576,647,110,110_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19920229140200_813,779,102,79_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19921014072900_1407,763,82,75_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19921014072900_1596,993,85,85_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19921014072900_474,635,75,76_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19921014072900_570,354,92,84_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19930617064500_1615,1001,73,73_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19940201090600_1008,661,120,99_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19940201090600_1014,666,108,88_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19940201090600_1608,529,58,83_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19940201090600_460,1040,69,69_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19940828055300_1232,739,81,81_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19960223085600_734,1114,29,36_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19970525044600_1528,1039,75,67_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19970525044600_1636,715,73,72_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19970525044600_391,661,124,110_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19970525044600_755,484,73,66_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19971112084800_1256,1304,123,108_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19980615081400_1034,1064,18,98_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19980615081400_497,1120,71,71_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19980615081400_692,638,34,40_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19980615081400_902,1248,72,71_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19990828095900_1192,575,114,94_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19990828095900_1372,595,135,165_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19990828095900_1549,1241,52,50_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19990828095900_533,699,72,74_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19990828095900_703,915,121,111_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19990828095900_774,273,72,74_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20000804054200_1043,910,58,57_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20000804054200_1074,582,75,74_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20000804054200_1128,1017,82,60_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20000804054200_1375,627,75,74_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20000804054200_1657,731,58,58_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20010430065400_1281,723,51,52_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20010430065400_409,1219,45,44_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20010430065400_445,969,67,63_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20010430065400_553,1349,121,122_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20010430065400_892,960,188,152_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20010430065400_939,1264,67,68_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20020104081300_1059,944,64,63_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20020104081300_1282,946,49,49_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20020104081300_1398,1007,34,33_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20020104081300_1514,625,51,50_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20020104081300_1515,788,64,63_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20020104081300_1629,1028,66,64_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20020104081300_1637,830,35,34_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20020104081300_1656,672,35,34_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20020104081300_302,1032,49,50_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20020104081300_979,752,34,33_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20020806082300_1172,992,83,56_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20020806082300_1605,753,38,39_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20020806082300_389,752,137,102_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20020806082300_875,692,58,58_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20030421055000_1028,1089,133,102_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20030421055000_1549,491,66,66_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20030421055000_392,929,110,115_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20030421055000_706,1192,72,68_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20031011121100_1554,1221,63,69_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20031011121100_1582,988,116,119_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20031011121100_1672,1056,41,67_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20031011121100_381,877,33,13_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20031011121100_931,557,118,112_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20041201095300_1134,790,88,70_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20041201095300_1197,684,121,105_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20060908074200_639,432,64,65_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20091121090100_692,949,103,103_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20101001090500_1416,1284,87,78_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20110825081200_1496,691,50,49_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20121113093000_1062,740,175,132_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20121113093000_1189,886,61,54_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20121113093000_1222,1290,99,94_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20121113093000_1424,944,98,84_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20121113093000_1525,876,121,118_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20121113093000_725,603,22,27_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20121113093000_730,610,43,34_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20121113093000_801,668,47,41_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20150304094200_1118,775,69,68_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20150304094200_222,97,1559,1555_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20150304094200_551,848,82,77_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19871208082000_1229,1224,77,77_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19871208082000_1282,657,49,64_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19881105075000_350,821,76,42_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19871208082000_1229,1224,77,77_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/8712080dr.jpg'
+Skvrna 19871208082000_1282,657,49,64_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/8712080dr.jpg'
+Skvrna 19881105075000_350,821,76,42_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/8811050dr.jpg'
+Skvrna 19881105075000_718,1006,91,91_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/8811050dr.jpg'
+Skvrna 19881105075000_977,995,91,90_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/8811050dr.jpg'
+Skvrna 19890919115700_703,945,68,68_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/8909191dr.jpg'
+Skvrna 19890919115700_739,306,174,150_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/8909191dr.jpg'
+Skvrna 19890919115700_855,512,75,47_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/8909191dr.jpg'
+Skvrna 19900720064500_568,410,176,102_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9007200dr.jpg'
+Skvrna 19920229140200_1017,1028,125,104_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9202291dr.jpg'
+Skvrna 19920229140200_1190,653,132,112_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9202291dr.jpg'
+Skvrna 19920229140200_1304,667,18,33_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9202291dr.jpg'
+Skvrna 19920229140200_1359,591,117,95_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9202291dr.jpg'
+Skvrna 19920229140200_1444,659,82,81_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9202291dr.jpg'
+Skvrna 19920229140200_1576,647,110,110_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9202291dr.jpg'
+Skvrna 19920229140200_813,779,102,79_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9202291dr.jpg'
+Skvrna 19921014072900_1407,763,82,75_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9210140dr.jpg'
+Skvrna 19921014072900_1596,993,85,85_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9210140dr.jpg'
+Skvrna 19921014072900_474,635,75,76_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9210140dr.jpg'
+Skvrna 19921014072900_570,354,92,84_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9210140dr.jpg'
+Skvrna 19930617064500_1615,1001,73,73_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9306170dr.jpg'
+Skvrna 19940201090600_1008,661,120,99_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9402010dr.jpg'
+Skvrna 19940201090600_1014,666,108,88_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9402010dr.jpg'
+Skvrna 19940201090600_1608,529,58,83_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9402010dr.jpg'
+Skvrna 19940201090600_460,1040,69,69_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9402010dr.jpg'
+Skvrna 19940828055300_1232,739,81,81_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9408280dr.jpg'
+Skvrna 19960223085600_734,1114,29,36_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9602230dr.jpg'
+Skvrna 19970525044600_1528,1039,75,67_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9705250dr.jpg'
+Skvrna 19970525044600_1636,715,73,72_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9705250dr.jpg'
+Skvrna 19970525044600_391,661,124,110_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9705250dr.jpg'
+Skvrna 19970525044600_755,484,73,66_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9705250dr.jpg'
+Skvrna 19971112084800_1256,1304,123,108_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9711120dr.jpg'
+Skvrna 19980615081400_1034,1064,18,98_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9806150dr.jpg'
+Skvrna 19980615081400_497,1120,71,71_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9806150dr.jpg'
+Skvrna 19980615081400_692,638,34,40_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9806150dr.jpg'
+Skvrna 19980615081400_902,1248,72,71_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9806150dr.jpg'
+Skvrna 19990828095900_1192,575,114,94_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9908280dr.jpg'
+Skvrna 19990828095900_1372,595,135,165_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9908280dr.jpg'
+Skvrna 19990828095900_1549,1241,52,50_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9908280dr.jpg'
+Skvrna 19990828095900_533,699,72,74_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9908280dr.jpg'
+Skvrna 19990828095900_703,915,121,111_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9908280dr.jpg'
+Skvrna 19990828095900_774,273,72,74_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/9908280dr.jpg'
+Skvrna 20000804054200_1043,910,58,57_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0008040dr.jpg'
+Skvrna 20000804054200_1074,582,75,74_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0008040dr.jpg'
+Skvrna 20000804054200_1128,1017,82,60_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0008040dr.jpg'
+Skvrna 20000804054200_1375,627,75,74_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0008040dr.jpg'
+Skvrna 20000804054200_1657,731,58,58_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0008040dr.jpg'
+Skvrna 20010430065400_1281,723,51,52_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0104300dr.jpg'
+Skvrna 20010430065400_409,1219,45,44_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0104300dr.jpg'
+Skvrna 20010430065400_445,969,67,63_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0104300dr.jpg'
+Skvrna 20010430065400_553,1349,121,122_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0104300dr.jpg'
+Skvrna 20010430065400_892,960,188,152_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0104300dr.jpg'
+Skvrna 20010430065400_939,1264,67,68_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0104300dr.jpg'
+Skvrna 20020104081300_1059,944,64,63_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0201040dr.jpg'
+Skvrna 20020104081300_1282,946,49,49_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0201040dr.jpg'
+Skvrna 20020104081300_1398,1007,34,33_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0201040dr.jpg'
+Skvrna 20020104081300_1514,625,51,50_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0201040dr.jpg'
+Skvrna 20020104081300_1515,788,64,63_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0201040dr.jpg'
+Skvrna 20020104081300_1629,1028,66,64_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0201040dr.jpg'
+Skvrna 20020104081300_1637,830,35,34_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0201040dr.jpg'
+Skvrna 20020104081300_1656,672,35,34_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0201040dr.jpg'
+Skvrna 20020104081300_302,1032,49,50_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0201040dr.jpg'
+Skvrna 20020104081300_979,752,34,33_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0201040dr.jpg'
+Skvrna 20020806082300_1172,992,83,56_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0208060dr.jpg'
+Skvrna 20020806082300_1605,753,38,39_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0208060dr.jpg'
+Skvrna 20020806082300_389,752,137,102_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0208060dr.jpg'
+Skvrna 20020806082300_875,692,58,58_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0208060dr.jpg'
+Skvrna 20030421055000_1028,1089,133,102_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0304210dr.jpg'
+Skvrna 20030421055000_1549,491,66,66_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0304210dr.jpg'
+Skvrna 20030421055000_392,929,110,115_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0304210dr.jpg'
+Skvrna 20030421055000_706,1192,72,68_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0304210dr.jpg'
+Skvrna 20031011121100_1554,1221,63,69_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0310111dr.jpg'
+Skvrna 20031011121100_1582,988,116,119_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0310111dr.jpg'
+Skvrna 20031011121100_1672,1056,41,67_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0310111dr.jpg'
+Skvrna 20031011121100_381,877,33,13_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0310111dr.jpg'
+Skvrna 20031011121100_931,557,118,112_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0310111dr.jpg'
+Skvrna 20041201095300_1134,790,88,70_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0412010dr.jpg'
+Skvrna 20041201095300_1197,684,121,105_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0412010dr.jpg'
+Skvrna 20060908074200_639,432,64,65_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0609080dr.jpg'
+Skvrna 20091121090100_692,949,103,103_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/0911210dr.jpg'
+Skvrna 20101001090500_1416,1284,87,78_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/1010010dr.jpg'
+Skvrna 20110825081200_1496,691,50,49_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/1108250dr.jpg'
+Skvrna 20121113093000_1062,740,175,132_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/1211130dr.jpg'
+Skvrna 20121113093000_1189,886,61,54_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/1211130dr.jpg'
+Skvrna 20121113093000_1222,1290,99,94_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/1211130dr.jpg'
+Skvrna 20121113093000_1424,944,98,84_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/1211130dr.jpg'
+Skvrna 20121113093000_1525,876,121,118_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/1211130dr.jpg'
+Skvrna 20121113093000_725,603,22,27_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/1211130dr.jpg'
+Skvrna 20121113093000_730,610,43,34_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/1211130dr.jpg'
+Skvrna 20121113093000_801,668,47,41_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/1211130dr.jpg'
+Skvrna 20150304094200_1118,775,69,68_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/1503040dr.jpg'
+Skvrna 20150304094200_222,97,1559,1555_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/1503040dr.jpg'
+Skvrna 20150304094200_551,848,82,77_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/1503040dr.jpg'
+Skvrna 20150304094200_637,843,27,54_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/1503040dr.jpg'
+Skvrna 20150304094200_949,811,68,68_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/1503040dr.jpg'
+Skvrna 20161109090600_416,892,67,66_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/1611090dr.jpg'
+Skvrna 20190808064200_846,944,79,80_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/1908080dr.jpg'
+Skvrna 20210413084000_1077,952,157,132_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/2104130dr.jpg'
+Skvrna 20220205080000_1040,930,130,84_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/2202050dr.jpg'
+Skvrna 20220205080000_1405,373,150,112_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/2202050dr.jpg'
+Skvrna 20220205080000_898,534,192,116_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/2202050dr.jpg'
+Skvrna 20220819063600_1405,614,81,81_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/2208190dr.jpg'
+Skvrna 20220819063600_365,975,116,151_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/2208190dr.jpg'
+Skvrna 20220819063600_658,665,116,100_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/2208190dr.jpg'
+Skvrna 20230619114200_1025,639,71,70_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/2306191dr.jpg'
+Skvrna 20230619114200_1029,1078,73,70_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/2306191dr.jpg'
+Skvrna 20230619114200_1209,652,123,90_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/2306191dr.jpg'
+Skvrna 20230619114200_1229,594,56,62_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/2306191dr.jpg'
+Skvrna 20230619114200_1455,491,71,71_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/2306191dr.jpg'
+Skvrna 20230619114200_1517,1006,72,69_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/2306191dr.jpg'
+Skvrna 20230619114200_1665,903,62,72_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/2306191dr.jpg'
+Skvrna 20230619114200_411,691,73,70_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/2306191dr.jpg'
+Skvrna 20230619114200_677,996,133,92_.png nemohla být zpracován protože vyhodila chybu: [Errno 2] No such file or directory: 'C:\\Users\\PlicEduard\\ondrejov/2306191dr.jpg'
+Skvrna 19871208082000_1229,1224,77,77_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19871208082000_1282,657,49,64_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19881105075000_350,821,76,42_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19881105075000_718,1006,91,91_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19881105075000_977,995,91,90_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19890919115700_703,945,68,68_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19890919115700_739,306,174,150_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19890919115700_855,512,75,47_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19900720064500_568,410,176,102_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19920229140200_1017,1028,125,104_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19920229140200_1190,653,132,112_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19920229140200_1304,667,18,33_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19871208082000_1229,1224,77,77_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19871208082000_1282,657,49,64_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19881105075000_350,821,76,42_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19881105075000_718,1006,91,91_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19881105075000_977,995,91,90_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19890919115700_703,945,68,68_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19890919115700_739,306,174,150_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19890919115700_855,512,75,47_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19900720064500_568,410,176,102_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19920229140200_1017,1028,125,104_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19920229140200_1190,653,132,112_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19920229140200_1304,667,18,33_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19920229140200_1359,591,117,95_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19920229140200_1444,659,82,81_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19920229140200_1576,647,110,110_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19920229140200_813,779,102,79_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19921014072900_1407,763,82,75_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19921014072900_1596,993,85,85_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19921014072900_474,635,75,76_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19921014072900_570,354,92,84_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19930617064500_1615,1001,73,73_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19940201090600_1008,661,120,99_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19940201090600_1014,666,108,88_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19940201090600_1608,529,58,83_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19940201090600_460,1040,69,69_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19940828055300_1232,739,81,81_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19960223085600_734,1114,29,36_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19970525044600_1528,1039,75,67_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19970525044600_1636,715,73,72_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19970525044600_391,661,124,110_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19970525044600_755,484,73,66_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19971112084800_1256,1304,123,108_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19980615081400_1034,1064,18,98_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19980615081400_497,1120,71,71_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19980615081400_692,638,34,40_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19980615081400_902,1248,72,71_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19990828095900_1192,575,114,94_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19990828095900_1372,595,135,165_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19990828095900_1549,1241,52,50_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19990828095900_533,699,72,74_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19990828095900_703,915,121,111_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19990828095900_774,273,72,74_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20000804054200_1043,910,58,57_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20000804054200_1074,582,75,74_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20000804054200_1128,1017,82,60_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20000804054200_1375,627,75,74_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20000804054200_1657,731,58,58_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20010430065400_1281,723,51,52_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20010430065400_409,1219,45,44_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20010430065400_445,969,67,63_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20010430065400_553,1349,121,122_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20010430065400_892,960,188,152_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20010430065400_939,1264,67,68_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20020104081300_1059,944,64,63_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20020104081300_1282,946,49,49_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20020104081300_1398,1007,34,33_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 20020104081300_1514,625,51,50_.png nemohla být zpracován protože vyhodila chybu: only length-1 arrays can be converted to Python scalars
+Skvrna 19920229140200_1576,647,110,110_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19921014072900_1596,993,85,85_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19930617064500_1615,1001,73,73_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19940201090600_1608,529,58,83_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19970525044600_1636,715,73,72_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19990828095900_1549,1241,52,50_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20000804054200_1657,731,58,58_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20010430065400_409,1219,45,44_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20010430065400_553,1349,121,122_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20020104081300_1629,1028,66,64_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20020104081300_1637,830,35,34_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20020104081300_1656,672,35,34_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20020104081300_302,1032,49,50_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20020806082300_1605,753,38,39_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20030421055000_1549,491,66,66_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20031011121100_1554,1221,63,69_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20031011121100_1582,988,116,119_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20031011121100_1672,1056,41,67_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20101001090500_1416,1284,87,78_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20220205080000_1405,373,150,112_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20230619114200_1665,903,62,72_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19920229140200_1576,647,110,110_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19921014072900_1596,993,85,85_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19930617064500_1615,1001,73,73_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19940201090600_1608,529,58,83_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19970525044600_1636,715,73,72_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19990828095900_1549,1241,52,50_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20000804054200_1657,731,58,58_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20010430065400_409,1219,45,44_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20010430065400_553,1349,121,122_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20020104081300_1629,1028,66,64_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20020104081300_1637,830,35,34_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20020104081300_1656,672,35,34_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20020104081300_302,1032,49,50_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20020806082300_1605,753,38,39_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20030421055000_1549,491,66,66_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20031011121100_1554,1221,63,69_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20031011121100_1582,988,116,119_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20031011121100_1672,1056,41,67_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20101001090500_1416,1284,87,78_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20220205080000_1405,373,150,112_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20230619114200_1665,903,62,72_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19920229140200_1576,647,110,110_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19921014072900_1596,993,85,85_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19930617064500_1615,1001,73,73_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19940201090600_1608,529,58,83_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19970525044600_1636,715,73,72_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19990828095900_1549,1241,52,50_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20000804054200_1657,731,58,58_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20010430065400_409,1219,45,44_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20010430065400_553,1349,121,122_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20020104081300_1629,1028,66,64_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20020104081300_1637,830,35,34_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20020104081300_1656,672,35,34_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20020104081300_302,1032,49,50_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20020806082300_1605,753,38,39_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20030421055000_1549,491,66,66_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20031011121100_1554,1221,63,69_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20031011121100_1582,988,116,119_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20031011121100_1672,1056,41,67_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20101001090500_1416,1284,87,78_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20220205080000_1405,373,150,112_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20230619114200_1665,903,62,72_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19920229140200_1576,647,110,110_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19921014072900_1596,993,85,85_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19930617064500_1615,1001,73,73_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19940201090600_1608,529,58,83_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19970525044600_1636,715,73,72_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19990828095900_1549,1241,52,50_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20000804054200_1657,731,58,58_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20010430065400_409,1219,45,44_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20010430065400_553,1349,121,122_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20020104081300_1629,1028,66,64_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20020104081300_1637,830,35,34_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20020104081300_1656,672,35,34_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20020104081300_302,1032,49,50_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20020806082300_1605,753,38,39_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20030421055000_1549,491,66,66_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20031011121100_1554,1221,63,69_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20031011121100_1582,988,116,119_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20031011121100_1672,1056,41,67_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20101001090500_1416,1284,87,78_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20220205080000_1405,373,150,112_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20230619114200_1665,903,62,72_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19920229140200_1576,647,110,110_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19921014072900_1596,993,85,85_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19930617064500_1615,1001,73,73_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19940201090600_1608,529,58,83_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19970525044600_1636,715,73,72_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 19990828095900_1549,1241,52,50_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20000804054200_1657,731,58,58_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20010430065400_409,1219,45,44_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20010430065400_553,1349,121,122_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20020104081300_1629,1028,66,64_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20020104081300_1637,830,35,34_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20020104081300_1656,672,35,34_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20020104081300_302,1032,49,50_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20020806082300_1605,753,38,39_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20030421055000_1549,491,66,66_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20031011121100_1554,1221,63,69_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20031011121100_1582,988,116,119_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20031011121100_1672,1056,41,67_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20101001090500_1416,1284,87,78_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20220205080000_1405,373,150,112_.png nemohla být zpracován protože vyhodila chybu: math domain error
+Skvrna 20230619114200_1665,903,62,72_.png nemohla být zpracován protože vyhodila chybu: math domain error

@@ -33,16 +33,16 @@ class Maintenance:
 
 class Calculations:
 
-    def calculate_Q(point2, sun_date):
-        middle_point = (1000, 874)    
+    def calculate_Q(point2, middle_point, sun_date):
 
         # Spočtěte úhel vůči svislé ose
+        # print(f'Čas obrázku je: {sun_date}')
         if int(sun_date) < 20170816000000:
             # north down
-            angle = np.degrees(np.arctan2((-point2[0] - middle_point[0]), (point2[1] - middle_point[1])))
+            angle = np.degrees(np.arctan2(point2[0] - middle_point[0], -(point2[1] - middle_point[1])))+180
         else:
             # north at top
-            angle = np.degrees(np.arctan2(point2[0] - middle_point[0], -(point2[1] - middle_point[1])))
+            angle = np.degrees(np.arctan2(point2[0] - middle_point[0], -(point2[1] - middle_point[1])))+180
 
         if angle < 0:
             angle = angle+360
@@ -59,16 +59,22 @@ class Calculations:
         middle = (x+w/2, y+h/2)
         return middle
 
-    def calculate_rho(point2):
-        radius_of_sun = 750 #px
-        middle_point = (1000, 874) 
+    def calculate_rho(point2, middle_point):
+        # print(f'Střed ve funkci je: {middle_point}')
+        radius_of_sun = int(middle_point[0])*0.75
+        # print(f'Radius Slunce je: {radius_of_sun}')
         distance_to_middle = np.sqrt((point2[0] - middle_point[0]) ** 2 + (point2[1] - middle_point[1]) ** 2)
         rho=np.arcsin(distance_to_middle/radius_of_sun)
+        # print(f'Z toho rho je: {rho}')
         return rho
 
     def calculate_middle_of_image(date_of_image):
-        image_string = date_of_image[2:]+'dr.jpg'
-        print(image_string)
+        image_string = date_of_image[2:8]+'dr.jpg'
+        img = Image.open(folder_path+'/'+image_string)
+        width, height = img.size
+        midpoint_of_image = (round(width/2), round(height/2))
+        # print(f'Střed obrázku je: {midpoint_of_image}')
+        return midpoint_of_image
 class Reading:
     def get_day_from_image(image_name):
         image_string = str(image_name).replace('dr.jpg','')
@@ -142,23 +148,25 @@ if __name__ == '__main__':
 
             # get Q and rho
             midpoint_of_sunspot = Calculations.calculate_middle_of_sunspot(sunspot_coordinates)
-            Q = math.radians(Calculations.calculate_Q(midpoint_of_sunspot, sunspot_date))
-            rho = math.asin(Calculations.calculate_rho(midpoint_of_sunspot))
+            midpoint_of_image = Calculations.calculate_middle_of_image(sunspot_date)
+            Q = math.radians(Calculations.calculate_Q(midpoint_of_sunspot, midpoint_of_image, sunspot_date))
+            rho = math.asin(Calculations.calculate_rho(midpoint_of_sunspot, midpoint_of_image))
 
             #get b and l
-            b = math.asin(math.sin(B0) * math.cos(rho) + math.cos(B0) * math.sin(rho) * math.cos(P - Q))
-            l = (math.asin((math.sin(rho) * math.sin(P - Q)) / math.cos(b)) + L0)
+            b = math.asin(math.sin(B0) * math.cos(rho) + math.cos(B0) * math.sin(rho) * math.cos(- Q))
+            l = (math.asin((math.sin(rho) * math.sin(- Q)) / math.cos(b)) + L0)
 
             b = math.degrees(b)
             l = math.degrees(l)
 
             #get match
+            save_path = r'C:\Users\PlicEduard\classification_Q2'
             sunspot_clasification, min_distance = Reading.get_closest_match(b, l, sunspot_date, 'Ondrejov_data_kresba.CSV')
             source_path = sunspot_path+'/'+sunspot  # Replace with the path to your source image
-            if not os.path.exists(r'C:\Users\PlicEduard\classification_big_roi'+'/'+sunspot_clasification):
+            if not os.path.exists(save_path+'/'+sunspot_clasification):
                 # If it doesn't exist, create the directory
-                os.makedirs(r'C:\Users\PlicEduard\classification_big_roi'+'/'+sunspot_clasification)
-            destination_path =  r'C:\Users\PlicEduard\classification_big_roi'+'/'+sunspot_clasification+'/'+sunspot+f'_{round(math.degrees(P))}__{round(math.degrees(Q))}_{round(rho,2)}__{round(b)}_{round(l)}__min_dist={min_distance}_.png'  # Replace with the path where you want to copy the image
+                os.makedirs(save_path +'/'+sunspot_clasification)
+            destination_path =  save_path +'/'+sunspot_clasification+'/'+sunspot+f'_{round(math.degrees(P))}__{round(math.degrees(Q))}_{round(rho,2)}__{round(b)}_{round(l)}__min_dist={min_distance}_.png'  # Replace with the path where you want to copy the image
 
             shutil.copyfile(source_path, destination_path)
         except Exception as e:
