@@ -39,10 +39,14 @@ class Calculations:
         # print(f'Čas obrázku je: {sun_date}')
         if int(sun_date) < 20170816000000:
             # north down
-            angle = np.degrees(np.arctan2(point2[0] - middle_point[0], -(point2[1] - middle_point[1])))+180
+            angle = np.degrees(np.arctan2(point2[0] - middle_point[0], (point2[1] - middle_point[1])))
+            angle2 = np.degrees(np.arctan2(point2[0] - middle_point[0], -(point2[1] - middle_point[1])))
+            print(f'Správný úhel je: {angle}, druhý úhel je {angle2}')
         else:
             # north at top
-            angle = np.degrees(np.arctan2(point2[0] - middle_point[0], -(point2[1] - middle_point[1])))+180
+            angle = np.degrees(np.arctan2(point2[0] - middle_point[0], -(point2[1] - middle_point[1])))
+            angle2 = np.degrees(np.arctan2(point2[0] - middle_point[0], (point2[1] - middle_point[1])))
+            print(f'Správný úhel je: {angle}, druhý úhel je {angle2}')
 
         if angle < 0:
             angle = angle+360
@@ -61,7 +65,7 @@ class Calculations:
 
     def calculate_rho(point2, middle_point):
         # print(f'Střed ve funkci je: {middle_point}')
-        radius_of_sun = int(middle_point[0])*0.75
+        radius_of_sun = int(middle_point[0])*0.735
         # print(f'Radius Slunce je: {radius_of_sun}')
         distance_to_middle = np.sqrt((point2[0] - middle_point[0]) ** 2 + (point2[1] - middle_point[1]) ** 2)
         rho=np.arcsin(distance_to_middle/radius_of_sun)
@@ -129,7 +133,8 @@ if __name__ == '__main__':
     visualisation = True
 
     folder_path = r'C:\Users\PlicEduard\ondrejov'
-    sunspot_path = r'C:\Users\PlicEduard\proof\sunspots_big_roi'
+    sunspot_path = r'C:\Users\PlicEduard\proof\sunspots_small'
+    save_path = r'C:\Users\PlicEduard\classification_Q6'
     log_path = 'log.txt'
 
     #Maintenance.erase_log(log_path)
@@ -160,7 +165,6 @@ if __name__ == '__main__':
             l = math.degrees(l)
 
             #get match
-            save_path = r'C:\Users\PlicEduard\classification_Q2'
             sunspot_clasification, min_distance = Reading.get_closest_match(b, l, sunspot_date, 'Ondrejov_data_kresba.CSV')
             source_path = sunspot_path+'/'+sunspot  # Replace with the path to your source image
             if not os.path.exists(save_path+'/'+sunspot_clasification):

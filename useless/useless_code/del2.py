@@ -4,7 +4,7 @@ import os
 def resize_and_check_dimensions(directory):
     target_width = 2000
     target_height = 1750
-    tolerance = 50
+    tolerance = 100
     count = 0  # Counter for images not meeting the dimensions
 
     for filename in os.listdir(directory):
@@ -12,7 +12,7 @@ def resize_and_check_dimensions(directory):
             file_path = os.path.join(directory, filename)
             with Image.open(file_path) as img:
                 width, height = img.size
-                new_width = target_width
+                new_width = width
                 new_height = int((target_width / width) * height)
 
                 if abs(new_height - target_height) > tolerance:
