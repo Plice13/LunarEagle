@@ -2,7 +2,7 @@ import cv2
 import os
 from tqdm import tqdm  # Importujeme tqdm pro progress bar
 
-image_folder = r'C:\Users\PlicEduard\proof\wo15/'
+image_folder = r'C:\Users\PlicEduard\ondrejov/'
 video_name = 'video_wo15.mp4'
 
 images = [img for img in os.listdir(image_folder) if img.endswith(".png")]
