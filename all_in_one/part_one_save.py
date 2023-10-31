@@ -201,7 +201,15 @@ class Calculations:
                 x, y, w, h = cv2.boundingRect(approx)
                 if visualisation == True:
                     cv2.drawContours(base, [cnt], -1, (0, 255, 122), 3)
-                roi_small = base[y:y+h, x:x+w]
+                cv2.drawContours(base, [cnt], -1, (255, 0, 255), 2)
+                mask = np.zeros_like(base, dtype=np.uint8)
+                cv2.drawContours(mask, [approx], -1, color=(255,0,255), thickness=cv2.FILLED)                    
+                mask_inverted = ~mask
+                roi_whole_image = cv2.bitwise_or(base, mask_inverted)
+
+
+                # Extract the region of interest
+                roi_small = roi_whole_image[y:y+h, x:x+w]
                 if 10 < w < 1000 and 10 < h < 1000:
                     # make mask of rectangle with its coordinates # hodne dlouhomi to zabralo :(((
                     mask = np.zeros_like(base, dtype=np.uint8)
@@ -213,39 +221,65 @@ class Calculations:
                     roi_small = roi_whole_image[y:y+h, x:x+w]
                     contour_length = cv2.arcLength(cnt, True)
                     contour_area = cv2.contourArea(cnt)
-                    if Calculations.is_thin(approx, 20) == False:
-                        filename = sunspot_path +'/'+ f'{round(contour_area)}_'+picture_date +'_'+ str(x)+','+str(y)+','+str(w)+','+str(h)+ '__'+f'cLenght={contour_length}_cArea={contour_area}'+ '.png'
+                    pravdivovost, uhel = Calculations.is_parallel(approx)
+                    if pravdivovost == True:
+                        pravdivost, value = Calculations.is_thin(approx)
+                        if pravdivost == False:
+                            filename = sunspot_path +'/'+ picture_date +'_'+ str(x)+','+str(y)+','+str(w)+','+str(h)+ '__'+f'cLenght={contour_length}_cArea={contour_area}__tLoustka={value}_uhel={uhel}'+ '.png'
+                        else:
+                            filename = sunspot_path +'\deleted\TH/'+ picture_date +'_'+ str(x)+','+str(y)+','+str(w)+','+str(h)+ '__'+f'cLenght={contour_length}_cArea={contour_area}'+ '.png'
                     else:
-                        filename = sunspot_path +'\deleted/'+ f'{round(contour_area)}_'+picture_date +'_'+ str(x)+','+str(y)+','+str(w)+','+str(h)+ '__'+f'cLenght={contour_length}_cArea={contour_area}'+ '.png'
-
-                    cv2.imwrite(filename, roi_small)
+                        filename = sunspot_path +'\deleted\SHAPE/'+ picture_date +'_'+ str(x)+','+str(y)+','+str(w)+','+str(h)+ '__'+f'cLenght={contour_length}_cArea={contour_area}'+ '.png'
                 else:
-                    filename = sunspot_path +'\deleted/'+ picture_date +'_'+str(w)+','+str(h)+'_.png'
-                    cv2.imwrite(filename, roi_small)
+                    filename = sunspot_path +'\deleted\WH/'+ picture_date +'_'+str(w)+','+str(h)+'_.png'
+                cv2.imwrite(filename, roi_small)
 
         if visualisation == True:
             cv2.imshow("base", base)
             cv2.waitKey(0)
             cv2.destroyAllWindows()
 
+    def is_thin(approx, boundary=28):
+        try:
+            appr = sorted(approx, key=lambda c: c[0][0])
+            pa, pb = sorted(appr[:2], key=lambda c: c[0][1])
+            pc, pd = sorted(appr[2:], key=lambda c: c[0][1])
 
-    def is_thin(approx, boundary):
-        appr = sorted(approx, key=lambda c: c[0][0])
-        pa, pb = sorted(appr[:2], key=lambda c: c[0][1])
-        pc, pd = sorted(appr[2:], key=lambda c: c[0][1])
+            provided_points = np.array([pa, pb, pc, pd])
 
-        provided_points = np.array([pa, pb, pc, pd])
+            # Calculate pairwise distances between all provided points
+            distances = np.sqrt(np.sum((provided_points[:, None] - provided_points) ** 2, axis=-1))
+            min_distance_list = []
+            for i in range(len(provided_points)):
+                for j in range(i + 1, len(provided_points)):
+                    distance = distances[i, j]
+                    min_distance_list.append(distance)
+                    if distance < boundary:
+                        print('HIT')
+                        return True, min(min_distance_list)
+            return False, min(min_distance_list)
+        except:
+            print('------ERROR------')
 
-        # Calculate pairwise distances between all provided points
-        distances = np.sqrt(np.sum((provided_points[:, None] - provided_points) ** 2, axis=-1))
+    def is_parallel(approx, boundary=8):
+        # Ensure there are exactly 4 points
+        if len(approx) != 4:
+            return False
 
-        for i in range(len(provided_points)):
-            for j in range(i + 1, len(provided_points)):
-                distance = distances[i, j]
-                if distance < boundary:
-                    print('HIT')
-                    return True
-        return False
+        # Sort the points
+        sorted_approx = sorted(approx, key=lambda c: (c[0][0], c[0][1]))
+        pa, pb = sorted(sorted_approx[:2], key=lambda c: c[0][1])
+        pc, pd = sorted(sorted_approx[2:], key=lambda c: c[0][1])
+
+        # Calculate angles between lines formed by the points
+        angle1 = math.atan2(pa[0][1] - pb[0][1], pa[0][0] - pb[0][0]) - math.atan2(pc[0][1] - pd[0][1], pc[0][0] - pd[0][0])
+        angle2 = math.atan2(pa[0][1] - pc[0][1], pa[0][0] - pc[0][0]) - math.atan2(pb[0][1] - pd[0][1], pb[0][0] - pd[0][0])
+
+        # Check if the absolute degrees of the angles are within the boundary
+        if abs(math.degrees(angle1)) < boundary and abs(math.degrees(angle2)) < boundary:
+            return True, (math.degrees(angle1),math.degrees(angle2))
+        else:
+            return False, (math.degrees(angle1),math.degrees(angle2))
 
 
 
@@ -282,8 +316,8 @@ if __name__ == '__main__':
     visualisation = False
 
     folder_path = r'C:\Users\PlicEduard\ondrejov'
-    sunspot_path = r'C:\Users\PlicEduard\proof\save2\final'
-    save_path = r'C:\Users\PlicEduard\proof\save2/'
+    sunspot_path = r'C:\Users\PlicEduard\proof\save4\final'
+    save_path = r'C:\Users\PlicEduard\proof\save4/'
     log_path = 'log2.txt'
 
 
@@ -293,24 +327,25 @@ if __name__ == '__main__':
 
     for pic in tqdm(os.listdir(folder_path), total=len(os.listdir(folder_path))):
         # process only every ...th picture
-        if x == 100:
+        if x == 50:
             # repeat code for every image in folder
             try:
                 picture_day = Reading.get_day_from_image(pic) #yyyymmdd
-                picture_time = Reading.get_time_from_csv(picture_day, 'Ondrejov_data_kresba.CSV') #hhmmss
-                global picture_date
-                picture_date = picture_day+ picture_time #yyyymmmddhhmmss
-                picture_full_path=folder_path+'/'+picture_day[2:]+'dr.jpg' #picture_day[2:] for format yymmdd
-                
-                picture = Image.open(picture_full_path)
-                picture = Adjustment.resize_PIL(picture, save_path)
-                picture = Maintenance.PIL_to_cv2(picture)
-                picture = Adjustment.center_the_image_and_remove_big_circle_cv2(picture, save_path)
-                picture = Maintenance.cv2_to_PIL(picture)
-                picture = Adjustment.remove_tables_PIL(picture)
-                picture = Maintenance.PIL_to_cv2(picture)
-                enhanced_picture = Adjustment.enhance_image_cv2(picture)
-                Calculations.find_rectangles(enhanced_picture,picture,visualisation=visualisation)
+                if picture_day == '20170519':
+                    picture_time = Reading.get_time_from_csv(picture_day, 'Ondrejov_data_kresba.CSV') #hhmmss
+                    global picture_date
+                    picture_date = picture_day+ picture_time #yyyymmmddhhmmss
+                    picture_full_path=folder_path+'/'+picture_day[2:]+'dr.jpg' #picture_day[2:] for format yymmdd
+                    
+                    picture = Image.open(picture_full_path)
+                    picture = Adjustment.resize_PIL(picture, save_path)
+                    picture = Maintenance.PIL_to_cv2(picture)
+                    picture = Adjustment.center_the_image_and_remove_big_circle_cv2(picture, save_path)
+                    picture = Maintenance.cv2_to_PIL(picture)
+                    picture = Adjustment.remove_tables_PIL(picture)
+                    picture = Maintenance.PIL_to_cv2(picture)
+                    enhanced_picture = Adjustment.enhance_image_cv2(picture)
+                    Calculations.find_rectangles(enhanced_picture,picture,visualisation=visualisation)
                 #saveing every sunspot groop              
             except Exception as e:
                 log_file = open(log_path, 'a', encoding='utf-8')
