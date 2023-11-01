@@ -201,7 +201,7 @@ class Calculations:
                 x, y, w, h = cv2.boundingRect(approx)
                 if visualisation == True:
                     cv2.drawContours(base, [cnt], -1, (0, 255, 122), 3)
-                cv2.drawContours(base, [cnt], -1, (255, 0, 255), 2)
+                #cv2.drawContours(base, [cnt], -1, (255, 0, 255), 2)
                 mask = np.zeros_like(base, dtype=np.uint8)
                 cv2.drawContours(mask, [approx], -1, color=(255,0,255), thickness=cv2.FILLED)                    
                 mask_inverted = ~mask
@@ -316,9 +316,9 @@ if __name__ == '__main__':
     visualisation = False
 
     folder_path = r'C:\Users\PlicEduard\ondrejov'
-    sunspot_path = r'C:\Users\PlicEduard\proof\save4\final'
-    save_path = r'C:\Users\PlicEduard\proof\save4/'
-    log_path = 'log2.txt'
+    sunspot_path = r'C:\Users\PlicEduard\proof\save5\final'
+    save_path = r'C:\Users\PlicEduard\proof\save5/'
+    log_path = 'log5.txt'
 
 
     #Maintenance.erase_log(log_path)
@@ -327,25 +327,25 @@ if __name__ == '__main__':
 
     for pic in tqdm(os.listdir(folder_path), total=len(os.listdir(folder_path))):
         # process only every ...th picture
-        if x == 50:
+        if x == 0:
             # repeat code for every image in folder
             try:
                 picture_day = Reading.get_day_from_image(pic) #yyyymmdd
-                if picture_day == '20170519':
-                    picture_time = Reading.get_time_from_csv(picture_day, 'Ondrejov_data_kresba.CSV') #hhmmss
-                    global picture_date
-                    picture_date = picture_day+ picture_time #yyyymmmddhhmmss
-                    picture_full_path=folder_path+'/'+picture_day[2:]+'dr.jpg' #picture_day[2:] for format yymmdd
-                    
-                    picture = Image.open(picture_full_path)
-                    picture = Adjustment.resize_PIL(picture, save_path)
-                    picture = Maintenance.PIL_to_cv2(picture)
-                    picture = Adjustment.center_the_image_and_remove_big_circle_cv2(picture, save_path)
-                    picture = Maintenance.cv2_to_PIL(picture)
-                    picture = Adjustment.remove_tables_PIL(picture)
-                    picture = Maintenance.PIL_to_cv2(picture)
-                    enhanced_picture = Adjustment.enhance_image_cv2(picture)
-                    Calculations.find_rectangles(enhanced_picture,picture,visualisation=visualisation)
+                
+                picture_time = Reading.get_time_from_csv(picture_day, 'Ondrejov_data_kresba.CSV') #hhmmss
+                global picture_date
+                picture_date = picture_day+ picture_time #yyyymmmddhhmmss
+                picture_full_path=folder_path+'/'+picture_day[2:]+'dr.jpg' #picture_day[2:] for format yymmdd
+                
+                picture = Image.open(picture_full_path)
+                picture = Adjustment.resize_PIL(picture, save_path)
+                picture = Maintenance.PIL_to_cv2(picture)
+                picture = Adjustment.center_the_image_and_remove_big_circle_cv2(picture, save_path)
+                picture = Maintenance.cv2_to_PIL(picture)
+                picture = Adjustment.remove_tables_PIL(picture)
+                picture = Maintenance.PIL_to_cv2(picture)
+                enhanced_picture = Adjustment.enhance_image_cv2(picture)
+                Calculations.find_rectangles(enhanced_picture,picture,visualisation=visualisation)
                 #saveing every sunspot groop              
             except Exception as e:
                 log_file = open(log_path, 'a', encoding='utf-8')

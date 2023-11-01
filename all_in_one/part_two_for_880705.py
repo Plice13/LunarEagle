@@ -34,18 +34,18 @@ class Maintenance:
 class Calculations:
 
     def calculate_Q(point2, middle_point, sun_date):
-
+        print(f'Points are, middle: {middle_point}, and point2 is: {point2}')
         # Spočtěte úhel vůči svislé ose
         # print(f'Čas obrázku je: {sun_date}')
         if int(sun_date) < 20170816000000:
             # north down
+            print('Sever dole')
             angle = np.degrees(np.arctan2(-(point2[0] - middle_point[0]), (point2[1] - middle_point[1])))
-            angle2 = np.degrees(np.arctan2(point2[0] - middle_point[0], -(point2[1] - middle_point[1])))
             # print(f'Správný úhel je: {angle}, druhý úhel je {angle2}')
         else:
             # north at top
+            print('Sever nahoře')
             angle = np.degrees(np.arctan2(point2[0] - middle_point[0], -(point2[1] - middle_point[1])))
-            angle2 = np.degrees(np.arctan2(point2[0] - middle_point[0], (point2[1] - middle_point[1])))
             # print(f'Správný úhel je: {angle}, druhý úhel je {angle2}')
 
         if angle < 0:
@@ -68,6 +68,7 @@ class Calculations:
         radius_of_sun = int(middle_point[0])*0.735
         # print(f'Radius Slunce je: {radius_of_sun}')
         distance_to_middle = np.sqrt((point2[0] - middle_point[0]) ** 2 + (point2[1] - middle_point[1]) ** 2)
+        print(f'Distance od centra je: {distance_to_middle} a poměr je tedy: {distance_to_middle/radius_of_sun}')
         rho=np.arcsin(distance_to_middle/radius_of_sun)
         # print(f'Z toho rho je: {rho}')
         return rho
@@ -107,6 +108,7 @@ class Reading:
         return hour_from_csv.zfill(2)+min_from_csv.zfill(2)+'00'
 
     def get_closest_match(target_b, target_l, full_date, csv_path):
+        print(target_b, target_l, '\n')
         input_date  = datetime.strptime(full_date, '%Y%m%d%H%M%S')  # Parse the input string as a datetime object
         target_date = input_date.strftime('%Y-%m-%d')  # Format the datetime object to 'YYYY-MM-DD' format
 
@@ -120,12 +122,13 @@ class Reading:
         df_filtered = df[df['Datum'] == target_date].copy()
 
         df_filtered['distance'] = np.sqrt((df_filtered['l'] - target_l) ** 2 + (df_filtered['b'] - target_b) ** 2)
-
+        print(df_filtered,'\n')
         min_distance = df_filtered['distance'].min()
         nearest_row = df_filtered[df_filtered['distance'] == min_distance]
 
         sunspot_classification = nearest_row['typ'].values[0]
         min_distance = round(min_distance)
+        print(sunspot_classification, min_distance)
         return sunspot_classification, min_distance
 
 
@@ -134,17 +137,15 @@ if __name__ == '__main__':
 
     folder_path = r'C:\Users\PlicEduard\ondrejov'
     sunspot_path = r'C:\Users\PlicEduard\proof\save5\final'
-    save_path = r'C:\Users\PlicEduard\clasifics\classification_D1'
-    log_path = 'log5.txt'
+    save_path = r'C:\Users\PlicEduard\clasifics\classification_D88'
+    log_path = 'log6.txt'
 
     #Maintenance.erase_log(log_path)
 
     sunspots = [sunspot for sunspot in os.listdir(sunspot_path) if sunspot.endswith(".png")]
 
-    step = 0
     for sunspot in tqdm(os.listdir(sunspot_path), total=len(os.listdir(sunspot_path))):
-        if step == 500:
-            step = 0
+        if sunspot.startswith('19991223'):
             try:
                 sunspot_date = sunspot.split('_')[0]
                 sunspot_coordinates = sunspot.split('_')[1]
@@ -153,33 +154,31 @@ if __name__ == '__main__':
                 B0 = math.radians(Maintenance.str_to_dec_degree(sunpy.coordinates.sun.B0(time=sunspot_date)))
                 P = math.radians(Maintenance.str_to_dec_degree(sunpy.coordinates.sun.P(time=sunspot_date)))
                 L0 = math.radians(Maintenance.str_to_dec_degree(sunpy.coordinates.sun.L0(time=sunspot_date)))
-
+                B0 = math.radians(-1.9)
                 # get Q and rho
                 midpoint_of_sunspot = Calculations.calculate_middle_of_sunspot(sunspot_coordinates)
-                midpoint_of_image = Calculations.calculate_middle_of_image(sunspot_date)
+                midpoint_of_image = (1000,900)
                 Q = math.radians(Calculations.calculate_Q(midpoint_of_sunspot, midpoint_of_image, sunspot_date))
                 rho = math.asin(Calculations.calculate_rho(midpoint_of_sunspot, midpoint_of_image))
 
                 #get b and l
-                b = math.asin(math.sin(B0) * math.cos(rho) + math.cos(B0) * math.sin(rho) * math.cos(- Q))
-                l = (math.asin((math.sin(rho) * math.sin(- Q)) / math.cos(b)) + L0)
+                b = math.asin(math.sin(B0) * math.cos(rho) + math.cos(B0) * math.sin(rho) * math.cos(P- Q))
+                l = (math.asin((math.sin(rho) * math.sin(P-Q)) / math.cos(b)) + L0)
 
                 b = math.degrees(b)
                 l = math.degrees(l)
-
+                print(f'Údaje o Slunci v den {sunspot_date[:8]} jsou L: {round(math.degrees(L0),1)}, B: {round(math.degrees(B0),1)}, P: {round(math.degrees(P),1)}')
+                print(f'Q je: {math.degrees(Q)} a rho je: {rho}')
                 #get match
                 sunspot_clasification, min_distance = Reading.get_closest_match(b, l, sunspot_date, 'Ondrejov_data_kresba.CSV')
                 source_path = sunspot_path+'/'+sunspot  # Replace with the path to your source image
                 if not os.path.exists(save_path+'/'+sunspot_clasification):
                     # If it doesn't exist, create the directory
                     os.makedirs(save_path +'/'+sunspot_clasification)
-                #destination_path =  save_path +'/'+sunspot_clasification+'/'+sunspot+f'_{round(math.degrees(P))}__{round(math.degrees(Q))}_{round(rho,2)}__{round(b)}_{round(l)}__min_dist={min_distance}_.png'  # Replace with the path where you want to copy the image
-                destination_path =  save_path +'/'+sunspot_clasification+'/'+f'{sunspot_date}__{round(math.degrees(Q))}_{round(rho,2)}__{round(b)}_{round(l)}.png'  # Replace with the path where you want to copy the image
+                destination_path =  save_path +'/'+sunspot_clasification+'/'+sunspot+f'_{round(math.degrees(P))}__{round(math.degrees(Q))}_{round(rho,2)}__{round(b)}_{round(l)}__min_dist={min_distance}_.png'  # Replace with the path where you want to copy the image
 
                 shutil.copyfile(source_path, destination_path)
             except Exception as e:
                 log_file = open(log_path, 'a', encoding='utf-8')
                 log_file.write(f'Skvrna {sunspot} nemohla být zpracován protože vyhodila chybu: {e}\n')
                 log_file.close()
-        else:
-            step+=1
