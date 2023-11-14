@@ -1,0 +1,303 @@
+Obrázek 000611dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 001002dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 010101dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 010903dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 011107dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 020406dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 020905dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 030322dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 030403dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 030829dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 030923dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 040915dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 050508dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 051028dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 060202dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 060224dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 060311dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 060603dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 061022dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 070314dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 070402dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 070413dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 070619dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 070728dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 070823dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 070905dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 070921dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 071021dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 071226dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 080117dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 080208dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 080318dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 080506dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 080526dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 080608dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 080623dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 080706dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 080726dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 080808dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 080903dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 081023dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 081114dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 081205dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 090312dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 090409dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 090507dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 090615dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 090703dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 090715dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 090727dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 090809dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 090821dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 090902dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 090918dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 091021dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 091115dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 091130dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 100424dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 110610dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 110814dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 110829dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 110916dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 120731dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 170311dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 170719dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 180304dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 180325dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 180408dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 180515dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 180702dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 180715dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 180728dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 180813dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 180829dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 180919dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 181005dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 181031dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 190217dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 190521dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 190610dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 190706dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 190725dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 190806dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 190825dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 190912dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 191011dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 191030dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 191211dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 200110dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 200211dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 200328dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 200411dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 200427dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 200512dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 200602dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 200715dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 200823dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 200908dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 200919dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 201006dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 210215dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 211210dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 220218dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 220805dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 220921dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 221023dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 230831dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 860103dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 880529dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 880704dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 881215dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 890612dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 890627dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 890715dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 891207dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 900122dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 900214dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 900428dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 900516dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 900710dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 900923dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 910718dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 910902dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 910917dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 911030dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 920330dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 920629dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 920915dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 921111dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 930119dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 930226dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 930717dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 931002dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 940528dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 940912dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 940929dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 941121dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 950408dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 950426dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 950616dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 951006dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 960116dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 960209dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 960228dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 960406dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 960502dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 960520dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 960617dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 960704dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 960717dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 960911dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 961003dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 961023dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 961108dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 961229dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 970215dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 970302dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 970630dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 970713dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 971102dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 980110dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 980210dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 980227dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 980327dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 980906dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 980923dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 981031dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 990103dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 990912dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 991013dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Skvrna check nemohla být zpracován protože vyhodila chybu: list index out of range
+Skvrna deleted nemohla být zpracován protože vyhodila chybu: list index out of range
+Skvrna 19870525151000_682,1270,56,56__cLenght=189.53910398483276_cArea=1937.0__tLoustka=[43.96589587]_uhel=(0.0, 0.0).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19870930083000_592,306,92,76__cLenght=268.97770261764526_cArea=3559.5__tLoustka=[43.829214]_uhel=(-1.7419635888346956, 0.32370152492022913).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19870930083000_680,378,44,45__cLenght=141.1959581375122_cArea=1092.0__tLoustka=[32.20248438]_uhel=(0.0, 0.0).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19871223080800_1285,429,100,102__cLenght=370.95331716537476_cArea=8169.5__tLoustka=[86.97700846]_uhel=(-0.6382050721354889, -0.09735255742727705).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19871223080800_1291,435,88,89__cLenght=328.32590091228485_cArea=6277.5__tLoustka=[78.51751397]_uhel=(-0.08259837552344833, 0.7238148781328256).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19871223080800_1451,522,94,93__cLenght=345.63960909843445_cArea=7117.5__tLoustka=[81.74350127]_uhel=(0.0931913379961123, -0.687449292852852).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19871223080800_1456,526,83,83__cLenght=308.08326029777527_cArea=5457.0__tLoustka=[73.43704787]_uhel=(0.6803161573530943, 0.8582211439199835).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880206092500_1389,1029,98,97__cLenght=338.5512965917587_cArea=6261.5__tLoustka=[78.58753082]_uhel=(0.7027535312218177, -0.18328721711385695).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880312132600_1601,1028,98,98__cLenght=317.11983811855316_cArea=5456.5__tLoustka=[72.49827584]_uhel=(1.038318796589069, 0.38539180773305165).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880410080100_1153,1054,107,108__cLenght=342.81832230091095_cArea=6331.0__tLoustka=[78.26237921]_uhel=(-0.9620326849222581, -0.32188301539871483).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880410080100_1301,1070,133,109__cLenght=386.8599525690079_cArea=7334.5__tLoustka=[62.16912417]_uhel=(0.8243428208451532, -0.21868511942298666).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880410080100_309,963,94,113__cLenght=329.74725461006165_cArea=5489.5__tLoustka=[55.00909016]_uhel=(0.7945352979329332, 0.4435713664341437).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880410080100_542,707,92,92__cLenght=293.7056245803833_cArea=4659.0__tLoustka=[67.9779376]_uhel=(0.0, 0.0).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880410080100_546,1341,113,114__cLenght=362.13203048706055_cArea=7134.0__tLoustka=[82.73451517]_uhel=(0.9110438259384458, 0.30476191042105827).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880410080100_644,1300,83,84__cLenght=266.14927566051483_cArea=3873.5__tLoustka=[61.26989473]_uhel=(0.40613287934805187, 0.8333894826419623).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880424071500_325,909,87,81__cLenght=269.90663504600525_cArea=3866.0__tLoustka=[55.90169944]_uhel=(2.7048759857356477, 0.8074463177899843).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880510052500_1362,374,59,59__cLenght=193.33809351921082_cArea=2015.0__tLoustka=[44.01136217]_uhel=(-1.6661075633185471, -0.7183146646839006).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880510052500_1442,1012,85,85__cLenght=278.00714004039764_cArea=4391.5__tLoustka=[63.69458376]_uhel=(-0.8282811817542054, 0.34390811181411635).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880510052500_1447,1017,75,75__cLenght=244.45079135894775_cArea=3208.0__tLoustka=[56.46237685]_uhel=(0.0, 0.0).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880510052500_665,761,140,123__cLenght=434.1320307254791_cArea=9878.0__tLoustka=[84.30895563]_uhel=(0.8809112568202467, 0.2726726803540183).png nemohla být zpracován protože vyhodila chybu: Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.
+Skvrna 19880510052500_858,771,75,74__cLenght=244.20815074443817_cArea=3246.5__tLoustka=[56.08029957]_uhel=(0.9409705204126604, -0.37635097439088677).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880510052500_948,1138,74,74__cLenght=243.37972366809845_cArea=3202.5__tLoustka=[55.71355311]_uhel=(0.37635097439088677, 0.953618891755319).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880529082200_1048,1171,101,89__cLenght=324.45079135894775_cArea=5756.0__tLoustka=[64.84597135]_uhel=(0.5029299382804736, 1.2916275421753576).png nemohla být zpracován protože vyhodila chybu: Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.
+Skvrna 19880616052500_1578,541,58,59__cLenght=214.6690467596054_cArea=2531.5__tLoustka=[49.64876635]_uhel=(-1.1206665265009625, 0.18232485637797866).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880616052500_324,741,104,106__cLenght=381.92387998104095_cArea=8079.5__tLoustka=[87.13208364]_uhel=(-0.7244530484470288, -0.536294286244038).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19870525151000_682,1270,56,56__cLenght=189.53910398483276_cArea=1937.0__tLoustka=[43.96589587]_uhel=(0.0, 0.0).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19870930083000_592,306,92,76__cLenght=268.97770261764526_cArea=3559.5__tLoustka=[43.829214]_uhel=(-1.7419635888346956, 0.32370152492022913).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19870930083000_680,378,44,45__cLenght=141.1959581375122_cArea=1092.0__tLoustka=[32.20248438]_uhel=(0.0, 0.0).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19871223080800_1285,429,100,102__cLenght=370.95331716537476_cArea=8169.5__tLoustka=[86.97700846]_uhel=(-0.6382050721354889, -0.09735255742727705).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19871223080800_1291,435,88,89__cLenght=328.32590091228485_cArea=6277.5__tLoustka=[78.51751397]_uhel=(-0.08259837552344833, 0.7238148781328256).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19871223080800_1451,522,94,93__cLenght=345.63960909843445_cArea=7117.5__tLoustka=[81.74350127]_uhel=(0.0931913379961123, -0.687449292852852).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19871223080800_1456,526,83,83__cLenght=308.08326029777527_cArea=5457.0__tLoustka=[73.43704787]_uhel=(0.6803161573530943, 0.8582211439199835).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880206092500_1389,1029,98,97__cLenght=338.5512965917587_cArea=6261.5__tLoustka=[78.58753082]_uhel=(0.7027535312218177, -0.18328721711385695).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880312132600_1601,1028,98,98__cLenght=317.11983811855316_cArea=5456.5__tLoustka=[72.49827584]_uhel=(1.038318796589069, 0.38539180773305165).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880410080100_1153,1054,107,108__cLenght=342.81832230091095_cArea=6331.0__tLoustka=[78.26237921]_uhel=(-0.9620326849222581, -0.32188301539871483).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880410080100_1301,1070,133,109__cLenght=386.8599525690079_cArea=7334.5__tLoustka=[62.16912417]_uhel=(0.8243428208451532, -0.21868511942298666).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880410080100_309,963,94,113__cLenght=329.74725461006165_cArea=5489.5__tLoustka=[55.00909016]_uhel=(0.7945352979329332, 0.4435713664341437).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880410080100_542,707,92,92__cLenght=293.7056245803833_cArea=4659.0__tLoustka=[67.9779376]_uhel=(0.0, 0.0).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880410080100_546,1341,113,114__cLenght=362.13203048706055_cArea=7134.0__tLoustka=[82.73451517]_uhel=(0.9110438259384458, 0.30476191042105827).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880410080100_644,1300,83,84__cLenght=266.14927566051483_cArea=3873.5__tLoustka=[61.26989473]_uhel=(0.40613287934805187, 0.8333894826419623).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880424071500_325,909,87,81__cLenght=269.90663504600525_cArea=3866.0__tLoustka=[55.90169944]_uhel=(2.7048759857356477, 0.8074463177899843).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880510052500_1362,374,59,59__cLenght=193.33809351921082_cArea=2015.0__tLoustka=[44.01136217]_uhel=(-1.6661075633185471, -0.7183146646839006).png nemohla být zpracován protože vyhodila chybu: Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.
+Skvrna 19880510052500_1442,1012,85,85__cLenght=278.00714004039764_cArea=4391.5__tLoustka=[63.69458376]_uhel=(-0.8282811817542054, 0.34390811181411635).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 19880510052500_1447,1017,75,75__cLenght=244.45079135894775_cArea=3208.0__tLoustka=[56.46237685]_uhel=(0.0, 0.0).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 20020905091800_369,750,110,115__cLenght=372.67618703842163_cArea=7406.0__tLoustka=[79.84985911]_uhel=(0.0, 0.0).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 20020905091800_597,745,59,58__cLenght=192.16652047634125_cArea=1981.0__tLoustka=[44.01136217]_uhel=(0.0, 0.0).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Skvrna 20020905091800_846,600,51,49__cLenght=163.1959581375122_cArea=1463.0__tLoustka=[36.76955262]_uhel=(0.0, 0.0).png nemohla být zpracován protože vyhodila chybu: 'corrected_l'
+Obrázek 020401dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:696: error: (-2:Unspecified error) could not find a writer for the specified extension in function 'cv::imwrite_'
+
+Obrázek 040329dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:696: error: (-2:Unspecified error) could not find a writer for the specified extension in function 'cv::imwrite_'
+
+Obrázek 060306dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:696: error: (-2:Unspecified error) could not find a writer for the specified extension in function 'cv::imwrite_'
+
+Obrázek 080228dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 100702dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:696: error: (-2:Unspecified error) could not find a writer for the specified extension in function 'cv::imwrite_'
+
+Obrázek 141103dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:696: error: (-2:Unspecified error) could not find a writer for the specified extension in function 'cv::imwrite_'
+
+Obrázek 190119dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 080228dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 190119dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 901003dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+

@@ -10,6 +10,12 @@ import sunpy.coordinates
 from datetime import datetime
 
 class Maintenance:
+    def make_dir(path):
+        if not os.path.exists(path):
+            print(path)
+            # If it doesn't exist, create the directory
+            os.makedirs(path)
+
     def erase_log(log_path):
         log_file = open(log_path, 'w')
         log_file.close()
@@ -54,8 +60,8 @@ class Adjustment:
         background.paste(img, (paste_x, paste_y))
 
         # Save the new image
-        save_path = os.path.join(save_folder_path, f"resized_{picture_date}.jpg")
-        background.save(save_path)
+        #save_path = os.path.join(save_folder_path, f"resized_{picture_date}.jpg")
+        #background.save(save_path)
         return background
 
     def center_the_image_and_remove_big_circle_cv2(image_cv2, save_folder_path, visualisation=False):
@@ -63,8 +69,8 @@ class Adjustment:
         image_PIL = Maintenance.cv2_to_PIL(image_cv2)
         image_PIL = Adjustment.move_image_PIL(image_PIL, x_move, y_move)
 
-        save_path = os.path.join(save_folder_path, f"moved_{picture_date}.jpg")
-        image_PIL.save(save_path)
+        #save_path = os.path.join(save_folder_path, f"moved_{picture_date}.jpg")
+        #image_PIL.save(save_path)
 
         final_image_cv2 = Maintenance.PIL_to_cv2(image_PIL)
 
@@ -201,24 +207,23 @@ class Calculations:
                 x, y, w, h = cv2.boundingRect(approx)
                 if visualisation == True:
                     cv2.drawContours(base, [cnt], -1, (0, 255, 122), 3)
-                #cv2.drawContours(base, [cnt], -1, (255, 0, 255), 2)
+                # cv2.drawContours(base, [cnt], -1, (255, 0, 255), 2)
+
+                # save with text for check
+                roi_text = base[y-100:y+h+100, x-100:x+w+100]
+                #cv2.imwrite(sunspot_path +'\check/'+ picture_date+'_'+str(x)+','+str(y)+','+str(w)+','+str(h)+'_.png', roi_text)
+
                 mask = np.zeros_like(base, dtype=np.uint8)
-                cv2.drawContours(mask, [approx], -1, color=(255,0,255), thickness=cv2.FILLED)                    
+                cv2.drawContours(mask, [approx], -1, color=(255,255,255), thickness=cv2.FILLED)                    
                 mask_inverted = ~mask
                 roi_whole_image = cv2.bitwise_or(base, mask_inverted)
-
-
+               
+                x_middle_of_roi = int(x+w/2)
+                y_middle_of_roi = int(y+h/2)
                 # Extract the region of interest
-                roi_small = roi_whole_image[y:y+h, x:x+w]
+                roi_small = roi_whole_image[y_middle_of_roi-150:y_middle_of_roi+150, x_middle_of_roi-150:x_middle_of_roi+150]
                 if 10 < w < 1000 and 10 < h < 1000:
-                    # make mask of rectangle with its coordinates # hodne dlouhomi to zabralo :(((
-                    mask = np.zeros_like(base, dtype=np.uint8)
-                    cv2.drawContours(mask, [approx], -1, color=(255,255,255), thickness=cv2.FILLED)                    
-                    mask_inverted = ~mask
-                    roi_whole_image = cv2.bitwise_or(base, mask_inverted)
-
                     # Extract the region of interest
-                    roi_small = roi_whole_image[y:y+h, x:x+w]
                     contour_length = cv2.arcLength(cnt, True)
                     contour_area = cv2.contourArea(cnt)
                     pravdivovost, uhel = Calculations.is_parallel(approx)
@@ -227,11 +232,17 @@ class Calculations:
                         if pravdivost == False:
                             filename = sunspot_path +'/'+ picture_date +'_'+ str(x)+','+str(y)+','+str(w)+','+str(h)+ '__'+f'cLenght={contour_length}_cArea={contour_area}__tLoustka={value}_uhel={uhel}'+ '.png'
                         else:
-                            filename = sunspot_path +'\deleted\TH/'+ picture_date +'_'+ str(x)+','+str(y)+','+str(w)+','+str(h)+ '__'+f'cLenght={contour_length}_cArea={contour_area}'+ '.png'
+                            save_path = sunspot_path +'\deleted\TH'
+                            Maintenance.make_dir(save_path)
+                            filename = save_path+'/'+ picture_date +'_'+ str(x)+','+str(y)+','+str(w)+','+str(h)+ '__'+f'cLenght={contour_length}_cArea={contour_area}'+ '.png'
                     else:
-                        filename = sunspot_path +'\deleted\SHAPE/'+ picture_date +'_'+ str(x)+','+str(y)+','+str(w)+','+str(h)+ '__'+f'cLenght={contour_length}_cArea={contour_area}'+ '.png'
+                        save_path = sunspot_path +'\deleted\SHAPE'
+                        Maintenance.make_dir(save_path)
+                        filename = save_path+'/'+ picture_date +'_'+ str(x)+','+str(y)+','+str(w)+','+str(h)+ '__'+f'cLenght={contour_length}_cArea={contour_area}'+ '.png'
                 else:
-                    filename = sunspot_path +'\deleted\WH/'+ picture_date +'_'+str(w)+','+str(h)+'_.png'
+                    save_path = sunspot_path +'\deleted\WH'
+                    Maintenance.make_dir(save_path)
+                    filename = save_path+'/'+ picture_date+'.png'
                 cv2.imwrite(filename, roi_small)
 
         if visualisation == True:
@@ -316,18 +327,17 @@ if __name__ == '__main__':
     visualisation = False
 
     folder_path = r'C:\Users\PlicEduard\ondrejov'
-    sunspot_path = r'C:\Users\PlicEduard\proof\save5\final'
-    save_path = r'C:\Users\PlicEduard\proof\save5/'
-    log_path = 'log5.txt'
+    sunspot_path = r'C:\Users\PlicEduard\sunspots_full'
+    log_path = 'log10.txt'
 
-
+    Maintenance.make_dir(sunspot_path)
     #Maintenance.erase_log(log_path)
     pictures = [pic for pic in os.listdir(folder_path) if pic.endswith(".jpg")]
-    x=0
+    x=3
 
     for pic in tqdm(os.listdir(folder_path), total=len(os.listdir(folder_path))):
         # process only every ...th picture
-        if x == 0:
+        if x == 10:
             # repeat code for every image in folder
             try:
                 picture_day = Reading.get_day_from_image(pic) #yyyymmdd
@@ -338,9 +348,9 @@ if __name__ == '__main__':
                 picture_full_path=folder_path+'/'+picture_day[2:]+'dr.jpg' #picture_day[2:] for format yymmdd
                 
                 picture = Image.open(picture_full_path)
-                picture = Adjustment.resize_PIL(picture, save_path)
+                picture = Adjustment.resize_PIL(picture, sunspot_path)
                 picture = Maintenance.PIL_to_cv2(picture)
-                picture = Adjustment.center_the_image_and_remove_big_circle_cv2(picture, save_path)
+                picture = Adjustment.center_the_image_and_remove_big_circle_cv2(picture, sunspot_path)
                 picture = Maintenance.cv2_to_PIL(picture)
                 picture = Adjustment.remove_tables_PIL(picture)
                 picture = Maintenance.PIL_to_cv2(picture)
