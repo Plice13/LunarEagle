@@ -47,4 +47,4 @@ validation_generator = train_datagen.flow_from_directory(
 model.fit(train_generator, epochs=10, validation_data=validation_generator)
 
 # Save the trained model
-model.save('your_custom_model.h5')
+model.save(dataset_path+'/your_custom_model.h5')

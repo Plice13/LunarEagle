@@ -327,17 +327,17 @@ if __name__ == '__main__':
     visualisation = False
 
     folder_path = r'C:\Users\PlicEduard\ondrejov'
-    sunspot_path = r'C:\Users\PlicEduard\sunspots_full'
-    log_path = 'log10.txt'
+    sunspot_path = r'C:\Users\PlicEduard\sunspots_every'
+    log_path = 'log_every.txt'
 
     Maintenance.make_dir(sunspot_path)
     #Maintenance.erase_log(log_path)
     pictures = [pic for pic in os.listdir(folder_path) if pic.endswith(".jpg")]
-    x=3
+    x=0
 
     for pic in tqdm(os.listdir(folder_path), total=len(os.listdir(folder_path))):
         # process only every ...th picture
-        if x == 10:
+        if x == 0:
             # repeat code for every image in folder
             try:
                 picture_day = Reading.get_day_from_image(pic) #yyyymmdd

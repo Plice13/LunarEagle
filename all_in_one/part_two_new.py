@@ -146,9 +146,9 @@ class Reading:
 
 
 if __name__ == '__main__':
-    sunspot_path = r'C:\Users\PlicEduard\sunspots_full'
-    save_path = r'C:\Users\PlicEduard\clasifics\classification_mega'
-    log_path = 'log10.txt'
+    sunspot_path = r'C:\Users\PlicEduard\sunspots_every'
+    save_path = r'C:\Users\PlicEduard\clasifics\classification_every'
+    log_path = 'log_every.txt'
 
     #Maintenance.erase_log(log_path)
 
@@ -189,7 +189,7 @@ if __name__ == '__main__':
                     # If it doesn't exist, create the directory
                     os.makedirs(save_path +'/'+sunspot_clasification)
                 #destination_path =  save_path +'/'+sunspot_clasification+'/'+sunspot+f'_{round(math.degrees(P))}__{round(math.degrees(Q))}_{round(rho,2)}__{round(b)}_{round(l)}__min_dist={min_distance}_.png'  # Replace with the path where you want to copy the image
-                destination_path =  save_path +'/'+sunspot_clasification+'/'+f'{sunspot_date}__{round(math.degrees(Q))}_{round(rho,2)}__{round(b)}_{round(l)}.png'  # Replace with the path where you want to copy the image
+                destination_path =  save_path +'/'+sunspot_clasification+'/'+f'{sunspot_date}__Q={round(math.degrees(Q))}_rho={round(math.asin(rho),2)}__b={round(b)}_l={round(l)}_min_dist={min_distance}.png'  # Replace with the path where you want to copy the image
 
                 shutil.copyfile(source_path, destination_path)
             except Exception as e:
