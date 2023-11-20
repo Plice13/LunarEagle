@@ -1,0 +1,76 @@
+Obrázek 000103dr.jpg nemohl být zpracován protože vyhodil chybu: index 1 is out of bounds for axis 0 with size 1
+Obrázek 170519dr.jpg nemohl být zpracován protože vyhodil chybu: index 1 is out of bounds for axis 0 with size 1
+Obrázek 230926dr.jpg nemohl být zpracován protože vyhodil chybu: index 1 is out of bounds for axis 0 with size 1
+Obrázek 991223dr.jpg nemohl být zpracován protože vyhodil chybu: index 1 is out of bounds for axis 0 with size 1
+Obrázek 030613dr.jpg nemohl být zpracován protože vyhodil chybu: index 1 is out of bounds for axis 0 with size 1
+Obrázek 060705dr.jpg nemohl být zpracován protože vyhodil chybu: index 1 is out of bounds for axis 0 with size 1
+Obrázek 091030dr.jpg nemohl být zpracován protože vyhodil chybu: index 1 is out of bounds for axis 0 with size 1
+Obrázek 170502dr.jpg nemohl být zpracován protože vyhodil chybu: index 1 is out of bounds for axis 0 with size 1
+Obrázek 210815dr.jpg nemohl být zpracován protože vyhodil chybu: index 1 is out of bounds for axis 0 with size 1
+Obrázek 890807dr.jpg nemohl být zpracován protože vyhodil chybu: index 1 is out of bounds for axis 0 with size 1
+Obrázek 930715dr.jpg nemohl být zpracován protože vyhodil chybu: index 1 is out of bounds for axis 0 with size 1
+Obrázek 970211dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 030613dr.jpg nemohl být zpracován protože vyhodil chybu: index 1 is out of bounds for axis 0 with size 1
+Obrázek 060705dr.jpg nemohl být zpracován protože vyhodil chybu: index 1 is out of bounds for axis 0 with size 1
+Obrázek 091030dr.jpg nemohl být zpracován protože vyhodil chybu: index 1 is out of bounds for axis 0 with size 1
+Obrázek 170502dr.jpg nemohl být zpracován protože vyhodil chybu: index 1 is out of bounds for axis 0 with size 1
+Obrázek 210815dr.jpg nemohl být zpracován protože vyhodil chybu: index 1 is out of bounds for axis 0 with size 1
+Obrázek 890807dr.jpg nemohl být zpracován protože vyhodil chybu: index 1 is out of bounds for axis 0 with size 1
+Obrázek 930715dr.jpg nemohl být zpracován protože vyhodil chybu: index 1 is out of bounds for axis 0 with size 1
+Obrázek 970211dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 030613dr.jpg nemohl být zpracován protože vyhodil chybu: index 1 is out of bounds for axis 0 with size 1
+Obrázek 060705dr.jpg nemohl být zpracován protože vyhodil chybu: index 1 is out of bounds for axis 0 with size 1
+Obrázek 091030dr.jpg nemohl být zpracován protože vyhodil chybu: index 1 is out of bounds for axis 0 with size 1
+Obrázek 170502dr.jpg nemohl být zpracován protože vyhodil chybu: index 1 is out of bounds for axis 0 with size 1
+Obrázek 210815dr.jpg nemohl být zpracován protože vyhodil chybu: index 1 is out of bounds for axis 0 with size 1
+Obrázek 890807dr.jpg nemohl být zpracován protože vyhodil chybu: index 1 is out of bounds for axis 0 with size 1
+Obrázek 930715dr.jpg nemohl být zpracován protože vyhodil chybu: index 1 is out of bounds for axis 0 with size 1
+Obrázek 970211dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 030613dr.jpg nemohl být zpracován protože vyhodil chybu: writer.writerow() takes exactly one argument (2 given)
+Obrázek 060705dr.jpg nemohl být zpracován protože vyhodil chybu: writer.writerow() takes exactly one argument (2 given)
+Obrázek 091030dr.jpg nemohl být zpracován protože vyhodil chybu: writer.writerow() takes exactly one argument (2 given)
+Obrázek 170502dr.jpg nemohl být zpracován protože vyhodil chybu: writer.writerow() takes exactly one argument (2 given)
+Obrázek 210815dr.jpg nemohl být zpracován protože vyhodil chybu: writer.writerow() takes exactly one argument (2 given)
+Obrázek 890807dr.jpg nemohl být zpracován protože vyhodil chybu: writer.writerow() takes exactly one argument (2 given)
+Obrázek 930715dr.jpg nemohl být zpracován protože vyhodil chybu: writer.writerow() takes exactly one argument (2 given)
+Obrázek 970211dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 030613dr.jpg nemohl být zpracován protože vyhodil chybu: writer.writerows() takes exactly one argument (2 given)
+Obrázek 060705dr.jpg nemohl být zpracován protože vyhodil chybu: writer.writerows() takes exactly one argument (2 given)
+Obrázek 091030dr.jpg nemohl být zpracován protože vyhodil chybu: writer.writerows() takes exactly one argument (2 given)
+Obrázek 170502dr.jpg nemohl být zpracován protože vyhodil chybu: writer.writerows() takes exactly one argument (2 given)
+Obrázek 210815dr.jpg nemohl být zpracován protože vyhodil chybu: writer.writerows() takes exactly one argument (2 given)
+Obrázek 890807dr.jpg nemohl být zpracován protože vyhodil chybu: writer.writerows() takes exactly one argument (2 given)
+Obrázek 930715dr.jpg nemohl být zpracován protože vyhodil chybu: writer.writerows() takes exactly one argument (2 given)
+Obrázek 970211dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 890807dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 970211dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 890807dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 970211dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 030613dr.jpg nemohl být zpracován protože vyhodil chybu: unsupported operand type(s) for -: 'list' and 'int'
+Obrázek 060705dr.jpg nemohl být zpracován protože vyhodil chybu: unsupported operand type(s) for -: 'list' and 'int'
+Obrázek 091030dr.jpg nemohl být zpracován protože vyhodil chybu: unsupported operand type(s) for -: 'list' and 'int'
+Obrázek 170502dr.jpg nemohl být zpracován protože vyhodil chybu: unsupported operand type(s) for -: 'list' and 'int'
+Obrázek 210815dr.jpg nemohl být zpracován protože vyhodil chybu: unsupported operand type(s) for -: 'list' and 'int'
+Obrázek 890807dr.jpg nemohl být zpracován protože vyhodil chybu: unsupported operand type(s) for -: 'list' and 'int'
+Obrázek 930715dr.jpg nemohl být zpracován protože vyhodil chybu: unsupported operand type(s) for -: 'list' and 'int'
+Obrázek 970211dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 890807dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 970211dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 890807dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 970211dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 890807dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 970211dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 890807dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 970211dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 890807dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 970211dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds
+Obrázek 890807dr.jpg nemohl být zpracován protože vyhodil chybu: OpenCV(4.8.1) D:\a\opencv-python\opencv-python\opencv\modules\imgcodecs\src\loadsave.cpp:787: error: (-215:Assertion failed) !_img.empty() in function 'cv::imwrite'
+
+Obrázek 970211dr.jpg nemohl být zpracován protože vyhodil chybu: single positional indexer is out-of-bounds

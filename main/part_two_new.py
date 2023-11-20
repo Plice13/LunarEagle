@@ -146,18 +146,18 @@ class Reading:
 
 
 if __name__ == '__main__':
-    sunspot_path = r'C:\Users\PlicEduard\sunspots_every'
-    save_path = r'C:\Users\PlicEduard\clasifics\classification_every'
-    log_path = 'log_every.txt'
+    sunspot_path = r'C:\Users\PlicEduard\sunspots\sunspots_wo_mask_more'
+    save_path = r'C:\Users\PlicEduard\clasifics\wo_mask_more'
+    log_path = os.path.join(save_path, 'log_wo_mask_more.txt')
 
-    #Maintenance.erase_log(log_path)
+    Maintenance.erase_log(log_path)
 
     sunspots = [sunspot for sunspot in os.listdir(sunspot_path) if sunspot.endswith(".png")]
 
     step = 0
     for sunspot in tqdm(os.listdir(sunspot_path), total=len(os.listdir(sunspot_path))):
         #if step == 0:
-        #if sunspot.startswith('20020905091800'):
+        #if sunspot.startswith('19871003094600_296,948,84,85__cLenght=267.8061298131943_cArea=3894.5__tLoustka='):
         if True:
             step = 0
             try:
@@ -189,7 +189,7 @@ if __name__ == '__main__':
                     # If it doesn't exist, create the directory
                     os.makedirs(save_path +'/'+sunspot_clasification)
                 #destination_path =  save_path +'/'+sunspot_clasification+'/'+sunspot+f'_{round(math.degrees(P))}__{round(math.degrees(Q))}_{round(rho,2)}__{round(b)}_{round(l)}__min_dist={min_distance}_.png'  # Replace with the path where you want to copy the image
-                destination_path =  save_path +'/'+sunspot_clasification+'/'+f'{sunspot_date}__Q={round(math.degrees(Q))}_rho={round(math.asin(rho),2)}__b={round(b)}_l={round(l)}_min_dist={min_distance}.png'  # Replace with the path where you want to copy the image
+                destination_path =  save_path +'/'+sunspot_clasification+'/'+f'{sunspot}__Q={round(math.degrees(Q))}_rho={round(math.sin(rho),2)}__b={round(b)}_l={round(l)}_min_dist={min_distance}.png'  # Replace with the path where you want to copy the image
 
                 shutil.copyfile(source_path, destination_path)
             except Exception as e:

@@ -8,6 +8,7 @@ import pandas as pd
 import math
 import sunpy.coordinates
 from datetime import datetime
+import csv
 
 class Maintenance:
     def make_dir(path):
@@ -40,6 +41,9 @@ class Maintenance:
         # Převeďte na základní desetinný tvar ve stupních
         decimal_degrees = degrees + minutes / 60 + seconds / 3600
         return decimal_degrees
+    def erase_csv(csv_path):
+        with open(csv_path, 'w', newline='') as csvfile:
+            csvwriter = csv.writer(csvfile)
 
 class Adjustment:
     def resize_PIL(img, save_folder_path):
@@ -143,7 +147,7 @@ class Adjustment:
 
         return new_image
 
-    def remove_tables_PIL(image_PIL, mask = Image.open("mask_table_pro.png"), visualisation=False):
+    def remove_tables_PIL(image_PIL, mask = Image.open("maska_2000_1800.png"), visualisation=False):
         mask = mask.convert("RGBA")
 
         # make sure that mask and image are same size
@@ -203,25 +207,7 @@ class Calculations:
             if visualisation == True:
                 cv2.drawContours(base, [cnt], -1, (0, 0, 122), 1)
             if len(approx) == 4:
-
                 x, y, w, h = cv2.boundingRect(approx)
-                if visualisation == True:
-                    cv2.drawContours(base, [cnt], -1, (0, 255, 122), 3)
-                # cv2.drawContours(base, [cnt], -1, (255, 0, 255), 2)
-
-                # save with text for check
-                roi_text = base[y-100:y+h+100, x-100:x+w+100]
-                #cv2.imwrite(sunspot_path +'\check/'+ picture_date+'_'+str(x)+','+str(y)+','+str(w)+','+str(h)+'_.png', roi_text)
-
-                mask = np.zeros_like(base, dtype=np.uint8)
-                cv2.drawContours(mask, [approx], -1, color=(255,255,255), thickness=cv2.FILLED)                    
-                mask_inverted = ~mask
-                roi_whole_image = cv2.bitwise_or(base, mask_inverted)
-               
-                x_middle_of_roi = int(x+w/2)
-                y_middle_of_roi = int(y+h/2)
-                # Extract the region of interest
-                roi_small = roi_whole_image[y_middle_of_roi-150:y_middle_of_roi+150, x_middle_of_roi-150:x_middle_of_roi+150]
                 if 10 < w < 1000 and 10 < h < 1000:
                     # Extract the region of interest
                     contour_length = cv2.arcLength(cnt, True)
@@ -243,6 +229,28 @@ class Calculations:
                     save_path = sunspot_path +'\deleted\WH'
                     Maintenance.make_dir(save_path)
                     filename = save_path+'/'+ picture_date+'.png'
+
+                #techtle mechtle s maskou
+                x_middle_of_roi = int(x+w/2)
+                y_middle_of_roi = int(y+h/2)
+
+                with open(csv_path, 'a', newline='') as csvfile:
+                    csvwriter = csv.writer(csvfile)
+                    csvwriter.writerow([picture_date + '_' + str(x) + ',' + str(y) + ',' + str(w) + ',' + str(h),
+                                        str([[int(approx[0][0][0]) - x_middle_of_roi +150, int(approx[0][0][1]) - y_middle_of_roi +150],
+                                        [int(approx[1][0][0]) - x_middle_of_roi +150, int(approx[1][0][1]) - y_middle_of_roi +150],
+                                        [int(approx[2][0][0]) - x_middle_of_roi +150, int(approx[2][0][1]) - y_middle_of_roi +150],
+                                        [int(approx[3][0][0]) - x_middle_of_roi +150, int(approx[3][0][1]) - y_middle_of_roi +150]])])
+
+                '''mask = np.zeros_like(base, dtype=np.uint8)
+                cv2.drawContours(mask, [approx], -1, color=(255,255,255), thickness=cv2.FILLED)                    
+                mask_inverted = ~mask
+                roi_whole_image = cv2.bitwise_or(base, mask_inverted)
+                '''
+                
+                # Extract the region of interest
+                roi_small = base[y_middle_of_roi-150:y_middle_of_roi+150, x_middle_of_roi-150:x_middle_of_roi+150]
+
                 cv2.imwrite(filename, roi_small)
 
         if visualisation == True:
@@ -292,8 +300,6 @@ class Calculations:
         else:
             return False, (math.degrees(angle1),math.degrees(angle2))
 
-
-
 class Reading:
     def get_day_from_image(image_name):
         image_string = str(image_name).replace('dr.jpg','')
@@ -327,17 +333,19 @@ if __name__ == '__main__':
     visualisation = False
 
     folder_path = r'C:\Users\PlicEduard\ondrejov'
-    sunspot_path = r'C:\Users\PlicEduard\sunspots_every'
-    log_path = 'log_every.txt'
+    sunspot_path = r'C:\Users\PlicEduard\sunspots\sunspots_wo_mask_more'
+    csv_path = os.path.join(sunspot_path, 'csv.csv')
+    log_path = os.path.join(sunspot_path, 'log_wo_mask_more1.txt')
 
     Maintenance.make_dir(sunspot_path)
-    #Maintenance.erase_log(log_path)
+    Maintenance.erase_log(log_path)
+    Maintenance.erase_csv(csv_path)
     pictures = [pic for pic in os.listdir(folder_path) if pic.endswith(".jpg")]
     x=0
 
     for pic in tqdm(os.listdir(folder_path), total=len(os.listdir(folder_path))):
         # process only every ...th picture
-        if x == 0:
+        if x==0:
             # repeat code for every image in folder
             try:
                 picture_day = Reading.get_day_from_image(pic) #yyyymmdd
@@ -354,6 +362,7 @@ if __name__ == '__main__':
                 picture = Maintenance.cv2_to_PIL(picture)
                 picture = Adjustment.remove_tables_PIL(picture)
                 picture = Maintenance.PIL_to_cv2(picture)
+                #cv2.imwrite(os.path.join(mask_dir, pic), picture)
                 enhanced_picture = Adjustment.enhance_image_cv2(picture)
                 Calculations.find_rectangles(enhanced_picture,picture,visualisation=visualisation)
                 #saveing every sunspot groop              
