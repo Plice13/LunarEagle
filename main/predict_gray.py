@@ -6,8 +6,8 @@ import numpy as np
 from PIL import Image
 
 # Load the model
-main_dir = r'C:\Users\PlicEduard\AI\more\runs\Axx Hsx 600'
-model_name = 'model_bw_axx_hsx.h5'
+main_dir = r'C:\Users\PlicEduard\AI\more\runs_martin\Axx_Hsx_600'
+model_name = 'model_bw_axx_hsx__e-15_spe-160_vspe-40_bs-32.h5'
 model = load_model(os.path.join(main_dir, model_name))
 
 # Print the model summary to verify its architecture

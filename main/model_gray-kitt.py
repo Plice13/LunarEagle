@@ -25,13 +25,17 @@ model.compile(loss='categorical_crossentropy', optimizer=keras.optimizers.RMSpro
 
 #####-----Data Preprocessing-----######
 
-#main_dir = r'C:\Users\PlicEduard\AI\more\runs\Axx Hsx 600'
-main_dir = r'../../data_gray/Axx Hsx 600'
+main_dir = r'C:\Users\PlicEduard\AI\more\runs_martin\Axx_Hsx_600'
 train_dir = os.path.join(main_dir, 'train')
 val_dir = os.path.join(main_dir, 'val')
 test_dir = os.path.join(main_dir, 'test')
 
-model_name = 'model_bw_axx_hsx.h5'
+spe = 160
+e = 15
+bs = 32
+vs = 40
+
+model_name = f'model_bw_axx_hsx__e-{e}_spe-{spe}_vspe-{vs}_bs-{bs}.h5'
 
 import cv2
 from keras.preprocessing.image import ImageDataGenerator
@@ -68,12 +72,12 @@ train_datagen = ImageDataGenerator(rescale=1./255)  # rescale pixel values to [0
 val_datagen = ImageDataGenerator(rescale=1./255)
 test_datagen = ImageDataGenerator(rescale=1./255)
 
-train_generator = custom_image_generator(train_datagen, train_dir, batch_size=32, target_size=(300, 300), class_mode='categorical')
-val_generator = custom_image_generator(val_datagen, val_dir, batch_size=32, target_size=(300, 300), class_mode='categorical')
-test_generator = custom_image_generator(test_datagen, test_dir, batch_size=32, target_size=(300, 300), class_mode='categorical')
+train_generator = custom_image_generator(train_datagen, train_dir, batch_size=bs, target_size=(300, 300), class_mode='categorical')
+val_generator = custom_image_generator(val_datagen, val_dir, batch_size=bs, target_size=(300, 300), class_mode='categorical')
+test_generator = custom_image_generator(test_datagen, test_dir, batch_size=bs, target_size=(300, 300), class_mode='categorical')
 
 ####----Fit the Model----####
-history = model.fit(train_generator, epochs=15, validation_data=val_generator)#, validation_steps=50, class_weight={0: 1, 1: 1, 2: 1})
+history = model.fit(train_generator, epochs=e, steps_per_epoch=spe, validation_data=val_generator, validation_steps=vs)#, validation_steps=50, class_weight={0: 1, 1: 1, 2: 1})
 
 ######-----Save the Model-------######
 model.save(os.path.join(main_dir, model_name))
