@@ -3,7 +3,7 @@ from glob import glob
 import numpy as np
 import cv2
 
-BASE = r'C:\Users\PlicEduard\AI\more\runs_martin\Axx Hsx 600'
+BASE = r'C:\Users\PlicEduard\AI\more\runs_martin\Axx_Hsx_600'
 GROUPS = ['train', 'val', 'test']  # Use a list for GROUPS
 
 # Threshold of orange in HSV space 

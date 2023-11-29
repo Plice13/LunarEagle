@@ -6,8 +6,8 @@ import numpy as np
 from PIL import Image
 
 # Load the model
-main_dir = r'C:\Users\PlicEduard\AI\more\runs_martin\Axx_Hsx_600'
-model_name = 'model_bw_axx_hsx__e-15_spe-160_vspe-40_bs-32.h5'
+main_dir = r'C:\Users\PlicEduard\AI\more\runs_martin\Axx_Hsx_600_inv'
+model_name = 'model_bw_axx_hsx__e-10_spe-30.0_vspe-120_bs-32.h5'
 model = load_model(os.path.join(main_dir, model_name))
 
 # Print the model summary to verify its architecture
@@ -18,7 +18,7 @@ model.summary()
 image_folder = os.path.join(main_dir, 'test')
 
 # Get a list of all files in the folder
-image_paths = [os.path.join(image_folder, file) for file in os.listdir(image_folder) if file.endswith(('png', 'jpg', 'jpeg'))]
+image_paths = [os.path.join(root, file) for root, dirs, files in os.walk(image_folder) for file in files if file.endswith(('png', 'jpg', 'jpeg'))]
 
 # Load and preprocess the images, converting to grayscale
 images = [Image.open(path).convert('L').resize((300, 300)) for path in image_paths]
@@ -42,11 +42,11 @@ for i, (path, predictions) in enumerate(zip(image_paths, predictions_batch)):
     confidence = predictions[class_index]
 
     #proces path
-    filename = (os.path.basename(path)).split('-')[0]
+    filename = (os.path.normpath(path).split(os.path.sep)[-2])
     if filename == predicted_class:
         good_predict +=1
     else:
         bad_predict +=1
-    print(f"Image {i+1}: {os.path.basename(filename.split('_')[0])} - Predicted Class: {predicted_class}, Confidence: {confidence}")
+    print(f"{filename} - Predict: {predicted_class}, Confidence: {confidence:.4f}")
 total_accuracy = good_predict/(good_predict+bad_predict)
 print(f'Model je správně z {total_accuracy*100} %')

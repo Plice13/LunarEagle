@@ -25,15 +25,16 @@ model.compile(loss='categorical_crossentropy', optimizer=keras.optimizers.RMSpro
 
 #####-----Data Preprocessing-----######
 
-main_dir = r'C:\Users\PlicEduard\AI\more\runs_martin\Axx_Hsx_600'
+main_dir = r'C:\Users\PlicEduard\AI\more\runs_martin\Axx_Hsx_600_inv'
 train_dir = os.path.join(main_dir, 'train')
 val_dir = os.path.join(main_dir, 'val')
 test_dir = os.path.join(main_dir, 'test')
 
-spe = 160
-e = 15
+
+e = 9
 bs = 32
-vs = 40
+vs = 120
+spe = 960/bs
 
 model_name = f'model_bw_axx_hsx__e-{e}_spe-{spe}_vspe-{vs}_bs-{bs}.h5'
 
