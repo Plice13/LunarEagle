@@ -3,7 +3,7 @@ from glob import glob
 import numpy as np
 import cv2
 
-BASE = r'C:\Users\PlicEduard\AI\more\runs_martin\Axx_Hsx_600'
+BASE = r'C:\Users\PlicEduard\AI\more\runs_martin\Axx_Hsx_Cso_Ekc_250'
 GROUPS = ['train', 'val', 'test']  # Use a list for GROUPS
 
 # Threshold of orange in HSV space 
@@ -11,7 +11,7 @@ LOWER = np.array([0, 10, 35])
 UPPER = np.array([225, 200, 255]) 
 
 if __name__ == '__main__':
-    labels = BASE.split('\\')[-1].split()[:-1]  # Use '\\' for Windows path separation
+    labels = BASE.split('\\')[-1].split('_')[:-1]  # Use '\\' for Windows path separation
     print(f'Processing {BASE}, labels: {labels}')
 
     for group in GROUPS:
@@ -24,9 +24,7 @@ if __name__ == '__main__':
                 im_filtered = cv2.bitwise_and(im_inv, im_inv, mask=mask)
                 
                 # Save the filtered image to a different directory or with a different filename
-                output_dir = join(dirname(im_path), 'filtered_images')
-                output_path = join(output_dir, f'filtered_{basename(im_path)}')
-                cv2.imwrite(output_path, im_filtered)
+                cv2.imwrite(im_path, im_filtered)
 
                 # cv2.imshow('im', im)
                 # cv2.imshow('im_hsv', im_hsv)

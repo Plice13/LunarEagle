@@ -7,7 +7,8 @@ from tensorflow import keras
 import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image
-
+import statistics
+import keyboard
 
 def build_and_config_model(number_of_classes):
     ###-----Build Your Model------###
@@ -72,25 +73,22 @@ def plot_results(history):
     plt.legend()
     plt.show()
 
-main_dir = r'C:\Users\PlicEduard\AI\more\runs_martin\Axx_Cso_Ekc_250'
+main_dir = r'C:\Users\PlicEduard\AI\more\runs_martin\Axx_Hsx_Cso_Ekc_250'
 train_dir = os.path.join(main_dir, 'train')
 val_dir = os.path.join(main_dir, 'val')
 test_dir = os.path.join(main_dir, 'test')
 
-classes = ['Axx', 'Cso', 'Ekc']
+classes = ['Axx', 'Cso', 'Ekc', 'Hsx']
 number_of_classes = len(classes)
 samples = 250 * number_of_classes
-e = 200
+epch=17
 bs = 32
-bs=8
-vs = (samples*0.1)
-vs=2
-spe = samples/bs
-spe=10
+vs = int(samples*0.1)
+spe = samples//bs
 
 model = build_and_config_model(number_of_classes)
 
-model_name = f'model_bw_axx_hsx__e-{e}_spe-{spe}_vspe-{vs}_bs-{bs}.h5'
+model_name = f'final_model_bw_{classes}__e-{epch}_spe-{spe}_vspe-{vs}_bs-{bs}.h5'
 
 train_datagen = ImageDataGenerator(rescale=1./255)  # rescale pixel values to [0, 1]
 val_datagen = ImageDataGenerator(rescale=1./255)
@@ -100,13 +98,70 @@ train_generator = custom_image_generator(train_datagen, train_dir, batch_size=bs
 val_generator = custom_image_generator(val_datagen, val_dir, batch_size=bs, target_size=(300, 300), class_mode='categorical')
 test_generator = custom_image_generator(test_datagen, test_dir, batch_size=bs, target_size=(300, 300), class_mode='categorical')
 
-####----Fit the Model----####
-history = model.fit(train_generator, epochs=e, steps_per_epoch=spe, validation_data=val_generator, validation_steps=vs)#, validation_steps=50, class_weight={0: 1, 1: 1, 2: 1})
+train_history = model.fit(train_generator, epochs=1, steps_per_epoch=spe, validation_data=val_generator, validation_steps=vs)#, validation_steps=50, class_weight={0: 1, 1: 1, 2: 1})
+val_loss_list = train_history.history['val_loss']
 
-######-----Save the Model-------######
+starting_loss = val_loss_list[0]
+minimum = starting_loss
+counter = 2
+####----Fit the Model----####
+while counter < epch:
+    # Check if 'q' key is pressed
+    if keyboard.is_pressed('q'):
+        print("You pressed 'q'. Exiting the loop.")
+        break
+
+    train_history = model.fit(train_generator, epochs=1, steps_per_epoch=spe, validation_data=val_generator, validation_steps=vs)#, validation_steps=50, class_weight={0: 1, 1: 1, 2: 1})
+    val_loss = train_history.history['val_loss'][0]
+    val_loss_list.append(val_loss)
+    print(f'On step {counter}, the minimum was {minimum} and mean of 5 was {statistics.mean(val_loss_list[-5:-1])}')
+    try:
+        if statistics.mean(val_loss_list[-5:-1])>statistics.mean(val_loss_list[-10:-6]):
+            print(f'On round {counter}, the 5 was hitted.')
+        if statistics.mean(val_loss_list[-10:-1])>statistics.mean(val_loss_list[-20:-11]):
+            print(f'On round {counter}, the 10 was hitted.')
+        if statistics.mean(val_loss_list[-15:-1])>statistics.mean(val_loss_list[-30:-16]):
+            print(f'On round {counter}, the 15 was hitted.')
+    except Exception as e:
+        print(f'On round {counter} was error {e}.')
+
+    try:
+        if (starting_loss-minimum)*0.03+minimum<statistics.mean(val_loss_list[-5:-1]):
+            print(f'On step {counter}, we were 3% away.')
+        if (starting_loss-minimum)*0.05+minimum<statistics.mean(val_loss_list[-5:-1]):
+            print(f'On step {counter}, we were 5% away.')
+        if (starting_loss-minimum)*0.10+minimum<statistics.mean(val_loss_list[-5:-1]):
+            print(f'On step {counter}, we were 10% away.')
+        if (starting_loss-minimum)*0.15+minimum<statistics.mean(val_loss_list[-5:-1]):
+            print(f'On step {counter}, we were 15% away.')
+        if (starting_loss-minimum)*0.20+minimum<statistics.mean(val_loss_list[-5:-1]):
+            print(f'On step {counter}, we were 20% away.')
+    except Exception as e:
+        print(f'On round {counter} was error {e}.')    
+
+    try:
+        # count minimum
+        if statistics.mean(val_loss_list[-5:-1])<minimum:
+            minimum=statistics.mean(val_loss_list[-5:-1])
+            print(f'On step {counter}, the minimum was lower, and now is {round(minimum, 3)}')
+    except Exception as e:
+        print(f'On round {counter} was error {e}.')
+    counter+=1
+print(f'\n Final list was:\n {val_loss_list}')
+######-----Save the Model-------######q
 model.save(os.path.join(main_dir, model_name))
 
-plot_results(history)
+# plot_results(train_history)
+# Plotting the values
+plt.plot(val_loss_list, marker='o', linestyle='-')
+
+# Adding labels and title
+plt.xlabel('Index')
+plt.ylabel('Value')
+plt.title('Plot of val_loss_list')
+
+# Display the plot
+plt.show()
 
 # Folder containing the images
 image_folder = os.path.join(main_dir, 'test')
