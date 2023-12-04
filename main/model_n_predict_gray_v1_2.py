@@ -73,22 +73,20 @@ def plot_results(history):
     plt.legend()
     plt.show()
 
-main_dir = r'C:\Users\PlicEduard\AI\more\runs_martin\Axx_Hsx_Cso_Ekc_250'
+main_dir = r'C:\Users\PlicEduard\AI\Axx_Cso_Dai_500'
 train_dir = os.path.join(main_dir, 'train')
 val_dir = os.path.join(main_dir, 'val')
 test_dir = os.path.join(main_dir, 'test')
 
-classes = ['Axx', 'Cso', 'Ekc', 'Hsx']
+classes = ['Axx', 'Cso', 'Dai']
 number_of_classes = len(classes)
 samples = 250 * number_of_classes
-epch=40
 bs = 32
 vs = int(samples*0.1)
 spe = samples//bs
 
 model = build_and_config_model(number_of_classes)
 
-model_name = f'final_model_bw_{classes}__e-{epch}_spe-{spe}_vspe-{vs}_bs-{bs}.h5'
 
 train_datagen = ImageDataGenerator(rescale=1./255)  # rescale pixel values to [0, 1]
 val_datagen = ImageDataGenerator(rescale=1./255)
@@ -104,9 +102,10 @@ accuracy_list = train_history.history['acc']
 
 starting_loss = val_loss_list[0]
 minimum = starting_loss
-counter = 2
+counter = 11
 ####----Fit the Model----####
-while val_loss_list[-1:] < val_loss_list[-3:-2]:
+#while val_loss_list[-1:] < val_loss_list[-3:-2]:
+while counter < 30:
     # Check if 'q' key is pressed
     if keyboard.is_pressed('q'):
         print("You pressed 'q'. Exiting the loop.")
@@ -120,6 +119,9 @@ while val_loss_list[-1:] < val_loss_list[-3:-2]:
     counter+=1
 print(f'\n Final list was:\n {val_loss_list}')
 ######-----Save the Model-------######q
+model_name = f'model_bw_{classes}__e-{counter}_spe-{spe}_vspe-{vs}_bs-{bs}.h5'
+
+
 model.save(os.path.join(main_dir, model_name))
 
 # plot_results(train_history)

@@ -3,7 +3,7 @@ from glob import glob
 import numpy as np
 import cv2
 
-BASE = r'C:\Users\PlicEduard\AI\more\runs_martin\Axx_Hsx_Cso_Ekc_250'
+BASE = r'C:\Users\PlicEduard\AI\Axx_Cso_Dai_500'
 GROUPS = ['train', 'val', 'test']  # Use a list for GROUPS
 
 # Threshold of orange in HSV space 
@@ -17,6 +17,7 @@ if __name__ == '__main__':
     for group in GROUPS:
         for label in labels:
             for im_path in glob(join(BASE, group, label, '*.png')):
+                print(im_path)
                 im = cv2.imread(im_path)
                 im_hsv = cv2.cvtColor(im, cv2.COLOR_BGR2HSV)
                 mask = cv2.bitwise_not(cv2.inRange(im_hsv, LOWER, UPPER))
