@@ -4,7 +4,6 @@ import ast
 import os
 import numpy as np
 
-
 def apply_polygon_mask(image, coordinates):
     # Create a black background
     result = np.zeros_like(image, dtype=np.uint8)
@@ -16,9 +15,9 @@ def apply_polygon_mask(image, coordinates):
     cv2.fillPoly(result, [coordinates_np], (255, 255, 255))
 
     # Apply the mask to the original image
-    image=255-image
+    image = 255 - image
     result = cv2.bitwise_and(image, result)
-    result=255-result
+    result = 255 - result
 
     return result
 
@@ -40,38 +39,46 @@ def get_coordinates_from_csv(csv_path, image_filename_to_check):
     # Return None if the image filename is not found in the CSV
     return None
 
-def remoove_orange_part(im):
+def remove_orange_part(im):
     im_hsv = cv2.cvtColor(im, cv2.COLOR_BGR2HSV)
     mask = cv2.bitwise_not(cv2.inRange(im_hsv, LOWER, UPPER))
     im_inv = cv2.bitwise_not(im)
     im_filtered = cv2.bitwise_and(im_inv, im_inv, mask=mask)
     return im_filtered
 
+def process_images_in_folder(folder_path, csv_path):
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            if file.endswith(('.png', '.jpg', '.jpeg')):  # Add more extensions if needed
+                image_path = os.path.join(root, file)
+                process_single_image(image_path, csv_path)
+
+def process_single_image(image_path, csv_path):
+    # Check if the image filename exists in the CSV and get the coordinates
+    image_filename = os.path.splitext(os.path.basename(image_path))[0]
+    coordinates = get_coordinates_from_csv(csv_path, image_filename)
+
+    if coordinates is not None:
+        # Read the image
+        image = cv2.imread(image_path)
+
+        # Apply the polygon mask
+        result_image = apply_polygon_mask(image, coordinates)
+        result_image = remove_orange_part(result_image)
+
+        # Display or save the result
+        cv2.imshow("Original Image", image)
+        cv2.imshow("Result Image", result_image)
+        cv2.imwrite(os.path.join('output_folder', f'{image_filename}_processed.png'), result_image)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+    else:
+        print(f"The image filename {image_filename} does not exist in the CSV.")
+
 # Example usage
-LOWER = np.array([0, 10, 35]) 
-UPPER = np.array([225, 200, 255]) 
-
-
+LOWER = np.array([0, 10, 35])
+UPPER = np.array([225, 200, 255])
 csv_path = "bounding_boxes.csv"
-image_filename_to_check = "19930715101800_1525,954,83,97"
-image_path = '19930715101800_1525,954,83,97__cLenght=343.3553384542465_cArea=6931.5__tLoustka=[75.16648189]_uhel=(-0.6264217456156858, -0.05003996938464458).png__Q=280_rho=0.78__b=8_l=256_min_dist=0.png'
+folder_path = "path/to/your/images_folder"
 
-# Check if the image filename exists in the CSV and get the coordinates
-coordinates = get_coordinates_from_csv(csv_path, image_filename_to_check)
-
-if coordinates is not None:
-    # Read the image
-    image = cv2.imread(image_path)
-
-    # Apply the polygon mask
-    result_image = apply_polygon_mask(image, coordinates)
-    result_image = remoove_orange_part(result_image)
-
-    # Display or save the result
-    cv2.imshow("Original Image", image)
-    cv2.imshow("Result Image", result_image)
-    cv2.imwrite('after_cord.png', result_image)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-else:
-    print(f"The image filename {image_filename_to_check} does not exist in the CSV.")
+process_images_in_folder(folder_path, csv_path)
