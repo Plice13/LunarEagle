@@ -38,8 +38,8 @@ def get_coordinates_from_csv(csv_path, image_filename_to_check):
     return None
 
 def remove_orange_part(im):
-    LOWER = np.array([0, 10, 35])
-    UPPER = np.array([20, 255, 255])  # Adjust upper range to cover more shades of orange
+    LOWER = np.array([0, 0, 200])
+    UPPER = np.array([255, 255, 255])  # Adjust upper range to cover more shades of orange
     im_hsv = cv2.cvtColor(im, cv2.COLOR_BGR2HSV)
     mask = cv2.inRange(im_hsv, LOWER, UPPER)
     # Replace orange regions with white
@@ -67,18 +67,18 @@ def process_single_image(image_path, csv_path):
 
         # Apply the polygon mask
         image = remove_orange_part(image)
-        result_image = apply_polygon_mask(image, coordinates)
+        image = apply_polygon_mask(image, coordinates)
 
         # Convert the image to grayscale
-        gray_image = cv2.cvtColor(result_image, cv2.COLOR_BGR2GRAY)
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
         # Display or save the result (in grayscale)
-        cv2.imwrite(image_path, gray_image)
+        cv2.imwrite(image_path, image)
     else:
         print(f"The image filename {image_search_part} does not exist in the CSV.")
 
 # Example usage
 csv_path = r"C:\Users\PlicEduard\sunspots\sunspots_znovu\csv.csv"
-folder_path = r"C:\Users\PlicEduard\AI2\A_B_C_D_E_F_H_275_35\A"
+folder_path = r"C:\Users\PlicEduard\AI2\A_B_C_D_E_F_H_275_35-martin\F"
 
 process_images_in_folder(folder_path, csv_path)

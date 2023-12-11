@@ -11,7 +11,7 @@ LOWER = np.array([0, 10, 35])
 UPPER = np.array([225, 200, 255]) 
 
 if __name__ == '__main__':
-    labels = BASE.split('\\')[-1].split('_')[:-1]  # Use '\\' for Windows path separation
+    labels = 'F'  # Use '\\' for Windows path separation
     print(f'Processing {BASE}, labels: {labels}')
 
     for group in GROUPS:

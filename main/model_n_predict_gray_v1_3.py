@@ -20,7 +20,11 @@ def build_and_config_model(number_of_classes):
     model.add(layers.Conv2D(16, (3, 3), activation='relu'))
     model.add(layers.MaxPooling2D((2, 2)))
 
+    model.add(layers.Conv2D(8, (3, 3), activation='relu'))
+    model.add(layers.MaxPooling2D((2, 2)))
+
     model.add(layers.Flatten())
+
 
     model.add(layers.Dense(16, activation='relu'))
     model.add(layers.Dense(number_of_classes, activation='softmax'))  # Assuming 3 classes
@@ -79,13 +83,18 @@ val_dir = os.path.join(main_dir, 'val')
 test_dir = os.path.join(main_dir, 'test')
 
 path_base = os.path.basename(main_dir)
+path_base = path_base.split('-')[0]
 classes = path_base.split('_')[:-2]
 number_of_classes = len(classes)
 samples = int(path_base.split('_')[-2]) * number_of_classes
 bs = 32
 vs = (int(path_base.split('_')[-1]) * number_of_classes)
 spe = samples//bs
-print(f'bw_{classes}___spe-{spe}_vspe-{vs}_bs-{bs}')
+bs=32
+vs=60
+spe=60
+max_counter = 20
+print(f'bw_{classes}___spe-{spe}_vspe-{vs}_bs-{bs}_3L(64,32,16)')
 
 model = build_and_config_model(number_of_classes)
 
@@ -105,7 +114,7 @@ counter = 1
 ####----Fit the Model----####
 #while val_loss_list[-1:] < val_loss_list[-3:-2]:
 #while min(val_loss_list)*1.03 > val_loss_list[-1]:
-while counter <= 300:
+while counter <= max_counter:
     # Check if 'q' key is pressed
     if keyboard.is_pressed('q'):
         print("You pressed 'q'. Exiting the loop.")
@@ -116,13 +125,20 @@ while counter <= 300:
     accuracy_list.append(train_history.history['acc'][0])
     val_loss_list.append(val_loss)
 
+    best_val_loss = min(val_loss_list)
+    if best_val_loss == val_loss_list[-1]:
+        model_name = f'model_bw_{classes}__e-{counter}_spe-{spe}_vspe-{vs}_bs-{bs}_loss-{round(val_loss_list[-1],6)}.h5'
+        model.save(os.path.join(main_dir, model_name))
+
+
     counter+=1
 print(f'\n Final list was:\n {val_loss_list}')
-######-----Save the Model-------######q
-model_name = f'model_bw_{classes}__e-{counter}_spe-{spe}_vspe-{vs}_bs-{bs}.h5'
 
+best_epoch = val_loss_list.index(min(val_loss_list))
+best_val_loss = min(val_loss_list)
 
-model.save(os.path.join(main_dir, model_name))
+model_name = f'model_bw_{classes}__e-{best_epoch + 1}_spe-{spe}_vspe-{vs}_bs-{bs}_loss-{round(best_val_loss, 6)}.h5'
+model = keras.models.load_model(os.path.join(main_dir, model_name))
 
 # plot_results(train_history)
 # Plotting the values
