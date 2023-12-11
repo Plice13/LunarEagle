@@ -251,7 +251,7 @@ class Calculations:
                 # Extract the region of interest
                 roi_small = base[y_middle_of_roi-150:y_middle_of_roi+150, x_middle_of_roi-150:x_middle_of_roi+150]
 
-                cv2.imwrite(filename, roi_small)
+                # cv2.imwrite(filename, roi_small)
 
         if visualisation == True:
             cv2.imshow("base", base)
@@ -333,7 +333,7 @@ if __name__ == '__main__':
     visualisation = False
 
     folder_path = r'C:\Users\PlicEduard\ondrejov'
-    sunspot_path = r'C:\Users\PlicEduard\sunspots\sunspots_znovu'
+    sunspot_path = r'C:\Users\PlicEduard\sunspots\sunspots_csv'
     csv_path = os.path.join(sunspot_path, 'csv.csv')
     log_path = os.path.join(sunspot_path, 'log_wo_mask_more1.txt')
 

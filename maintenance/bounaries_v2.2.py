@@ -15,7 +15,7 @@ def apply_polygon_mask(image, coordinates):
     cv2.fillPoly(result, [coordinates_np], (255, 255, 255))
 
     # Apply the mask to the original image
-    image=255-image
+    image = 255 - image
     result = cv2.bitwise_and(image, result)
     return result
 
@@ -58,29 +58,27 @@ def process_images_in_folder(folder_path, csv_path):
 def process_single_image(image_path, csv_path):
     # Check if the image filename exists in the CSV and get the coordinates
     image_filename = os.path.splitext(os.path.basename(image_path))[0]
-    image_search_part= image_filename.split('__')[0]
+    image_search_part = image_filename.split('__')[0]
     coordinates = get_coordinates_from_csv(csv_path, image_search_part)
 
     if coordinates is not None:
         # Read the image
         image = cv2.imread(image_path)
-        #cv2.imshow('nultz', image)
+
         # Apply the polygon mask
         image = remove_orange_part(image)
-        #cv2.imshow('prvni',result_image)
         result_image = apply_polygon_mask(image, coordinates)
-        #cv2.imshow('druhy',result_image)
-        #cv2.waitKey()
-        #cv2.destroyAllWindows()
 
-        # Display or save the result
-        cv2.imwrite(image_path,result_image)
+        # Convert the image to grayscale
+        gray_image = cv2.cvtColor(result_image, cv2.COLOR_BGR2GRAY)
+
+        # Display or save the result (in grayscale)
+        cv2.imwrite(image_path, gray_image)
     else:
         print(f"The image filename {image_search_part} does not exist in the CSV.")
 
 # Example usage
-
 csv_path = r"C:\Users\PlicEduard\sunspots\sunspots_znovu\csv.csv"
-folder_path = r"C:\Users\PlicEduard\AI2\A_B_C_D_E_F_H_350"
+folder_path = r"C:\Users\PlicEduard\AI2\A_B_C_D_E_F_H_275_35\A"
 
 process_images_in_folder(folder_path, csv_path)

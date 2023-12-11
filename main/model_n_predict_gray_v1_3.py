@@ -73,17 +73,19 @@ def plot_results(history):
     plt.legend()
     plt.show()
 
-main_dir = r'C:\Users\PlicEduard\AI\Axx_Cso_Dai_500'
+main_dir = r'C:\Users\PlicEduard\AI2\A_B_C_D_E_F_H_275_35'
 train_dir = os.path.join(main_dir, 'train')
 val_dir = os.path.join(main_dir, 'val')
 test_dir = os.path.join(main_dir, 'test')
 
-classes = ['Axx', 'Cso', 'Dai']
+path_base = os.path.basename(main_dir)
+classes = path_base.split('_')[:-2]
 number_of_classes = len(classes)
-samples = 600 * number_of_classes
+samples = int(path_base.split('_')[-2]) * number_of_classes
 bs = 32
-vs = int(samples*0.1)
+vs = (int(path_base.split('_')[-1]) * number_of_classes)
 spe = samples//bs
+print(f'bw_{classes}___spe-{spe}_vspe-{vs}_bs-{bs}')
 
 model = build_and_config_model(number_of_classes)
 
@@ -96,17 +98,14 @@ train_generator = custom_image_generator(train_datagen, train_dir, batch_size=bs
 val_generator = custom_image_generator(val_datagen, val_dir, batch_size=bs, target_size=(300, 300), class_mode='categorical')
 test_generator = custom_image_generator(test_datagen, test_dir, batch_size=bs, target_size=(300, 300), class_mode='categorical')
 
-train_history = model.fit(train_generator, epochs=10, steps_per_epoch=spe, validation_data=val_generator, validation_steps=vs)#, validation_steps=50, class_weight={0: 1, 1: 1, 2: 1})
-val_loss_list = train_history.history['val_loss']
-accuracy_list = train_history.history['acc']
+val_loss_list = []
+accuracy_list = []
 
-starting_loss = val_loss_list[0]
-minimum = starting_loss
-counter = 11
+counter = 1
 ####----Fit the Model----####
 #while val_loss_list[-1:] < val_loss_list[-3:-2]:
 #while min(val_loss_list)*1.03 > val_loss_list[-1]:
-while counter < 30:
+while counter <= 300:
     # Check if 'q' key is pressed
     if keyboard.is_pressed('q'):
         print("You pressed 'q'. Exiting the loop.")

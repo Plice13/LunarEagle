@@ -12,6 +12,12 @@ import shutil
 
 
 class Maintenance:
+    def make_dir(path):
+        if not os.path.exists(path):
+            print(path)
+            # If it doesn't exist, create the directory
+            os.makedirs(path)
+
     def erase_log(log_path):
         log_file = open(log_path, 'w')
         log_file.close()
@@ -146,8 +152,10 @@ class Reading:
 
 
 if __name__ == '__main__':
-    sunspot_path = r'C:\Users\PlicEduard\sunspots\sunspots_wo_mask_more'
-    save_path = r'C:\Users\PlicEduard\clasifics\wo_mask_more'
+    sunspot_path = r'C:\Users\PlicEduard\sunspots\sunspots_znovu'
+    save_path = r'C:\Users\PlicEduard\clasifics\znovu'
+    Maintenance.make_dir(save_path)
+
     log_path = os.path.join(save_path, 'log_wo_mask_more.txt')
 
     Maintenance.erase_log(log_path)
