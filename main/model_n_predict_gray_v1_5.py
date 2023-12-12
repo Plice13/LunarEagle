@@ -15,15 +15,9 @@ def build_and_config_model(number_of_classes):
     ###-----Build Your Model------###
     model = models.Sequential()
 
-    model.add(layers.Conv2D(128, (3, 3), activation='relu', input_shape=(300, 300, 1)))  # Change input shape to (300, 300, 1)
+    model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(300, 300, 1)))  # Change input shape to (300, 300, 1)
     model.add(layers.MaxPooling2D((2, 2)))
-
-    model.add(layers.Conv2D(64, (3, 3), activation='relu'))
-    model.add(layers.MaxPooling2D((2, 2)))
-    
-    model.add(layers.Conv2D(32, (3, 3), activation='relu'))
-    model.add(layers.MaxPooling2D((2, 2)))
-    
+   
     model.add(layers.Conv2D(16, (3, 3), activation='relu'))
     model.add(layers.MaxPooling2D((2, 2)))
 
@@ -69,20 +63,6 @@ def custom_image_generator(generator, directory, batch_size, target_size, class_
         # cv2.release()
         # exit()
         yield (data_batch_gray, labels_batch)
-
-def plot_results(history):
-    acc = history.history['acc']
-    val_acc = history.history['val_acc']
-    loss = history.history['loss']
-    val_loss = history.history['val_loss']
-    epochs = range(1, len(acc) + 1)
-    plt.plot(range(1, len(history.history['acc']) + 1), history.history['acc'], 'r', label='Training acc')
-    plt.plot(range(1, len(history.history['val_loss']) + 1), history.history['val_loss'], 'y', label='Validation loss')
-    plt.plot(range(1, len(history.history['loss']) + 1), history.history['loss'], 'purple', label='Training loss')
-    plt.plot(range(1, len(history.history['val_acc']) + 1), history.history['val_acc'], 'g', label='Validation acc')
-    plt.title('Training and validation accuracy')
-    plt.legend()
-    plt.show()
 
 def prepare_model():
     train_datagen = ImageDataGenerator(rescale=1./255)  # rescale pixel values to [0, 1]
@@ -135,14 +115,16 @@ def test_model(model):
 
 def plot_results(lists):
     for llist_n_name in lists:
-        # plot_results(train_history)
-        # Plotting the values
+        # Plotting the values with different line styles or colors
         plt.plot(llist_n_name[0], marker='x', linestyle='-', label=str(llist_n_name[1]))
 
     # Adding labels and title
     plt.xlabel('Index')
     plt.ylabel('Value')
     plt.title('Plot of values')
+
+    # Display the legend
+    plt.legend()
 
     # Display the plot
     plt.show()
@@ -191,7 +173,7 @@ if __name__=='__main__':
     while counter <= max_counter:
         # for knowing when press Q
         print(f'<{counter}>')
-        sleep(3)
+        sleep(2)
 
         # qiut learning before end
         if keyboard.is_pressed('q'):
@@ -201,21 +183,21 @@ if __name__=='__main__':
         # train model and save data
         train_history = model.fit(train_generator, epochs=1, steps_per_epoch=spe, validation_data=val_generator, validation_steps=vs)#, validation_steps=50, class_weight={0: 1, 1: 1, 2: 1})
         acc_list.append(train_history.history['acc'][0])
-        loss_list.append(train_history.history['acc'][0])
-        val_acc_list.append(train_history.history['acc'][0])
-        val_loss_list.append(train_history.history['acc'][0])
+        loss_list.append(train_history.history['loss'][0])
+        val_acc_list.append(train_history.history['val_acc'][0])
+        val_loss_list.append(train_history.history['val_loss'][0])
 
         # if val_loss is low, save model
         best_val_loss = min(val_loss_list)
         if best_val_loss == val_loss_list[-1]:
-            model_name = f'model_bw_{classes}__e-{counter}_spe-{spe}_vspe-{vs}_bs-{bs}_5L(128,64,32,16,8)_loss-{round(val_loss_list[-1],6)}.h5'
+            model_name = f'model_bw_{classes}__e-{counter}_spe-{spe}_vspe-{vs}_bs-{bs}_3L(32,16,8)_loss-{round(val_loss_list[-1],6)}.h5'
             model.save(os.path.join(main_dir, model_name))
 
         counter+=1
 
     # save model
     print(f'\n Final list was:\n {val_loss_list}')
-    model_name = f'end_of_model_bw_{classes}_e-{counter}_spe-{spe}_vspe-{vs}_bs-{bs}_5L(128,64,32,16,8)_loss-{round(val_loss_list[-1],6)}.h5'
+    model_name = f'end_of_model_bw_{classes}_e-{counter}_spe-{spe}_vspe-{vs}_bs-{bs}_3L(32,16,8)_loss-{round(val_loss_list[-1],6)}.h5'
     model.save(os.path.join(main_dir, model_name))
 
     # plot results
@@ -226,7 +208,7 @@ if __name__=='__main__':
     # load model
     best_epoch = val_loss_list.index(min(val_loss_list))
     best_val_loss = min(val_loss_list)
-    model_name = f'model_bw_{classes}__e-{best_epoch + 1}_spe-{spe}_vspe-{vs}_bs-{bs}_5L(128,64,32,16,8)_loss-{round(best_val_loss, 6)}.h5'
+    model_name = f'model_bw_{classes}__e-{best_epoch + 1}_spe-{spe}_vspe-{vs}_bs-{bs}_3L(32,16,8)_loss-{round(best_val_loss, 6)}.h5'
     model = keras.models.load_model(os.path.join(main_dir, model_name))
 
     #test model
