@@ -14,12 +14,15 @@ def build_and_config_model(number_of_classes):
     ###-----Build Your Model------###
     model = models.Sequential()
 
-    model.add(layers.Conv2D(64, (3, 3), activation='relu', input_shape=(300, 300, 1)))  # Change input shape to (300, 300, 1)
+    model.add(layers.Conv2D(128, (3, 3), activation='relu', input_shape=(300, 300, 1)))  # Change input shape to (300, 300, 1)
     model.add(layers.MaxPooling2D((2, 2)))
 
+    model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+    model.add(layers.MaxPooling2D((2, 2)))
+    
     model.add(layers.Conv2D(32, (3, 3), activation='relu'))
     model.add(layers.MaxPooling2D((2, 2)))
-
+    
     model.add(layers.Conv2D(16, (3, 3), activation='relu'))
     model.add(layers.MaxPooling2D((2, 2)))
 
@@ -96,10 +99,11 @@ spe = samples//bs
 bs=32
 vs=60
 spe=60
-max_counter = 50
-print(f'Model properties: {classes}___spe-{spe}_vspe-{vs}_bs-{bs}_3L(64,32,16)')
+max_counter = 300
+print(f'Model properties: {classes}___spe-{spe}_vspe-{vs}_bs-{bs}_5L(128,64,32,16,8)')
 
 model = build_and_config_model(number_of_classes)
+#model = keras.models.load_model(os.path.join(main_dir, "0.6816_model_bw_['A', 'B', 'C', 'D', 'E', 'F', 'H']__e-40_spe-60_vspe-60_bs-32_4L(64,32,16,8)_loss-1.017766.h5"))
 
 
 train_datagen = ImageDataGenerator(rescale=1./255)  # rescale pixel values to [0, 1]
@@ -129,18 +133,23 @@ while counter <= max_counter:
     val_loss_list.append(val_loss)
 
     best_val_loss = min(val_loss_list)
+    #if counter == max_counter:
     if best_val_loss == val_loss_list[-1]:
-        model_name = f'model_bw_{classes}__e-{counter}_spe-{spe}_vspe-{vs}_bs-{bs}_4L(64,32,16,8)_loss-{round(val_loss_list[-1],6)}.h5'
+        model_name = f'model_bw_{classes}__e-{counter}_spe-{spe}_vspe-{vs}_bs-{bs}_5L(128,64,32,16,8)_loss-{round(val_loss_list[-1],6)}.h5'
         model.save(os.path.join(main_dir, model_name))
 
 
     counter+=1
 print(f'\n Final list was:\n {val_loss_list}')
+model_name = f'end_of_model_bw_{classes}_e-{counter}_spe-{spe}_vspe-{vs}_bs-{bs}_5L(128,64,32,16,8)_loss-{round(val_loss_list[-1],6)}.h5'
+model.save(os.path.join(main_dir, model_name))
+
 
 best_epoch = val_loss_list.index(min(val_loss_list))
 best_val_loss = min(val_loss_list)
 
-model_name = f'model_bw_{classes}__e-{best_epoch + 1}_spe-{spe}_vspe-{vs}_bs-{bs}_4L(64,32,16,8)_loss-{round(best_val_loss, 6)}.h5'
+model_name = f'model_bw_{classes}__e-{best_epoch + 1}_spe-{spe}_vspe-{vs}_bs-{bs}_5L(128,64,32,16,8)_loss-{round(best_val_loss, 6)}.h5'
+#model_name = f"retrained_model_bw_['A', 'B', 'C', 'D', 'E', 'F', 'H']__e-8_spe-60_vspe-60_bs-32_4L(64,32,16,8)_loss-1.054406.h5"
 model = keras.models.load_model(os.path.join(main_dir, model_name))
 
 # plot_results(train_history)
