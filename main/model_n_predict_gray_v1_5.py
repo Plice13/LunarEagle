@@ -11,31 +11,6 @@ import statistics
 import keyboard
 from time import sleep
 
-def build_and_config_model(number_of_classes):
-    ###-----Build Your Model------###
-    model = models.Sequential()
-
-    model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(300, 300, 1)))  # Change input shape to (300, 300, 1)
-    model.add(layers.MaxPooling2D((2, 2)))
-   
-    model.add(layers.Conv2D(16, (3, 3), activation='relu'))
-    model.add(layers.MaxPooling2D((2, 2)))
-
-    model.add(layers.Conv2D(8, (3, 3), activation='relu'))
-    model.add(layers.MaxPooling2D((2, 2)))
-
-    model.add(layers.Flatten())
-
-
-    model.add(layers.Dense(16, activation='relu'))
-    model.add(layers.Dense(number_of_classes, activation='softmax'))  # Assuming 3 classes
-
-    model.summary()
-
-
-    ####----Configuring the model for training-----####
-    model.compile(loss='categorical_crossentropy', optimizer=keras.optimizers.RMSprop(learning_rate=1e-4), metrics=['acc'])
-    return model
 
 def custom_image_generator(generator, directory, batch_size, target_size, class_mode):
     for data_batch, labels_batch in generator.flow_from_directory(directory, target_size=target_size, batch_size=batch_size, class_mode=class_mode, shuffle=True):
@@ -129,32 +104,55 @@ def plot_results(lists):
     # Display the plot
     plt.show()
 
-def get_parameters(path_base, bs):
+def build_and_config_model(number_of_classes):
+    ###-----Build Your Model------###
+    model = models.Sequential()
+
+    model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(300, 300, 1)))  # Change input shape to (300, 300, 1)
+    model.add(layers.MaxPooling2D((2, 2)))
+   
+    model.add(layers.Conv2D(16, (3, 3), activation='relu'))
+    model.add(layers.MaxPooling2D((2, 2)))
+
+    model.add(layers.Conv2D(8, (3, 3), activation='relu'))
+    model.add(layers.MaxPooling2D((2, 2)))
+
+    model.add(layers.Flatten())
+
+    model.add(layers.Dense(16, activation='relu'))
+    model.add(layers.Dense(number_of_classes, activation='softmax'))  # Assuming 3 classes
+
+    model.summary()
+
+
+    ####----Configuring the model for training-----####
+    model.compile(loss='categorical_crossentropy', optimizer=keras.optimizers.RMSprop(learning_rate=1e-4), metrics=['acc'])
+    return model
+
+def get_parameters(path_base, bs, scalable_factor=1):
     path_base = path_base.split('-')[0]
 
     classes = path_base.split('_')[:-2]
     number_of_classes = len(classes)
-    samples = int(path_base.split('_')[-2]) * number_of_classes
-    vs = (int(path_base.split('_')[-1]) * number_of_classes)
+    samples = (int(path_base.split('_')[-2]) * number_of_classes)//scalable_factor
+    v_samples = (int(path_base.split('_')[-1]) * number_of_classes)//scalable_factor
     spe = samples//bs
+    vs = v_samples//bs
 
     return classes, number_of_classes, vs, spe
 
 if __name__=='__main__':
     # set up
-    main_dir = r'C:\Users\PlicEduard\AI2\A_B_C_D_E_F_H_275_35'
+    main_dir = r'C:\Users\PlicEduard\AI2\Axx_Bxo_1600_160'
     train_dir = os.path.join(main_dir, 'train')
     val_dir = os.path.join(main_dir, 'val')
     test_dir = os.path.join(main_dir, 'test')
     
     # make parameters
+    scalable_factor = 1
     bs = 32
-    classes, number_of_classes, vs, spe = get_parameters(os.path.basename(main_dir), bs)
+    classes, number_of_classes, vs, spe = get_parameters(os.path.basename(main_dir), bs, scalable_factor=scalable_factor)
     max_counter = 300 
-
-    bs=32
-    vs=10
-    spe=10
 
     # make model
     model = build_and_config_model(number_of_classes)

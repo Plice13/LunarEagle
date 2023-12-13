@@ -79,6 +79,6 @@ def process_single_image(image_path, csv_path):
 
 # Example usage
 csv_path = r"C:\Users\PlicEduard\sunspots\sunspots_znovu\csv.csv"
-folder_path = r"C:\Users\PlicEduard\AI2\A_B_C_D_E_F_H_275_35-martin\F"
+folder_path = r"C:\Users\PlicEduard\AI2\classes\none\Bxo"
 
 process_images_in_folder(folder_path, csv_path)
