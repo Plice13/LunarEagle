@@ -108,9 +108,12 @@ def build_and_config_model(number_of_classes):
     ###-----Build Your Model------###
     model = models.Sequential()
 
-    model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(300, 300, 1)))  # Change input shape to (300, 300, 1)
+    model.add(layers.Conv2D(64, (3, 3), activation='relu', input_shape=(300, 300, 1)))  # Change input shape to (300, 300, 1)
     model.add(layers.MaxPooling2D((2, 2)))
    
+    model.add(layers.Conv2D(32, (3, 3), activation='relu'))
+    model.add(layers.MaxPooling2D((2, 2)))
+
     model.add(layers.Conv2D(16, (3, 3), activation='relu'))
     model.add(layers.MaxPooling2D((2, 2)))
 
@@ -119,7 +122,7 @@ def build_and_config_model(number_of_classes):
 
     model.add(layers.Flatten())
 
-    model.add(layers.Dense(16, activation='relu'))
+    model.add(layers.Dense(32, activation='relu'))
     model.add(layers.Dense(number_of_classes, activation='softmax'))  # Assuming 3 classes
 
     model.summary()
@@ -137,7 +140,7 @@ def get_parameters(path_base, bs, scalable_factor=1):
     samples = (int(path_base.split('_')[-2]) * number_of_classes)//scalable_factor
     v_samples = (int(path_base.split('_')[-1]) * number_of_classes)//scalable_factor
     spe = samples//bs
-    vs = v_samples//bs
+    vs = v_samples//4
 
     return classes, number_of_classes, vs, spe
 
@@ -188,25 +191,25 @@ if __name__=='__main__':
         # if val_loss is low, save model
         best_val_loss = min(val_loss_list)
         if best_val_loss == val_loss_list[-1]:
-            model_name = f'model_bw_{classes}__e-{counter}_spe-{spe}_vspe-{vs}_bs-{bs}_3L(32,16,8)_loss-{round(val_loss_list[-1],6)}.h5'
+            model_name = f'model_bw_{classes}__e-{counter}_spe-{spe}_vspe-{vs}_bs-{bs}_4L(64(4x4),32,16,8)_loss-{round(val_loss_list[-1],6)}.h5'
             model.save(os.path.join(main_dir, model_name))
 
         counter+=1
 
     # save model
     print(f'\n Final list was:\n {val_loss_list}')
-    model_name = f'end_of_model_bw_{classes}_e-{counter}_spe-{spe}_vspe-{vs}_bs-{bs}_3L(32,16,8)_loss-{round(val_loss_list[-1],6)}.h5'
+    model_name = f'end_of_model_bw_{classes}_e-{counter}_spe-{spe}_vspe-{vs}_bs-{bs}_4L(64(4x4),32,16,8)_loss-{round(val_loss_list[-1],6)}.h5'
     model.save(os.path.join(main_dir, model_name))
 
     # plot results
-    to_plot_list=[[acc_list,'a'], [loss_list,'l'], [val_acc_list,'va'], [val_loss_list,'vl']]
+    to_plot_list=[[acc_list,'acc'], [loss_list,'loss'], [val_acc_list,'val_ass'], [val_loss_list,'val_loss']]
     plot_results(to_plot_list)
 
     ## test model
     # load model
     best_epoch = val_loss_list.index(min(val_loss_list))
     best_val_loss = min(val_loss_list)
-    model_name = f'model_bw_{classes}__e-{best_epoch + 1}_spe-{spe}_vspe-{vs}_bs-{bs}_3L(32,16,8)_loss-{round(best_val_loss, 6)}.h5'
+    model_name = f'model_bw_{classes}__e-{best_epoch + 1}_spe-{spe}_vspe-{vs}_bs-{bs}_4L(64(4x4),32,16,8)_loss-{round(best_val_loss, 6)}.h5'
     model = keras.models.load_model(os.path.join(main_dir, model_name))
 
     #test model

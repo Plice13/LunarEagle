@@ -6,7 +6,10 @@ def random_sample_files(source, num_samples):
     files = os.listdir(source)
     return random.sample(files, num_samples)
 
-def split_data(source, dest_train, dest_val, dest_test, class_name, num_samples=1600, train_ratio=0.8, val_ratio=0.1):
+def split_data(source, dest_folder, class_name, num_samples, train_ratio=0.8, val_ratio=0.1):
+    dest_train = os.path.join(dest_folder, 'train')
+    dest_val = os.path.join(dest_folder, 'val')
+    dest_test = os.path.join(dest_folder, 'test')
     sampled_files = random_sample_files(source, num_samples)
 
     # Shuffle the sampled files
@@ -32,16 +35,25 @@ def split_data(source, dest_train, dest_val, dest_test, class_name, num_samples=
         dest_file = os.path.join(dest_folder, file)
         shutil.copyfile(source_file, dest_file)
 
-# Example usage
-source_folder_class1 = r"C:\Users\PlicEduard\AI2\classes\none\Axx"
-source_folder_class2 = r"C:\Users\PlicEduard\AI2\classes\none\Bxo"
-dest_folder_train = r"C:\Users\PlicEduard\AI2\Axx_Bxx_1600_160\train"
-dest_folder_val = r"C:\Users\PlicEduard\AI2\Axx_Bxx_1600_160\val"
-dest_folder_test = r"C:\Users\PlicEduard\AI2\Axx_Bxx_1600_160\test"
+def process_folders(main_folder, dest_prefolder):
+    #get name of destination folder
+    subfolders_list = []
+    for subfolder in os.listdir(main_folder):
+        subfolder_path = os.path.join(main_folder, subfolder)
+        if os.path.isdir(subfolder_path):
+            subfolders_list.append(subfolder)
+        subfolders=('_'.join(subfolders_list))+f'_{num_samples_per_class}_{int(num_samples_per_class*0.1)}'
+        dest_folder = os.path.join(dest_prefolder, subfolders)
 
-# Set the number of samples you want to randomly select
-num_samples_per_class = 1600
+    # run script    
+    for subfolder in os.listdir(main_folder):
+        subfolder_path = os.path.join(main_folder, subfolder)
+        if os.path.isdir(subfolder_path):
+            print(f"Processing subfolder: {subfolder}")
+            split_data(subfolder_path, dest_folder, subfolder, num_samples_per_class)
 
-# Randomly sample and split data into train, val, and test sets
-split_data(source_folder_class1, dest_folder_train, dest_folder_val, dest_folder_test, "Axx", num_samples_per_class)
-split_data(source_folder_class2, dest_folder_train, dest_folder_val, dest_folder_test, "Bxo", num_samples_per_class)
+main_folder = r"C:\Users\PlicEduard\AI2\classes\sdfghj"
+num_samples_per_class = 260
+dest_prefolder = r"C:\Users\PlicEduard\AI2"
+
+process_folders(main_folder, dest_prefolder)
