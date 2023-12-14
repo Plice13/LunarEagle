@@ -4,6 +4,13 @@ import ast
 import os
 import numpy as np
 
+def process_images_in_folder(folder_path, csv_path):
+    for root, dirs, files in os.walk(folder_path):
+        for file in files:
+            if file.endswith(('.png', '.jpg', '.jpeg')):  # Add more extensions if needed
+                image_path = os.path.join(root, file)
+                process_single_image(image_path, csv_path)
+
 def apply_polygon_mask(image, coordinates):
     # Create a black background
     result = np.zeros_like(image, dtype=np.uint8)
@@ -77,8 +84,7 @@ def process_single_image(image_path, csv_path):
     else:
         print(f"The image filename {image_search_part} does not exist in the CSV.")
 
-# Example usage
 csv_path = r"C:\Users\PlicEduard\sunspots\sunspots_znovu\csv.csv"
-folder_path = r"C:\Users\PlicEduard\AI2\classes\none\Bxo"
+folder_path = r"C:\Users\PlicEduard\AI2\classes\none\znovu"
 
 process_images_in_folder(folder_path, csv_path)
