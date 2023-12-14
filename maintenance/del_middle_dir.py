@@ -19,7 +19,7 @@ def kopirovat_obrazky_ze_slozek(hlavni_slozka, cilovy_adresar, pismena):
             cesta_k_polozce = os.path.join(hlavni_slozka, polozka)
             polozka = list(polozka)
             try:
-                if os.path.isdir(cesta_k_polozce) and polozka[2] == letter:
+                if os.path.isdir(cesta_k_polozce) and polozka[-1] == letter:
                     # Získání seznamu všech souborů ve složce
                     soubory_ve_slozce = [soubor for soubor in os.listdir(cesta_k_polozce) if os.path.isfile(os.path.join(cesta_k_polozce, soubor))]
 
@@ -31,8 +31,8 @@ def kopirovat_obrazky_ze_slozek(hlavni_slozka, cilovy_adresar, pismena):
             except Exception as e:
                 print(e)
 # Zadejte cestu k hlavní složce, cílovému adresáři a seznamu písmen
-hlavni_slozka = r'C:\Users\PlicEduard\clasifics\classification_every'
-cilovy_adresar = r'C:\Users\PlicEduard\clasifics\classification_end_letters'
+hlavni_slozka = r'C:\Users\PlicEduard\AI2\classes\none\znovu - Copy'
+cilovy_adresar = r'C:\Users\PlicEduard\AI2\classes\xioc'
 #pismena = ['x', 'r', 'a', 's', 'h', 'k']
 pismena = ['x','i','o','c']
 

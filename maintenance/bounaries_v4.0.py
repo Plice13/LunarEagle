@@ -57,6 +57,7 @@ def remove_orange_part(im):
 
 def process_images_in_folder(folder_path, csv_path):
     for root, dirs, files in os.walk(folder_path):
+        print(f'Processing root: {root}')
         for file in files:
             if file.endswith(('.png', '.jpg', '.jpeg')):  # Add more extensions if needed
                 image_path = os.path.join(root, file)
@@ -85,6 +86,6 @@ def process_single_image(image_path, csv_path):
         print(f"The image filename {image_search_part} does not exist in the CSV.")
 
 csv_path = r"C:\Users\PlicEduard\sunspots\sunspots_znovu\csv.csv"
-folder_path = r"C:\Users\PlicEduard\AI2\classes\sdfghj"
+folder_path = r"C:\Users\PlicEduard\AI2\classes\xioc"
 
 process_images_in_folder(folder_path, csv_path)

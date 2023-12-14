@@ -52,8 +52,8 @@ def process_folders(main_folder, dest_prefolder):
             print(f"Processing subfolder: {subfolder}")
             split_data(subfolder_path, dest_folder, subfolder, num_samples_per_class)
 
-main_folder = r"C:\Users\PlicEduard\AI2\classes\sdfghj"
-num_samples_per_class = 260
+main_folder = r"C:\Users\PlicEduard\AI2\classes\xioc"
+num_samples_per_class = 1500
 dest_prefolder = r"C:\Users\PlicEduard\AI2"
 
 process_folders(main_folder, dest_prefolder)
