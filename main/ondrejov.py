@@ -1,3 +1,5 @@
+#start of extract sunspots
+
 import os
 from tqdm import tqdm
 import cv2
@@ -46,7 +48,7 @@ class Maintenance:
             csvwriter = csv.writer(csvfile)
 
 class Adjustment:
-    def resize_PIL(img, save_folder_path):
+    def resize_PIL(img):
         # Resize image to width 2000 while maintaining the aspect ratio
         basewidth = 2000
         width_scale = basewidth / float(img.size[0])
@@ -68,7 +70,7 @@ class Adjustment:
         #background.save(save_path)
         return background
 
-    def center_the_image_cv2(image_cv2, save_folder_path, visualisation=False):
+    def center_the_image_cv2(image_cv2, visualisation=False):
         x_move, y_move = Adjustment.find_circles_in_image_cv2(image_cv2, visualisation=visualisation)
         image_PIL = Maintenance.cv2_to_PIL(image_cv2)
         image_PIL = Adjustment.move_image_PIL(image_PIL, x_move, y_move)
@@ -216,42 +218,21 @@ class Calculations:
                     if pravdivovost == True:
                         pravdivost, value = Calculations.is_thin(approx)
                         if pravdivost == False:
-                            filename = sunspot_path +'/'+ picture_date +'_'+ str(x)+','+str(y)+','+str(w)+','+str(h)+ '__'+f'cLenght={contour_length}_cArea={contour_area}__tLoustka={value}_uhel={uhel}'+ '.png'
-                        else:
-                            save_path = sunspot_path +'\deleted\TH'
-                            Maintenance.make_dir(save_path)
-                            filename = save_path+'/'+ picture_date +'_'+ str(x)+','+str(y)+','+str(w)+','+str(h)+ '__'+f'cLenght={contour_length}_cArea={contour_area}'+ '.png'
-                    else:
-                        save_path = sunspot_path +'\deleted\SHAPE'
-                        Maintenance.make_dir(save_path)
-                        filename = save_path+'/'+ picture_date +'_'+ str(x)+','+str(y)+','+str(w)+','+str(h)+ '__'+f'cLenght={contour_length}_cArea={contour_area}'+ '.png'
-                else:
-                    save_path = sunspot_path +'\deleted\WH'
-                    Maintenance.make_dir(save_path)
-                    filename = save_path+'/'+ picture_date+'.png'
+                            filename = os.path.join(r'C:\Users\PlicEduard\program', f'skvrna_{i}.png')
+                            print(filename)
+                            #techtle mechtle s maskou
+                            x_middle_of_roi = int(x+w/2)
+                            y_middle_of_roi = int(y+h/2)
 
-                #techtle mechtle s maskou
-                x_middle_of_roi = int(x+w/2)
-                y_middle_of_roi = int(y+h/2)
+                            mask = np.zeros_like(base, dtype=np.uint8)
+                            cv2.drawContours(mask, [approx], -1, color=(255,255,255), thickness=cv2.FILLED)                    
+                            mask_inverted = ~mask
+                            roi_whole_image = cv2.bitwise_or(base, mask_inverted)
+                            
+                            # Extract the region of interest
+                            roi_small = roi_whole_image[y_middle_of_roi-150:y_middle_of_roi+150, x_middle_of_roi-150:x_middle_of_roi+150]
 
-                with open(csv_path, 'a', newline='') as csvfile:
-                    csvwriter = csv.writer(csvfile)
-                    csvwriter.writerow([picture_date + '_' + str(x) + ',' + str(y) + ',' + str(w) + ',' + str(h),
-                                        str([[int(approx[0][0][0]) - x_middle_of_roi +150, int(approx[0][0][1]) - y_middle_of_roi +150],
-                                        [int(approx[1][0][0]) - x_middle_of_roi +150, int(approx[1][0][1]) - y_middle_of_roi +150],
-                                        [int(approx[2][0][0]) - x_middle_of_roi +150, int(approx[2][0][1]) - y_middle_of_roi +150],
-                                        [int(approx[3][0][0]) - x_middle_of_roi +150, int(approx[3][0][1]) - y_middle_of_roi +150]])])
-
-                '''mask = np.zeros_like(base, dtype=np.uint8)
-                cv2.drawContours(mask, [approx], -1, color=(255,255,255), thickness=cv2.FILLED)                    
-                mask_inverted = ~mask
-                roi_whole_image = cv2.bitwise_or(base, mask_inverted)
-                '''
-                
-                # Extract the region of interest
-                roi_small = base[y_middle_of_roi-150:y_middle_of_roi+150, x_middle_of_roi-150:x_middle_of_roi+150]
-
-                cv2.imwrite(filename, roi_small)
+                            cv2.imwrite(filename, roi_small)
 
         if visualisation == True:
             cv2.imshow("base", base)
@@ -327,50 +308,42 @@ class Reading:
         min_from_csv = str(min_from_csv)
        
         return hour_from_csv.zfill(2)+min_from_csv.zfill(2)+'00'
+    
 
 
-if __name__ == '__main__':
-    visualisation = False
+if __name__=='__main__':
+    # Get the current script's directory
+    script_directory = os.path.dirname(os.path.abspath(__file__))
 
-    folder_path = r'C:\Users\PlicEduard\ondrejov'
-    sunspot_path = r'C:\Users\PlicEduard\sunspots\sunspots_znovu'
-    csv_path = os.path.join(sunspot_path, 'csv.csv')
-    log_path = os.path.join(sunspot_path, 'log_wo_mask_more1.txt')
+    # List all files in the script's directory
+    files = os.listdir(script_directory)
 
-    Maintenance.make_dir(sunspot_path)
-    Maintenance.erase_log(log_path)
-    Maintenance.erase_csv(csv_path)
-    pictures = [pic for pic in os.listdir(folder_path) if pic.endswith(".jpg")]
-    x=0
+    # Find the first file with a common image extension (e.g., jpg, png)
+    image_extensions = ['.jpg', '.jpeg', '.png', '.gif']  # Add more if needed
 
-    for pic in tqdm(os.listdir(folder_path), total=len(os.listdir(folder_path))):
-        # process only every ...th picture
-        if x==0:
-            # repeat code for every image in folder
-            try:
-                picture_day = Reading.get_day_from_image(pic) #yyyymmdd
-                
-                picture_time = Reading.get_time_from_csv(picture_day, 'Ondrejov_data_kresba.CSV') #hhmmss
-                global picture_date
-                picture_date = picture_day+ picture_time #yyyymmmddhhmmss
-                picture_full_path=folder_path+'/'+picture_day[2:]+'dr.jpg' #picture_day[2:] for format yymmdd
-                
-                picture = Image.open(picture_full_path)
-                picture = Adjustment.resize_PIL(picture, sunspot_path)
-                picture = Maintenance.PIL_to_cv2(picture)
-                picture = Adjustment.center_the_image_cv2(picture, sunspot_path)
-                cv2.imwrite('temp.png', picture)
-                picture = Maintenance.cv2_to_PIL(picture)
-                picture = Adjustment.remove_tables_PIL(picture)
-                picture = Maintenance.PIL_to_cv2(picture)
-                #cv2.imwrite(os.path.join(mask_dir, pic), picture)
-                enhanced_picture = Adjustment.enhance_image_cv2(picture)
-                Calculations.find_rectangles(enhanced_picture,picture,visualisation=visualisation)
-                #saveing every sunspot groop              
-            except Exception as e:
-                log_file = open(log_path, 'a', encoding='utf-8')
-                log_file.write(f'Obrázek {pic} nemohl být zpracován protože vyhodil chybu: {e}\n')
-                log_file.close()
-            x=0
+    for file in files:
+        if any(file.lower().endswith(ext) for ext in image_extensions):
+            image_file_path = os.path.join(script_directory, file)
+            break
         else:
-            x+=1
+            print('no image')
+    # Open the image using PIL
+    picture = Image.open(image_file_path)
+
+    picture = Adjustment.resize_PIL(picture)
+    picture = Maintenance.PIL_to_cv2(picture)
+    picture = Adjustment.center_the_image_cv2(picture)
+    picture = Maintenance.cv2_to_PIL(picture)
+    picture = Adjustment.remove_tables_PIL(picture)
+    picture = Maintenance.PIL_to_cv2(picture)
+
+    enhanced_picture = Adjustment.enhance_image_cv2(picture)
+    Calculations.find_rectangles(enhanced_picture,picture)
+
+
+
+
+
+
+
+#end of extract sunspots
