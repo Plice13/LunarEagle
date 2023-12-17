@@ -8,10 +8,10 @@ def organize_files(source_folder, destination_folder):
         # Check if it's a directory
         if os.path.isdir(item_path):
             # Get the first letter of the directory
-            first_letter = item[0].upper()
+            middle_letter = item[1]
 
             # Create a destination directory if it doesn't exist
-            dest_dir = os.path.join(destination_folder, first_letter)
+            dest_dir = os.path.join(destination_folder, middle_letter)
             if not os.path.exists(dest_dir):
                 os.makedirs(dest_dir)
 
@@ -22,6 +22,6 @@ def organize_files(source_folder, destination_folder):
 
 if __name__ == "__main__":
     source_folder = r"C:\Users\PlicEduard\AI2\classes\small"  # Replace with the path to your source folder
-    destination_folder = r"C:\Users\PlicEduard\AI2\classes\sAB"  # Replace with the path to your destination folder
+    destination_folder = r"C:\Users\PlicEduard\AI2\classes\shko"  # Replace with the path to your destination folder
 
     organize_files(source_folder, destination_folder)

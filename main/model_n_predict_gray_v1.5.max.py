@@ -162,7 +162,7 @@ def get_parameters(path_base, bs, scalable_factor=1):
 
 if __name__=='__main__':
     # set up
-    main_dir = r'C:\Users\PlicEduard\AI2\a_h_k_r_s_x_80_8'
+    main_dir = r'C:\Users\PlicEduard\AI2\a_h_k_r_s_x_0_0'
     train_dir = os.path.join(main_dir, 'train')
     val_dir = os.path.join(main_dir, 'val')
     test_dir = os.path.join(main_dir, 'test')
@@ -173,6 +173,8 @@ if __name__=='__main__':
     classes, number_of_classes, vs, spe = get_parameters(os.path.basename(main_dir), bs, scalable_factor=scalable_factor)
     max_counter = 300 
     layers_string = '3L(32,16,8)-32'
+    vs = 60
+    spe = 30
 
     # make model
     model = build_and_config_model(number_of_classes)
@@ -208,18 +210,18 @@ if __name__=='__main__':
         # if val_loss is low, save model
         best_val_loss = min(val_loss_list)
         if best_val_loss == val_loss_list[-1]:
-            model_name = f'model_bw_{classes}__e-{counter}_spe-{spe}_vspe-{vs}_bs-{bs}_{layers_string}_loss-{round(val_loss_list[-1],6)}.h5'
+            model_name = f'model_bw__e-{counter}_spe-{spe}_vspe-{vs}_bs-{bs}_{layers_string}_loss-{round(val_loss_list[-1],6)}.h5'
             model.save(os.path.join(main_dir, model_name))
 
         if counter == 68:
-            model_name = f'model_bw_{classes}__e-{counter}_spe-{spe}_vspe-{vs}_bs-{bs}_{layers_string}_loss-{round(val_loss_list[-1],6)}.h5'
+            model_name = f'model_bw__e-{counter}_spe-{spe}_vspe-{vs}_bs-{bs}_{layers_string}_loss-{round(val_loss_list[-1],6)}.h5'
             model.save(os.path.join(main_dir, model_name))
 
         counter+=1
 
     # save model
     print(f'\n Final list was:\n {val_loss_list}')
-    model_name = f'end_of_model_bw_{classes}_e-{counter}_spe-{spe}_vspe-{vs}_bs-{bs}_{layers_string}_loss-{round(val_loss_list[-1],6)}.h5'
+    model_name = f'end_of_model_bw__e-{counter}_spe-{spe}_vspe-{vs}_bs-{bs}_{layers_string}_loss-{round(val_loss_list[-1],6)}.h5'
     model.save(os.path.join(main_dir, model_name))
 
     # plot results
@@ -230,7 +232,7 @@ if __name__=='__main__':
     # load model
     best_epoch = val_loss_list.index(min(val_loss_list))
     best_val_loss = min(val_loss_list)
-    model_name = f'model_bw_{classes}__e-{best_epoch + 1}_spe-{spe}_vspe-{vs}_bs-{bs}_{layers_string}_loss-{round(best_val_loss, 6)}.h5'
+    model_name = f'model_bw__e-{best_epoch + 1}_spe-{spe}_vspe-{vs}_bs-{bs}_{layers_string}_loss-{round(best_val_loss, 6)}.h5'
     model = keras.models.load_model(os.path.join(main_dir, model_name))
 
     #test model

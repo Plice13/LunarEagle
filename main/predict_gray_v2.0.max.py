@@ -7,13 +7,11 @@ from PIL import Image
 from sklearn.metrics import confusion_matrix
 
 # Load the model
-samples_dir = r'C:\Users\PlicEduard\AI2\a_h_k_r_s_x_80_8\test'
-model_dir = r'C:\Users\PlicEduard\AI2\a_h_k_r_s_x_0_0'
+samples_dir = r'C:\Users\PlicEduard\AI2\Axx_Bxi_Bxo_Cai_Cao_Chi_Cho_Cki_Cko_Cri_Cro_Csi_Cso_Dac_Dai_Dao_Dhi_Dkc_Dki_Dko_Dri_Dro_Dsc_Dsi_Dso_Eac_Eai_Ekc_Eki_Eko_Esc_Esi_Fac_Fkc_Fki_Hax_Hhx_Hkx_Hrx_Hsx_0_0\test'
+model_dir = r'C:\Users\PlicEduard\AI2\Axx_Bxi_Bxo_Cai_Cao_Chi_Cho_Cki_Cko_Cri_Cro_Csi_Cso_Dac_Dai_Dao_Dhi_Dkc_Dki_Dko_Dri_Dro_Dsc_Dsi_Dso_Eac_Eai_Ekc_Eki_Eko_Esc_Esi_Fac_Fkc_Fki_Hax_Hhx_Hkx_Hrx_Hsx_0_0'
 #classes = ['c','i','o','x']
-#classes = ['A', 'B', 'C', 'D', 'E', 'F', 'H']
-classes = ['a', 'h', 'k', 'r', 's', 'x']
-
-print(classes)
+šclasses = ['A', 'B', 'C', 'D', 'E', 'F', 'H']
+classes = ['Axx','Bxi','Bxo','Cai','Cao','Chi','Cho','Cki','Cko','Cri','Cro','Csi','Cso','Dac','Dai','Dao','Dhi','Dkc','Dki','Dko','Dri','Dro','Dsc','Dsi','Dso','Eac','Eai','Ekc','Eki','Eko','Esc','Esi','Fac','Fkc','Fki','Hax','Hhx','Hkx','Hrx','Hsx']
 
 model_files = [model for model in os.listdir(model_dir) if model.endswith('.h5')]
 for model_file in model_files:
@@ -50,10 +48,19 @@ for model_file in model_files:
     # Calculate confusion matrix
     cm = confusion_matrix(true_labels, predicted_labels)
 
+    cm = np.array(cm)
+    np.set_printoptions(threshold=np.inf)
+
     # Print confusion matrix
     print(cm)
 
     # Process predictions for each image
+    good_1_predict = 0
+    bad_1_predict = 0
+    good_2_predict = 0
+    bad_2_predict = 0
+    good_3_predict = 0
+    bad_3_predict = 0
     good_predict = 0
     bad_predict = 0
     for i, (path, predictions) in enumerate(zip(image_paths, predictions_batch)):
@@ -63,17 +70,38 @@ for model_file in model_files:
 
         # process path
         filename = (os.path.normpath(path).split(os.path.sep)[-2])
+
+        # first
+        if filename[0] == predicted_class[0]:
+            good_1_predict += 1
+        else:
+            bad_1_predict += 1
+
+
+        # middle
+        if filename[1] == predicted_class[1]:
+            good_2_predict += 1
+        else:
+            bad_2_predict += 1
+
+        # last
+        if filename[2] == predicted_class[2]:
+            good_3_predict += 1
+        else:
+            bad_3_predict += 1
+
         if filename == predicted_class:
             good_predict += 1
         else:
             bad_predict += 1
 
+    total_1_accuracy = good_1_predict / (good_1_predict + bad_1_predict)
+    total_2_accuracy = good_2_predict / (good_2_predict + bad_2_predict)
+    total_3_accuracy = good_3_predict / (good_3_predict + bad_3_predict)
     total_accuracy = good_predict / (good_predict + bad_predict)
+
+
     print(f'Model {model_file} je správně z {total_accuracy*100:.2f} %')
-
-    # Extract the model file name
-    model_filename = os.path.basename(model_file)
-
-    # Rename the model file
-    new_model_filename = f"{total_accuracy:.4f}_{model_filename}"
-    os.rename(os.path.join(model_dir, model_file), os.path.join(model_dir, new_model_filename))
+    print(f'Model {model_file} má správné první písmeno z {total_1_accuracy*100:.2f} %')
+    print(f'Model {model_file} má správné prostřední písmeno z {total_2_accuracy*100:.2f} %')
+    print(f'Model {model_file} má správné poslední písmeno z {total_3_accuracy*100:.2f} %')
