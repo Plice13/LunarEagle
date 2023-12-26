@@ -172,7 +172,7 @@ if __name__=='__main__':
     bs = 32
     classes, number_of_classes, vs, spe = get_parameters(os.path.basename(main_dir), bs, scalable_factor=scalable_factor)
     max_counter = 300 
-    layers_string = '3L(32,16,8)-32'
+    layers_string = '5L(128(5X5),64(4X4),32,16,8)-32'
 
     # make model
     model = build_and_config_model(number_of_classes)

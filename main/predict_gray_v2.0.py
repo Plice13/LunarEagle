@@ -7,11 +7,12 @@ from PIL import Image
 from sklearn.metrics import confusion_matrix
 
 # Load the model
-samples_dir = r'C:\Users\PlicEduard\AI2\a_h_k_r_s_x_80_8\test'
-model_dir = r'C:\Users\PlicEduard\AI2\a_h_k_r_s_x_0_0'
+samples_dir = r'C:\Users\PlicEduard\AI2\A_B_C_DEF_H_0_0\test'
+model_dir = r'C:\Users\PlicEduard\AI2\A_B_C_DEF_H_0_0'
 #classes = ['c','i','o','x']
 #classes = ['A', 'B', 'C', 'D', 'E', 'F', 'H']
-classes = ['a', 'h', 'k', 'r', 's', 'x']
+#classes = ['a', 'h', 'k', 'r', 's', 'x']
+classes = ['A', 'B', 'C', 'DEF', 'H']
 
 print(classes)
 

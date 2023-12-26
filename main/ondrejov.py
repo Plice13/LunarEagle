@@ -11,6 +11,7 @@ import math
 import sunpy.coordinates
 from datetime import datetime
 import csv
+import shutil
 
 class Maintenance:
     def make_dir(path):
@@ -199,15 +200,15 @@ class Adjustment:
 
 class Calculations:
     def find_rectangles(enhanced, base, visualisation=False):
+        base_for_show = base.copy()
         # some more adjustments
         thresh = cv2.adaptiveThreshold(enhanced, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 11, 2)
         contours, hierarchy = cv2.findContours(thresh, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
-
         # scanning contours
         for i, cnt in enumerate(contours):
+            cv2.drawContours(base_for_show, [cnt], -1, (0, 122, 122), 1)
+
             approx = cv2.approxPolyDP(cnt, 0.01 * cv2.arcLength(cnt, True), True)
-            if visualisation == True:
-                cv2.drawContours(base, [cnt], -1, (0, 0, 122), 1)
             if len(approx) == 4:
                 x, y, w, h = cv2.boundingRect(approx)
                 if 10 < w < 1000 and 10 < h < 1000:
@@ -218,7 +219,11 @@ class Calculations:
                     if pravdivovost == True:
                         pravdivost, value = Calculations.is_thin(approx)
                         if pravdivost == False:
-                            filename = os.path.join(r'C:\Users\PlicEduard\program', f'skvrna_{i}.png')
+                            #draw contours to display
+                            cv2.drawContours(base_for_show, [cnt], -1, (0, 0, 122), 3)
+
+
+                            filename = os.path.join(image_directory, f'skvrna_{i+100}.png')
                             print(filename)
                             #techtle mechtle s maskou
                             x_middle_of_roi = int(x+w/2)
@@ -233,11 +238,12 @@ class Calculations:
                             roi_small = roi_whole_image[y_middle_of_roi-150:y_middle_of_roi+150, x_middle_of_roi-150:x_middle_of_roi+150]
 
                             cv2.imwrite(filename, roi_small)
-
-        if visualisation == True:
-            cv2.imshow("base", base)
-            cv2.waitKey(0)
-            cv2.destroyAllWindows()
+        
+        '''base_for_show = cv2.resize(base_for_show, (1000,900), interpolation = cv2.INTER_AREA)
+        cv2.imshow('Detekované kontury',base_for_show)
+        cv2.waitKey()
+        cv2.destroyAllWindows()
+        '''
 
     def is_thin(approx, boundary=28):
         try:
@@ -314,7 +320,12 @@ class Reading:
 if __name__=='__main__':
     # Get the current script's directory
     script_directory = os.path.dirname(os.path.abspath(__file__))
-
+    image_directory = r'C:\Users\PlicEduard\program'
+    try:
+        shutil.rmtree(image_directory)
+    except:
+        pass
+    os.makedirs(image_directory)
     # List all files in the script's directory
     files = os.listdir(script_directory)
 
@@ -340,10 +351,91 @@ if __name__=='__main__':
     enhanced_picture = Adjustment.enhance_image_cv2(picture)
     Calculations.find_rectangles(enhanced_picture,picture)
 
+    #end of extract sunspots
+
+    #postprocessing image
+
+    ##remove orange
+    LOWER = np.array([0, 0, 200])
+    UPPER = np.array([255, 255, 255])  # Adjust upper range to cover more shades of orange
+    for file in os.listdir(image_directory):
+        if file.endswith(('.png', '.jpg', '.jpeg')):  # Add more extensions if needed
+            img_path = os.path.join(image_directory, file)
+            im = cv2.imread(img_path)
+            im_hsv = cv2.cvtColor(im, cv2.COLOR_BGR2HSV)
+            mask = cv2.inRange(im_hsv, LOWER, UPPER)
+            # Replace orange regions with white
+            im_filtered = im.copy()
+            im_filtered[mask > 0] = [255, 255, 255]
+            im_filtered = 255 - im_filtered
+            cv2.imwrite(img_path, im_filtered)
 
 
 
 
 
 
-#end of extract sunspots
+
+
+
+
+
+
+
+
+    #end of postprocessing image
+
+
+    #starting model
+    import os
+
+    from tensorflow.keras.models import load_model
+    from tensorflow.keras.preprocessing import image
+    import numpy as np
+    from PIL import Image
+    from sklearn.metrics import confusion_matrix
+
+    # Load the model
+    samples_dir = image_directory
+    model_dir = script_directory
+    classes = ['c','i','o','x']
+    #classes = ['A', 'B', 'C', 'D', 'E', 'F', 'H']
+    #classes = ['a', 'h', 'k', 'r', 's', 'x']
+    #classes = ['A', 'B', 'C', 'DEF', 'H']
+    #classes = ['Axx','Bxi','Bxo','Cai','Cao','Chi','Cho','Cki','Cko','Cri','Cro','Csi','Cso','Dac','Dai','Dao','Dhi','Dkc','Dki','Dko','Dri','Dro','Dsc','Dsi','Dso','Eac','Eai','Ekc','Eki','Eko','Esc','Esi','Fac','Fkc','Fki','Hax','Hhx','Hkx','Hrx','Hsx']
+
+    model_files = [model for model in os.listdir(model_dir) if model.endswith('.h5')]
+    model_file = model_files[0]
+    print(f'Nalezeno celkem {len(model_files)} modelů ve složce, bude používán model: {model_file}')
+    model = load_model(os.path.join(model_dir, model_file))
+
+    # Folder containing the images
+    image_folder = samples_dir
+
+    # Get a list of all files in the folder
+    image_paths = [os.path.join(root, file) for root, dirs, files in os.walk(image_folder) for file in files if file.endswith(('png', 'jpg', 'jpeg'))]
+
+    # Load and preprocess the images, converting to grayscale
+    images = [Image.open(path).convert('L').resize((300, 300)) for path in image_paths]
+    image_arrays = [np.array(img) / 255.0 for img in images]
+    image_arrays = np.array(image_arrays)
+
+    # Add a channel dimension if the model expects input shape (None, 300, 300, 1)
+    if model.input_shape[-1] == 1:
+        image_arrays = np.expand_dims(image_arrays, axis=-1)
+
+    # Make batch predictions
+    predictions_batch = model.predict(image_arrays)
+    print(predictions_batch)
+
+
+    for i, (path, predictions) in enumerate(zip(image_paths, predictions_batch)):
+        class_index = np.argmax(predictions)
+        predicted_class = classes[class_index]
+        confidence = predictions[class_index]
+
+        # process path
+        base, filename = os.path.split(path)
+        print(f'Přejmenování souboru {filename} na predikovanou třídu {predicted_class} s přesností {confidence}.')
+        os.rename(os.path.join(base, filename), os.path.join(base, f'{predicted_class}_{filename}.png'))
+

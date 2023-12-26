@@ -126,7 +126,7 @@ def build_and_config_model(number_of_classes):
     ###-----Build Your Model------###
     model = models.Sequential()
 
-    model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(300, 300, 1)))  # Change input shape to (300, 300, 1)
+    model.add(layers.Conv2D(32, (4, 4), activation='relu', input_shape=(300, 300, 1)))  # Change input shape to (300, 300, 1)
     model.add(layers.MaxPooling2D((2, 2)))
      
     model.add(layers.Conv2D(16, (3, 3), activation='relu'))
@@ -162,7 +162,7 @@ def get_parameters(path_base, bs, scalable_factor=1):
 
 if __name__=='__main__':
     # set up
-    main_dir = r'C:\Users\PlicEduard\AI2\a_h_k_r_s_x_0_0'
+    main_dir = r'C:\Users\PlicEduard\AI2\A_B_C_DEF_H_0_0'
     train_dir = os.path.join(main_dir, 'train')
     val_dir = os.path.join(main_dir, 'val')
     test_dir = os.path.join(main_dir, 'test')
@@ -171,8 +171,8 @@ if __name__=='__main__':
     scalable_factor = 1
     bs = 32
     classes, number_of_classes, vs, spe = get_parameters(os.path.basename(main_dir), bs, scalable_factor=scalable_factor)
-    max_counter = 300 
-    layers_string = '3L(32,16,8)-32'
+    max_counter = 200 
+    layers_string = '3L(32(4X4),16,8)-32'
     vs = 60
     spe = 30
 
@@ -213,7 +213,7 @@ if __name__=='__main__':
             model_name = f'model_bw__e-{counter}_spe-{spe}_vspe-{vs}_bs-{bs}_{layers_string}_loss-{round(val_loss_list[-1],6)}.h5'
             model.save(os.path.join(main_dir, model_name))
 
-        if counter == 68:
+        if counter%15 == 0:
             model_name = f'model_bw__e-{counter}_spe-{spe}_vspe-{vs}_bs-{bs}_{layers_string}_loss-{round(val_loss_list[-1],6)}.h5'
             model.save(os.path.join(main_dir, model_name))
 

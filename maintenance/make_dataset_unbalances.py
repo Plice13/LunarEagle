@@ -52,7 +52,7 @@ def process_folders(main_folder, dest_prefolder):
             print(f"Processing subfolder: {subfolder}")
             split_data(subfolder_path, dest_folder, subfolder)
 
-main_folder = r"C:\Users\PlicEduard\AI2\classes\shko"
+main_folder = r"C:\Users\PlicEduard\AI2\classes\ABCdefH"
 dest_prefolder = r"C:\Users\PlicEduard\AI2"
 
 process_folders(main_folder, dest_prefolder)
