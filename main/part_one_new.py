@@ -333,9 +333,9 @@ if __name__ == '__main__':
     visualisation = False
 
     folder_path = r'C:\Users\PlicEduard\ondrejov'
-    sunspot_path = r'C:\Users\PlicEduard\sunspots\sunspots_znovu'
+    sunspot_path = r'C:\Users\PlicEduard\sunspots\sunspots_znovu_znovu'
     csv_path = os.path.join(sunspot_path, 'csv.csv')
-    log_path = os.path.join(sunspot_path, 'log_wo_mask_more1.txt')
+    log_path = os.path.join(sunspot_path, 'log.txt')
 
     Maintenance.make_dir(sunspot_path)
     Maintenance.erase_log(log_path)
@@ -359,7 +359,6 @@ if __name__ == '__main__':
                 picture = Adjustment.resize_PIL(picture, sunspot_path)
                 picture = Maintenance.PIL_to_cv2(picture)
                 picture = Adjustment.center_the_image_cv2(picture, sunspot_path)
-                cv2.imwrite('temp.png', picture)
                 picture = Maintenance.cv2_to_PIL(picture)
                 picture = Adjustment.remove_tables_PIL(picture)
                 picture = Maintenance.PIL_to_cv2(picture)

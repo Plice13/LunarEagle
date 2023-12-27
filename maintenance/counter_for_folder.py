@@ -14,5 +14,5 @@ def zobraz_pocet_souboru_v_slozkach(hlavni_slozka):
             print(f"Složka {polozka} obsahuje {pocet_souboru} souborů.")
             os.rename(cesta_k_polozce, os.path.join(hlavni_slozka, str(pocet_souboru)+'_'+polozka))
 # Zadejte cestu k hlavní složce, ve které chcete zjistit počet souborů v podadresářích
-hlavni_slozka = r'C:\Users\PlicEduard\AI2\classes\ABCdefH'
+hlavni_slozka = r'C:\Users\PlicEduard\AI2\classes\none\znovu - Copy'
 zobraz_pocet_souboru_v_slozkach(hlavni_slozka)

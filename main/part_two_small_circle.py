@@ -156,11 +156,11 @@ if __name__ == '__main__':
     sleep_duration = 4 * 60 * 60  # 4 hours in seconds
     time.sleep(sleep_duration)
 
-    sunspot_path = r'C:\Users\PlicEduard\sunspots\sunspots_small'
-    save_path = r'C:\Users\PlicEduard\clasifics\small'
+    sunspot_path = r'C:\Users\PlicEduard\sunspots\sunspots_znovu_znovu'
+    save_path = r'C:\Users\PlicEduard\clasifics\znovu_znovu'
     Maintenance.make_dir(save_path)
 
-    log_path = os.path.join(save_path, 'log_wo_mask_more.txt')
+    log_path = os.path.join(save_path, 'loggg.txt')
 
     Maintenance.erase_log(log_path)
 

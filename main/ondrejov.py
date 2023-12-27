@@ -239,11 +239,11 @@ class Calculations:
 
                             cv2.imwrite(filename, roi_small)
         
-        '''base_for_show = cv2.resize(base_for_show, (1000,900), interpolation = cv2.INTER_AREA)
+        base_for_show = cv2.resize(base_for_show, (1000,900), interpolation = cv2.INTER_AREA)
         cv2.imshow('Detekované kontury',base_for_show)
         cv2.waitKey()
         cv2.destroyAllWindows()
-        '''
+        
 
     def is_thin(approx, boundary=28):
         try:
@@ -394,48 +394,59 @@ if __name__=='__main__':
     import numpy as np
     from PIL import Image
     from sklearn.metrics import confusion_matrix
+    import re
+
 
     # Load the model
     samples_dir = image_directory
     model_dir = script_directory
-    classes = ['c','i','o','x']
+    #classes = ['c','i','o','x']
     #classes = ['A', 'B', 'C', 'D', 'E', 'F', 'H']
     #classes = ['a', 'h', 'k', 'r', 's', 'x']
     #classes = ['A', 'B', 'C', 'DEF', 'H']
     #classes = ['Axx','Bxi','Bxo','Cai','Cao','Chi','Cho','Cki','Cko','Cri','Cro','Csi','Cso','Dac','Dai','Dao','Dhi','Dkc','Dki','Dko','Dri','Dro','Dsc','Dsi','Dso','Eac','Eai','Ekc','Eki','Eko','Esc','Esi','Fac','Fkc','Fki','Hax','Hhx','Hkx','Hrx','Hsx']
 
     model_files = [model for model in os.listdir(model_dir) if model.endswith('.h5')]
-    model_file = model_files[0]
-    print(f'Nalezeno celkem {len(model_files)} modelů ve složce, bude používán model: {model_file}')
-    model = load_model(os.path.join(model_dir, model_file))
+    #model_file = model_files[0]
+    #print(f'Nalezeno celkem {len(model_files)} modelů ve složce, bude používán model: {model_file}')
+    for model_file in model_files:
+        print(f'\n\n\nbude používán model: {model_file}')
+        model = load_model(os.path.join(model_dir, model_file))
+        # get classes
+        match = re.search(r"\['(.*?)'\]", model_file)
+        letter_list_str = match.group(1)
+        letter_list = [letter.strip() for letter in letter_list_str.split(',')]
+        classes = [s.strip("'") for s in letter_list]
 
-    # Folder containing the images
-    image_folder = samples_dir
+        print(classes)
 
-    # Get a list of all files in the folder
-    image_paths = [os.path.join(root, file) for root, dirs, files in os.walk(image_folder) for file in files if file.endswith(('png', 'jpg', 'jpeg'))]
+        # Folder containing the images
+        image_folder = samples_dir
 
-    # Load and preprocess the images, converting to grayscale
-    images = [Image.open(path).convert('L').resize((300, 300)) for path in image_paths]
-    image_arrays = [np.array(img) / 255.0 for img in images]
-    image_arrays = np.array(image_arrays)
+        # Get a list of all files in the folder
+        image_paths = [os.path.join(root, file) for root, dirs, files in os.walk(image_folder) for file in files if file.endswith(('png', 'jpg', 'jpeg'))]
 
-    # Add a channel dimension if the model expects input shape (None, 300, 300, 1)
-    if model.input_shape[-1] == 1:
-        image_arrays = np.expand_dims(image_arrays, axis=-1)
+        # Load and preprocess the images, converting to grayscale
+        images = [Image.open(path).convert('L').resize((300, 300)) for path in image_paths]
+        image_arrays = [np.array(img) / 255.0 for img in images]
+        image_arrays = np.array(image_arrays)
 
-    # Make batch predictions
-    predictions_batch = model.predict(image_arrays)
-    print(predictions_batch)
+        # Add a channel dimension if the model expects input shape (None, 300, 300, 1)
+        if model.input_shape[-1] == 1:
+            image_arrays = np.expand_dims(image_arrays, axis=-1)
+
+        # Make batch predictions
+        predictions_batch = model.predict(image_arrays)
+        print(predictions_batch)
 
 
-    for i, (path, predictions) in enumerate(zip(image_paths, predictions_batch)):
-        class_index = np.argmax(predictions)
-        predicted_class = classes[class_index]
-        confidence = predictions[class_index]
+        for i, (path, predictions) in enumerate(zip(image_paths, predictions_batch)):
+            class_index = np.argmax(predictions)
+            predicted_class = classes[class_index]
+            confidence = predictions[class_index]
 
-        # process path
-        base, filename = os.path.split(path)
-        print(f'Přejmenování souboru {filename} na predikovanou třídu {predicted_class} s přesností {confidence}.')
-        os.rename(os.path.join(base, filename), os.path.join(base, f'{predicted_class}_{filename}.png'))
+            # process path
+            base, filename = os.path.split(path)
+            print(f'Přejmenování souboru {filename} na predikovanou třídu {predicted_class} s přesností {confidence}.')
+            os.rename(os.path.join(base, filename), os.path.join(base, f'{predicted_class}{filename}'))
 

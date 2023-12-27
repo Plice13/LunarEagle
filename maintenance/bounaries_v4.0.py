@@ -85,7 +85,7 @@ def process_single_image(image_path, csv_path):
     else:
         print(f"The image filename {image_search_part} does not exist in the CSV.")
 
-csv_path = r"C:\Users\PlicEduard\sunspots\sunspots_small\csv.csv"
-folder_path = r"C:\Users\PlicEduard\AI2\classes\small"
+csv_path = r"C:\Users\PlicEduard\sunspots\sunspots_csv\csv.csv"
+folder_path = r"C:\Users\PlicEduard\AI2\classes\bigAB"
 
 process_images_in_folder(folder_path, csv_path)
