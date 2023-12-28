@@ -54,7 +54,7 @@ def delete_first_image_in_pairs(image_folder, similar_pairs):
         print(f"The image {base_filename.split('__')[0]} has been deleted.")
 
 # Replace 'path_to_image_folder' with the actual path
-main_folder = r"C:\Users\PlicEduard\clasifics\small"
+main_folder = r"C:\Users\PlicEduard\clasifics\znovu_znovu"
 
 process_folders(main_folder)
 

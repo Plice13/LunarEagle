@@ -83,7 +83,6 @@ def test_model(model):
     cm = confusion_matrix(true_labels, predicted_labels)
 
     # Print confusion matrix
-    print(cm)
 
     # Process predictions for each image
     good_predict = 0
@@ -102,7 +101,7 @@ def test_model(model):
         print(f"{filename} - Predict: {predicted_class}, Confidence: {confidence:.4f}")
     total_accuracy = good_predict/(good_predict+bad_predict)
     print(f'Model je správně z {total_accuracy*100} %')
-
+    print(cm)
     os.path.join(main_dir, model_name)
     os.rename(os.path.join(main_dir, model_name), os.path.join(main_dir, f"{total_accuracy:.4f}_{model_name}"))
 
@@ -131,7 +130,7 @@ def build_and_config_model(number_of_classes):
      
     model.add(layers.Conv2D(16, (3, 3), activation='relu'))
     model.add(layers.MaxPooling2D((2, 2)))
-
+    
     model.add(layers.Conv2D(8, (3, 3), activation='relu'))
     model.add(layers.MaxPooling2D((2, 2)))
 
@@ -162,7 +161,7 @@ def get_parameters(path_base, bs, scalable_factor=1):
 
 if __name__=='__main__':
     # set up
-    main_dir = r'C:\Users\PlicEduard\AI2\A_B_C_DEF_H_0_0'
+    main_dir = r'C:\Users\PlicEduard\AI3_full_circle\c_i_o_x_0_0'
     train_dir = os.path.join(main_dir, 'train')
     val_dir = os.path.join(main_dir, 'val')
     test_dir = os.path.join(main_dir, 'test')

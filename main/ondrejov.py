@@ -223,7 +223,7 @@ class Calculations:
                             cv2.drawContours(base_for_show, [cnt], -1, (0, 0, 122), 3)
 
 
-                            filename = os.path.join(image_directory, f'skvrna_{i+100}.png')
+                            filename = os.path.join(image_directory, f'_skvrna_{i+100}.png')
                             print(filename)
                             #techtle mechtle s maskou
                             x_middle_of_roi = int(x+w/2)

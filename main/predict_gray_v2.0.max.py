@@ -51,8 +51,6 @@ for model_file in model_files:
     cm = np.array(cm)
     np.set_printoptions(threshold=np.inf)
 
-    # Print confusion matrix
-    print(cm)
 
     # Process predictions for each image
     good_1_predict = 0
@@ -105,3 +103,5 @@ for model_file in model_files:
     print(f'Model {model_file} má správné první písmeno z {total_1_accuracy*100:.2f} %')
     print(f'Model {model_file} má správné prostřední písmeno z {total_2_accuracy*100:.2f} %')
     print(f'Model {model_file} má správné poslední písmeno z {total_3_accuracy*100:.2f} %')
+    # Print confusion matrix
+    print(cm)
