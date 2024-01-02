@@ -330,10 +330,10 @@ class Reading:
 
 
 if __name__ == '__main__':
-    visualisation = False
+    visualisation = True
 
     folder_path = r'C:\Users\PlicEduard\ondrejov'
-    sunspot_path = r'C:\Users\PlicEduard\sunspots\sunspots_znovu_znovu'
+    sunspot_path = r'C:\Users\PlicEduard\sunspots\sunspots_ondrejov'
     csv_path = os.path.join(sunspot_path, 'csv.csv')
     log_path = os.path.join(sunspot_path, 'log.txt')
 

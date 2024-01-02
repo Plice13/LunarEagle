@@ -1,5 +1,3 @@
-#start of extract sunspots
-
 import os
 from tqdm import tqdm
 import cv2
@@ -14,11 +12,32 @@ import csv
 import shutil
 
 class Maintenance:
+    def show_image(picture, name='resized_picture', screen=1, final_height=None):
+        #screen 0 notebook, screen 1 monitor
+        height, width = picture.shape[:2]
+        if final_height == None:
+            if screen == 0:
+                final_height=750
+            else:
+                final_height=1000
+            final_dimension=(round((final_height/height)*width),final_height)
+        else:
+            final_dimension=(round((final_height/height)*width),final_height)
+        
+        resized_picture = cv2.resize(picture, dsize=final_dimension)
+        cv2.imshow(name, resized_picture)
+        cv2.waitKey()
+        Maintenance.make_dir(os.path.join(sunspot_path, 'visualization'))
+        cv2.imwrite(os.path.join(sunspot_path, f'visualization/{name}.png'), resized_picture)
+        cv2.destroyWindow(name)
+
     def make_dir(path):
         if not os.path.exists(path):
-            print(path)
-            # If it doesn't exist, create the directory
             os.makedirs(path)
+
+    def remove_dir(path):
+        if os.path.exists(path):
+            shutil.rmtree(path)
 
     def erase_log(log_path):
         log_file = open(log_path, 'w')
@@ -44,12 +63,13 @@ class Maintenance:
         # Převeďte na základní desetinný tvar ve stupních
         decimal_degrees = degrees + minutes / 60 + seconds / 3600
         return decimal_degrees
+    
     def erase_csv(csv_path):
         with open(csv_path, 'w', newline='') as csvfile:
             csvwriter = csv.writer(csvfile)
 
 class Adjustment:
-    def resize_PIL(img):
+    def resize_PIL(img, save_folder_path):
         # Resize image to width 2000 while maintaining the aspect ratio
         basewidth = 2000
         width_scale = basewidth / float(img.size[0])
@@ -69,9 +89,10 @@ class Adjustment:
         # Save the new image
         #save_path = os.path.join(save_folder_path, f"resized_{picture_date}.jpg")
         #background.save(save_path)
+        Maintenance.show_image(picture=Maintenance.PIL_to_cv2(background), name='1_resized')
         return background
 
-    def center_the_image_cv2(image_cv2, visualisation=False):
+    def center_the_image_cv2(image_cv2, save_folder_path, visualisation=False):
         x_move, y_move = Adjustment.find_circles_in_image_cv2(image_cv2, visualisation=visualisation)
         image_PIL = Maintenance.cv2_to_PIL(image_cv2)
         image_PIL = Adjustment.move_image_PIL(image_PIL, x_move, y_move)
@@ -95,6 +116,7 @@ class Adjustment:
 
         # find big circle
         circles = cv2.HoughCircles(gray, cv2.HOUGH_GRADIENT, dp=1, minDist=2, param1=1, param2=40, minRadius=730, maxRadius=800)
+        visualisation_image = image.copy()
         if circles is not None:
             circles = np.round(circles[0, :]).astype("int")
             for (x, y, r) in circles:
@@ -102,27 +124,25 @@ class Adjustment:
                 y_list.append(y)    
                 r_list.append(r)
                 if visualisation == True:
-                    cv2.circle(image, (x, y), r, (0, 255, 0), 1)
-                    cv2.circle(image, (x, y), radius=2, color=(0, 128, 255), thickness=-1)
+                    cv2.circle(visualisation_image, (x, y), r, (0, 255, 0), 1)
+                    cv2.circle(visualisation_image, (x, y), radius=2, color=(0, 128, 255), thickness=-1)
         if visualisation == True:
-            cv2.imshow("image", image)
-            cv2.waitKey(0)
-            cv2.destroyAllWindows()
+            Maintenance.show_image(picture=visualisation_image, name='2_big_circles')
+
 
         # find small circle
         circles = cv2.HoughCircles(gray, cv2.HOUGH_GRADIENT, dp=1, minDist=2, param1=1, param2=40, minRadius=300, maxRadius=400)
+        visualisation_image = image.copy()
         if circles is not None:
             circles = np.round(circles[0, :]).astype("int")
             for (x, y, r) in circles:
                 x_list.append(x)
                 y_list.append(y)    
                 if visualisation == True:
-                    cv2.circle(image, (x, y), r, (255, 0, 0), 1)
-                    cv2.circle(image, (x, y), radius=2, color=(128, 0, 255), thickness=-1)
+                    cv2.circle(visualisation_image, (x, y), r, (255, 0, 0), 1)
+                    cv2.circle(visualisation_image, (x, y), radius=2, color=(128, 0, 255), thickness=-1)
         if visualisation == True:
-            cv2.imshow("image", image)
-            cv2.waitKey(0)
-            cv2.destroyAllWindows()
+            Maintenance.show_image(picture=visualisation_image, name='3_small_circles')
 
         # get center of all circles
         x_med,y_med = (int(statistics.median(x_list)), int(statistics.median(y_list)))
@@ -130,15 +150,15 @@ class Adjustment:
         move_y = int(height/2-y_med)
         r_min = int(min(r_list))
         r_max = int(max(r_list))
+        visualisation_image = image.copy()
         if visualisation == False:    
             pass
             #cv2.circle(image, (x_med,y_med), int(statistics.median(r_list)), (255, 255, 255), int((r_max-r_min)/2)+15)
         else:
-            cv2.circle(image, (x_med,y_med), 4, (0, 0, 255), -1)
-            cv2.circle(image, (x_med,y_med), int(statistics.median(r_list)), (0, 0, 255), int((r_max-r_min)/2)+15)
-            cv2.imshow("image", image)
-            cv2.waitKey(0)
-            cv2.destroyAllWindows()
+            cv2.circle(visualisation_image, (x_med,y_med), 4, (0, 0, 255), -1)
+            cv2.circle(visualisation_image, (x_med,y_med), int(statistics.median(r_list)), (0, 0, 255), int((r_max-r_min)/2)+15)
+            Maintenance.show_image(picture=visualisation_image, name='4_final_circle')
+
 
         return move_x, move_y, 
 
@@ -161,10 +181,9 @@ class Adjustment:
         result = Image.new("RGBA", image_PIL.size)
         result.paste(image_PIL.convert("RGBA"), (0,0))
         result.paste((255,255,255,255), (0, 0), mask)
+
         if visualisation == True:
-            # having the mask purple 
-            result.paste((128,0,128,255), (0, 0), mask)
-            result.show()   
+            Maintenance.show_image(picture=Maintenance.PIL_to_cv2(result), name='5_applied_mask')   
         return result
 
     def enhance_image_cv2(img, visualisation=False):
@@ -176,39 +195,34 @@ class Adjustment:
         mask = cv2.inRange(img, low, high)
         mask = 255 - mask
         if visualisation == True:
-            cv2.imshow("mask", mask)
-            cv2.waitKey(0)
-            cv2.destroyAllWindows()
+            Maintenance.show_image(picture=mask, name='6_grayscale1')
 
         blured = cv2.GaussianBlur(mask,(3,3),cv2.BORDER_DEFAULT)
         if visualisation == True:
-            cv2.imshow("blured", blured)
-            cv2.waitKey(0)
-            cv2.destroyAllWindows()
-
+            Maintenance.show_image(picture=blured, name='7_blured')
 
         mask2 = cv2.inRange(blured, 0, 200)
 
         mask2 = 255 - mask2
         if visualisation == True:
-            cv2.imshow("mask2", mask2)
-            cv2.waitKey(0)
-            cv2.destroyAllWindows()
+            Maintenance.show_image(picture=mask2, name='8_grayscale2')
+
 
 
         return mask2
 
 class Calculations:
     def find_rectangles(enhanced, base, visualisation=False):
-        base_for_show = base.copy()
         # some more adjustments
         thresh = cv2.adaptiveThreshold(enhanced, 255, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 11, 2)
         contours, hierarchy = cv2.findContours(thresh, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+
+        visualisation_image = base.copy()
         # scanning contours
         for i, cnt in enumerate(contours):
-            cv2.drawContours(base_for_show, [cnt], -1, (0, 122, 122), 1)
-
             approx = cv2.approxPolyDP(cnt, 0.01 * cv2.arcLength(cnt, True), True)
+            if visualisation == True:
+                cv2.drawContours(visualisation_image, [cnt], -1, (0, 0, 122), 1)
             if len(approx) == 4:
                 x, y, w, h = cv2.boundingRect(approx)
                 if 10 < w < 1000 and 10 < h < 1000:
@@ -219,31 +233,48 @@ class Calculations:
                     if pravdivovost == True:
                         pravdivost, value = Calculations.is_thin(approx)
                         if pravdivost == False:
-                            #draw contours to display
-                            cv2.drawContours(base_for_show, [cnt], -1, (0, 0, 122), 3)
+                            filename = sunspot_path +'/'+ picture_date +'_'+ str(x)+','+str(y)+','+str(w)+','+str(h)+ '__'+f'cLenght={contour_length}_cArea={contour_area}__tLoustka={value}_uhel={uhel}'+ '.png'
+                            if visualisation == True:
+                                cv2.drawContours(visualisation_image, [cnt], -1, (0, 122, 0), 2)
+                        else:
+                            save_path = sunspot_path +'\deleted\TH'
+                            Maintenance.make_dir(save_path)
+                            filename = save_path+'/'+ picture_date +'_'+ str(x)+','+str(y)+','+str(w)+','+str(h)+ '__'+f'cLenght={contour_length}_cArea={contour_area}'+ '.png'
+                    else:
+                        save_path = sunspot_path +'\deleted\SHAPE'
+                        Maintenance.make_dir(save_path)
+                        filename = save_path+'/'+ picture_date +'_'+ str(x)+','+str(y)+','+str(w)+','+str(h)+ '__'+f'cLenght={contour_length}_cArea={contour_area}'+ '.png'
+                else:
+                    save_path = sunspot_path +'\deleted\WH'
+                    Maintenance.make_dir(save_path)
+                    filename = save_path+'/'+ picture_date+'.png'
 
+                #techtle mechtle s maskou
+                x_middle_of_roi = int(x+w/2)
+                y_middle_of_roi = int(y+h/2)
 
-                            filename = os.path.join(image_directory, f'_skvrna_{(x,y)}.png')
-                            print(filename)
-                            #techtle mechtle s maskou
-                            x_middle_of_roi = int(x+w/2)
-                            y_middle_of_roi = int(y+h/2)
+                with open(csv_path, 'a', newline='') as csvfile:
+                    csvwriter = csv.writer(csvfile)
+                    csvwriter.writerow([picture_date + '_' + str(x) + ',' + str(y) + ',' + str(w) + ',' + str(h),
+                                        str([[int(approx[0][0][0]) - x_middle_of_roi +150, int(approx[0][0][1]) - y_middle_of_roi +150],
+                                        [int(approx[1][0][0]) - x_middle_of_roi +150, int(approx[1][0][1]) - y_middle_of_roi +150],
+                                        [int(approx[2][0][0]) - x_middle_of_roi +150, int(approx[2][0][1]) - y_middle_of_roi +150],
+                                        [int(approx[3][0][0]) - x_middle_of_roi +150, int(approx[3][0][1]) - y_middle_of_roi +150]])])
 
-                            mask = np.zeros_like(base, dtype=np.uint8)
-                            cv2.drawContours(mask, [approx], -1, color=(255,255,255), thickness=cv2.FILLED)                    
-                            mask_inverted = ~mask
-                            roi_whole_image = cv2.bitwise_or(base, mask_inverted)
-                            
-                            # Extract the region of interest
-                            roi_small = roi_whole_image[y_middle_of_roi-150:y_middle_of_roi+150, x_middle_of_roi-150:x_middle_of_roi+150]
+                '''mask = np.zeros_like(base, dtype=np.uint8)
+                cv2.drawContours(mask, [approx], -1, color=(255,255,255), thickness=cv2.FILLED)                    
+                mask_inverted = ~mask
+                roi_whole_image = cv2.bitwise_or(base, mask_inverted)
+                '''
+                
+                # Extract the region of interest
+                roi_small = base[y_middle_of_roi-150:y_middle_of_roi+150, x_middle_of_roi-150:x_middle_of_roi+150]
 
-                            cv2.imwrite(filename, roi_small)
-        
-        base_for_show = cv2.resize(base_for_show, (1000,900), interpolation = cv2.INTER_AREA)
-        cv2.imshow('Detekované kontury',base_for_show)
-        cv2.waitKey()
-        cv2.destroyAllWindows()
-        
+                cv2.imwrite(filename, roi_small)
+
+        if visualisation == True:
+            Maintenance.show_image(picture=visualisation_image, name='9_detected_features')
+
 
     def is_thin(approx, boundary=28):
         try:
@@ -314,139 +345,50 @@ class Reading:
         min_from_csv = str(min_from_csv)
        
         return hour_from_csv.zfill(2)+min_from_csv.zfill(2)+'00'
-    
 
 
-if __name__=='__main__':
-    # Get the current script's directory
-    script_directory = os.path.dirname(os.path.abspath(__file__))
-    image_directory = r'C:\Users\PlicEduard\program\program'
-    try:
-        shutil.rmtree(image_directory)
-    except:
-        pass
-    os.makedirs(image_directory)
-    # List all files in the script's directory
-    files = os.listdir(script_directory)
+if __name__ == '__main__':
+    visualisation = True
 
-    # Find the first file with a common image extension (e.g., jpg, png)
-    image_extensions = ['.jpg', '.jpeg', '.png', '.gif']  # Add more if needed
+    folder_path = r'C:\Users\PlicEduard\ondrejov'
+    sunspot_path = r'C:\Users\PlicEduard\sunspots\sunspots_ondrejov'
+    csv_path = os.path.join(sunspot_path, 'csv.csv')
+    log_path = os.path.join(sunspot_path, 'log.txt')
 
-    for file in files:
-        if any(file.lower().endswith(ext) for ext in image_extensions):
-            image_file_path = os.path.join(script_directory, file)
-            break
+    Maintenance.remove_dir(os.path.join(sunspot_path))
+    Maintenance.make_dir(sunspot_path)
+    Maintenance.erase_log(log_path)
+    Maintenance.erase_csv(csv_path)
+    pictures = [pic for pic in os.listdir(folder_path) if pic.endswith(".jpg")]
+    x=0
+
+    for pic in tqdm(os.listdir(folder_path), total=len(os.listdir(folder_path))):
+        # process only every ...th picture
+        if x==7000:
+            # repeat code for every image in folder
+            try:
+                picture_day = Reading.get_day_from_image(pic) #yyyymmdd
+                
+                picture_time = Reading.get_time_from_csv(picture_day, 'Ondrejov_data_kresba.CSV') #hhmmss
+                global picture_date
+                picture_date = picture_day+ picture_time #yyyymmmddhhmmss
+                picture_full_path=folder_path+'/'+picture_day[2:]+'dr.jpg' #picture_day[2:] for format yymmdd
+                
+                picture = Image.open(picture_full_path)
+                picture = Adjustment.resize_PIL(picture, sunspot_path)
+                picture = Maintenance.PIL_to_cv2(picture)
+                picture = Adjustment.center_the_image_cv2(picture, sunspot_path,visualisation=visualisation)
+                picture = Maintenance.cv2_to_PIL(picture)
+                picture = Adjustment.remove_tables_PIL(picture,visualisation=visualisation)
+                picture = Maintenance.PIL_to_cv2(picture)
+                #cv2.imwrite(os.path.join(mask_dir, pic), picture)
+                enhanced_picture = Adjustment.enhance_image_cv2(picture,visualisation=visualisation)
+                Calculations.find_rectangles(enhanced_picture,picture,visualisation=visualisation)
+                #saveing every sunspot groop              
+            except Exception as e:
+                log_file = open(log_path, 'a', encoding='utf-8')
+                log_file.write(f'Obrázek {pic} nemohl být zpracován protože vyhodil chybu: {e}\n')
+                log_file.close()
+            x=0
         else:
-            print('no image')
-    # Open the image using PIL
-    picture = Image.open(image_file_path)
-
-    picture = Adjustment.resize_PIL(picture)
-    picture = Maintenance.PIL_to_cv2(picture)
-    picture = Adjustment.center_the_image_cv2(picture)
-    picture = Maintenance.cv2_to_PIL(picture)
-    picture = Adjustment.remove_tables_PIL(picture)
-    picture = Maintenance.PIL_to_cv2(picture)
-
-    enhanced_picture = Adjustment.enhance_image_cv2(picture)
-    Calculations.find_rectangles(enhanced_picture,picture)
-
-    #end of extract sunspots
-
-    #postprocessing image
-
-    ##remove orange
-    LOWER = np.array([0, 0, 200])
-    UPPER = np.array([255, 255, 255])  # Adjust upper range to cover more shades of orange
-    for file in os.listdir(image_directory):
-        if file.endswith(('.png', '.jpg', '.jpeg')):  # Add more extensions if needed
-            img_path = os.path.join(image_directory, file)
-            im = cv2.imread(img_path)
-            im_hsv = cv2.cvtColor(im, cv2.COLOR_BGR2HSV)
-            mask = cv2.inRange(im_hsv, LOWER, UPPER)
-            # Replace orange regions with white
-            im_filtered = im.copy()
-            im_filtered[mask > 0] = [255, 255, 255]
-            im_filtered = 255 - im_filtered
-            cv2.imwrite(img_path, im_filtered)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    #end of postprocessing image
-
-
-    #starting model
-    import os
-
-    from tensorflow.keras.models import load_model
-    from tensorflow.keras.preprocessing import image
-    import numpy as np
-    from PIL import Image
-    from sklearn.metrics import confusion_matrix
-    import re
-
-
-    # Load the model
-    samples_dir = image_directory
-    model_dir = script_directory
-    #classes = ['c','i','o','x']
-    #classes = ['A', 'B', 'C', 'D', 'E', 'F', 'H']
-    #classes = ['a', 'h', 'k', 'r', 's', 'x']
-    #classes = ['A', 'B', 'C', 'DEF', 'H']
-    #classes = ['Axx','Bxi','Bxo','Cai','Cao','Chi','Cho','Cki','Cko','Cri','Cro','Csi','Cso','Dac','Dai','Dao','Dhi','Dkc','Dki','Dko','Dri','Dro','Dsc','Dsi','Dso','Eac','Eai','Ekc','Eki','Eko','Esc','Esi','Fac','Fkc','Fki','Hax','Hhx','Hkx','Hrx','Hsx']
-
-    model_files = [model for model in os.listdir(model_dir) if model.endswith('.h5')]
-    #model_file = model_files[0]
-    #print(f'Nalezeno celkem {len(model_files)} modelů ve složce, bude používán model: {model_file}')
-    for model_file in model_files:
-        print(f'\n\n\nbude používán model: {model_file}')
-        model = load_model(os.path.join(model_dir, model_file))
-        # get classes
-        match = re.search(r"\['(.*?)'\]", model_file)
-        letter_list_str = match.group(1)
-        letter_list = [letter.strip() for letter in letter_list_str.split(',')]
-        classes = [s.strip("'") for s in letter_list]
-
-        print(classes)
-
-        # Folder containing the images
-        image_folder = samples_dir
-
-        # Get a list of all files in the folder
-        image_paths = [os.path.join(root, file) for root, dirs, files in os.walk(image_folder) for file in files if file.endswith(('png', 'jpg', 'jpeg'))]
-
-        # Load and preprocess the images, converting to grayscale
-        images = [Image.open(path).convert('L').resize((300, 300)) for path in image_paths]
-        image_arrays = [np.array(img) / 255.0 for img in images]
-        image_arrays = np.array(image_arrays)
-
-        # Add a channel dimension if the model expects input shape (None, 300, 300, 1)
-        if model.input_shape[-1] == 1:
-            image_arrays = np.expand_dims(image_arrays, axis=-1)
-
-        # Make batch predictions
-        predictions_batch = model.predict(image_arrays)
-        print(predictions_batch)
-
-
-        for i, (path, predictions) in enumerate(zip(image_paths, predictions_batch)):
-            class_index = np.argmax(predictions)
-            predicted_class = classes[class_index]
-            confidence = predictions[class_index]
-
-            # process path
-            base, filename = os.path.split(path)
-            print(f'Přejmenování souboru {filename} na predikovanou třídu {predicted_class} s přesností {confidence}.')
-            os.rename(os.path.join(base, filename), os.path.join(base, f'{predicted_class}{filename}'))
-
+            x+=1

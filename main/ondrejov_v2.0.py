@@ -13,6 +13,19 @@ from datetime import datetime
 import csv
 import shutil
 
+
+sunspot_objectives = []
+class Sunspot:
+    def __init__(self, name, x, y):
+        self.name = name
+        self.x = x
+        self.y = y
+        self.predicted_class = None
+
+    def __str__(self):
+        return f"Sunspot {self.name} - Coordinates: ({self.x}, {self.y}), Predicted Class: {self.predicted_class}"
+
+
 class Maintenance:
     def make_dir(path):
         if not os.path.exists(path):
@@ -223,7 +236,8 @@ class Calculations:
                             cv2.drawContours(base_for_show, [cnt], -1, (0, 0, 122), 3)
 
 
-                            filename = os.path.join(image_directory, f'_skvrna_{(x,y)}.png')
+                            filename = os.path.join(image_directory, f'skvrna_{i}.png')
+                            sunspot_objectives.append(Sunspot(name=f'skvrna_{i}',x=x,y=y))
                             print(filename)
                             #techtle mechtle s maskou
                             x_middle_of_roi = int(x+w/2)
@@ -343,8 +357,8 @@ if __name__=='__main__':
 
     picture = Adjustment.resize_PIL(picture)
     picture = Maintenance.PIL_to_cv2(picture)
-    picture = Adjustment.center_the_image_cv2(picture)
-    picture = Maintenance.cv2_to_PIL(picture)
+    centered_picture = Adjustment.center_the_image_cv2(picture)
+    picture = Maintenance.cv2_to_PIL(centered_picture)
     picture = Adjustment.remove_tables_PIL(picture)
     picture = Maintenance.PIL_to_cv2(picture)
 
@@ -378,7 +392,7 @@ if __name__=='__main__':
 
 
 
-
+    print(sunspot_objectives)
 
 
 
@@ -418,7 +432,7 @@ if __name__=='__main__':
         letter_list = [letter.strip() for letter in letter_list_str.split(',')]
         classes = [s.strip("'") for s in letter_list]
 
-        print(classes)
+        #print(classes)
 
         # Folder containing the images
         image_folder = samples_dir
@@ -437,7 +451,7 @@ if __name__=='__main__':
 
         # Make batch predictions
         predictions_batch = model.predict(image_arrays)
-        print(predictions_batch)
+        #print(predictions_batch)
 
 
         for i, (path, predictions) in enumerate(zip(image_paths, predictions_batch)):
@@ -445,8 +459,29 @@ if __name__=='__main__':
             predicted_class = classes[class_index]
             confidence = predictions[class_index]
 
-            # process path
+            # process csv
             base, filename = os.path.split(path)
-            print(f'Přejmenování souboru {filename} na predikovanou třídu {predicted_class} s přesností {confidence}.')
-            os.rename(os.path.join(base, filename), os.path.join(base, f'{predicted_class}{filename}'))
-
+            filename = filename.split('.')[0]
+            for sunspot in sunspot_objectives:
+                if filename == sunspot.name:
+                    if sunspot.predicted_class is not None:
+                        sunspot.predicted_class = sunspot.predicted_class + str(predicted_class)
+                    else:
+                        sunspot.predicted_class = str(predicted_class)
+                       
+# end of predictions
+                        
+# write on image
+image_to_draw = centered_picture.copy()
+for sunspot in sunspot_objectives:
+    cv2.putText(image_to_draw, 
+                text=sunspot.predicted_class, 
+                org=(sunspot.x-30,sunspot.y), 
+                fontFace=cv2.FONT_HERSHEY_SIMPLEX, 
+                fontScale=1.0, 
+                color = (100, 0, 0),
+                thickness = 3)
+cv2.imshow('Sdasd',image_to_draw)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+cv2.imwrite(os.path.join(image_directory, 'anoteted_image.png'),image_to_draw)
