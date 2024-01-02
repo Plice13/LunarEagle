@@ -364,7 +364,8 @@ if __name__ == '__main__':
 
     for pic in tqdm(os.listdir(folder_path), total=len(os.listdir(folder_path))):
         # process only every ...th picture
-        if x==7000:
+        #if x==7000:
+        if pic.startswith('120607dr'):
             # repeat code for every image in folder
             try:
                 picture_day = Reading.get_day_from_image(pic) #yyyymmdd
