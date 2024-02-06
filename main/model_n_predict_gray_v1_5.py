@@ -235,3 +235,4 @@ if __name__=='__main__':
 
     #test model
     test_model(model)
+    #nic
