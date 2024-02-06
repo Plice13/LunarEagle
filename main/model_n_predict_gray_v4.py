@@ -11,7 +11,7 @@ import statistics
 import keyboard
 from time import sleep
 from sklearn.metrics import confusion_matrix
-
+import time
 
 
 def custom_image_generator(generator, directory, batch_size, target_size, class_mode):
@@ -125,18 +125,11 @@ def build_and_config_model(number_of_classes):
     ###-----Build Your Model------###
     model = models.Sequential()
 
-    model.add(layers.Conv2D(64, (4, 4), activation='relu', input_shape=(300, 300, 1)))  # Change input shape to (300, 300, 1)
+    model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(300, 300, 1)))  # Change input shape to (300, 300, 1)
     model.add(layers.MaxPooling2D((2, 2)))
-    
-    model.add(layers.Conv2D(32, (3, 3), activation='relu'))
-    model.add(layers.MaxPooling2D((2, 2)))
-
+     
     model.add(layers.Conv2D(16, (3, 3), activation='relu'))
     model.add(layers.MaxPooling2D((2, 2)))
-
-    model.add(layers.Conv2D(8, (3, 3), activation='relu'))
-    model.add(layers.MaxPooling2D((2, 2)))
-
 
     model.add(layers.Flatten())
 
@@ -164,7 +157,7 @@ def get_parameters(path_base, bs, scalable_factor=1):
 
 if __name__=='__main__':
     # set up
-    main_dir = r'C:\Users\PlicEduard\AI3_full_circle\A_B_C_DEF_H_0_0'
+    main_dir = r'C:\Users\PlicEduard\AI4_SOC\Axx_Bxo_0_0'
     train_dir = os.path.join(main_dir, 'train')
     val_dir = os.path.join(main_dir, 'val')
     test_dir = os.path.join(main_dir, 'test')
@@ -174,10 +167,7 @@ if __name__=='__main__':
     bs = 32
     classes, number_of_classes, vs, spe = get_parameters(os.path.basename(main_dir), bs, scalable_factor=scalable_factor)
     max_counter = 300 
-    layers_string = '4L(64(4X4),32,16,8)-32'
-    vs = 60
-    spe = 30
-
+    layers_string = '2L(32(3X3),16(3X3))-32'
 
     # make model
     model = build_and_config_model(number_of_classes)
@@ -190,6 +180,20 @@ if __name__=='__main__':
     loss_list = []
     val_acc_list = []
     val_loss_list = []
+
+    # get weight of classes
+    weights = list()
+    for clss in classes:
+        weights.append(len(os.listdir(os.path.join(train_dir,clss)))+len(os.listdir(os.path.join(val_dir,clss)))+len(os.listdir(os.path.join(test_dir,clss))))
+    sum_of_samples = sum(weights)
+    print(sum_of_samples, weights)
+
+    spe = sum_of_samples//bs
+    spe = 30
+    vs = spe * 2
+    print(f'spe je {spe} a vs je {vs}')
+
+    start_time = time.time()
 
     # train model
     counter = 1
@@ -204,11 +208,15 @@ if __name__=='__main__':
             break
 
         # train model and save data
-        train_history = model.fit(train_generator, epochs=1, steps_per_epoch=spe, validation_data=val_generator, validation_steps=vs)#, validation_steps=50, class_weight={0: 1, 1: 1, 2: 1})
+        train_history = model.fit(train_generator, epochs=1, steps_per_epoch=spe, validation_data=val_generator, validation_steps=vs) #, validation_steps=50, class_weight={0: 1, 1: 1, 2: 1})
         acc_list.append(train_history.history['acc'][0])
         loss_list.append(train_history.history['loss'][0])
         val_acc_list.append(train_history.history['val_acc'][0])
         val_loss_list.append(train_history.history['val_loss'][0])
+
+        now_time = time.time()
+        elapsed_time = (now_time - start_time)/60
+        print("In time: {:.2f} minutes".format(elapsed_time))
 
         # if val_loss is low, save model
         best_val_loss = min(val_loss_list)
@@ -240,3 +248,4 @@ if __name__=='__main__':
 
     #test model
     test_model(model)
+    print(f'spe je {spe} a vs je {vs}, nejlepsi epocha {best_epoch} a obrázku {weights}')

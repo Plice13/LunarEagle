@@ -5,6 +5,9 @@ import matplotlib.pyplot as plt
 from concurrent.futures import ProcessPoolExecutor
 from random import randint, sample
 
+
+from collections import Counter
+
 def process_image(file_path):
     if file_path.lower().endswith(('.jpg', '.png')):
         img = cv2.imread(file_path)
@@ -23,8 +26,16 @@ def main():
         for shape in tqdm(executor.map(process_image, [os.path.join(image_folder_path, file_name) for file_name in files_to_process]), total=len(files_to_process)):
             list_of_shapes.append(shape)
 
-    widths, heights = zip(*list_of_shapes)
+    heights, widths = zip(*list_of_shapes)
 
+    
+    d_heights = Counter(heights)
+    print('d_heights',d_heights)
+    
+    d_widths = Counter(widths)
+    print('d_widths',d_widths)
+
+    
     # Create a bar graph for widths
     plt.figure(figsize=(10, 5))
     plt.subplot(1, 2, 1)

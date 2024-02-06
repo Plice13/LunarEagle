@@ -161,7 +161,7 @@ def get_parameters(path_base, bs, scalable_factor=1):
 
 if __name__=='__main__':
     # set up
-    main_dir = r'C:\Users\PlicEduard\AI3_full_circle\c_i_o_x_0_0'
+    main_dir = r'C:\Users\PlicEduard\AI3_full_circle\a_h_k_r_s_x_0_0'
     train_dir = os.path.join(main_dir, 'train')
     val_dir = os.path.join(main_dir, 'val')
     test_dir = os.path.join(main_dir, 'test')
@@ -170,7 +170,7 @@ if __name__=='__main__':
     scalable_factor = 1
     bs = 32
     classes, number_of_classes, vs, spe = get_parameters(os.path.basename(main_dir), bs, scalable_factor=scalable_factor)
-    max_counter = 200 
+    max_counter = 300 
     layers_string = '3L(32(4X4),16,8)-32'
     vs = 60
     spe = 30
@@ -187,6 +187,18 @@ if __name__=='__main__':
     val_acc_list = []
     val_loss_list = []
 
+    # get weight of classes
+    weights = list()
+    for clss in classes:
+        weights.append(len(os.listdir(os.path.join(val_dir,clss))))
+    sum_of_samples = sum(weights)
+    print(weights)
+    for i in range(len(weights)):
+        weights[i] = round(sum_of_samples/weights[i])
+    print(weights)
+    weights = [x ** 0.6 for x in weights]
+    print(weights)
+
     # train model
     counter = 1
     while counter <= max_counter:
@@ -200,7 +212,7 @@ if __name__=='__main__':
             break
 
         # train model and save data
-        train_history = model.fit(train_generator, epochs=1, steps_per_epoch=spe, validation_data=val_generator, validation_steps=vs)#, validation_steps=50, class_weight={0: 1, 1: 1, 2: 1})
+        train_history = model.fit(train_generator, epochs=1, steps_per_epoch=spe, validation_data=val_generator, validation_steps=vs, class_weight={0: weights[0], 1: weights[1], 2: weights[2], 3: weights[3], 4: weights[4], 5: weights[5]}) #, validation_steps=50, class_weight={0: 1, 1: 1, 2: 1})
         acc_list.append(train_history.history['acc'][0])
         loss_list.append(train_history.history['loss'][0])
         val_acc_list.append(train_history.history['val_acc'][0])
