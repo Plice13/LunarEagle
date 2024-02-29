@@ -11,7 +11,7 @@ import statistics
 import keyboard
 from time import sleep
 from sklearn.metrics import confusion_matrix
-
+import time
 
 
 def custom_image_generator(generator, directory, batch_size, target_size, class_mode):
@@ -121,62 +121,86 @@ def plot_results(lists):
     # Display the plot
     plt.show()
 
-def build_and_config_model(number_of_classes):
+def build_and_config_model(hidden_layers_configuration):
     ###-----Build Your Model------###
+    hlc = hidden_layers_configuration
     model = models.Sequential()
-
-    model.add(layers.Conv2D(32, (4, 4), activation='relu', input_shape=(300, 300, 1)))  # Change input shape to (300, 300, 1)
-    model.add(layers.MaxPooling2D((2, 2)))
-     
-    model.add(layers.Conv2D(16, (3, 3), activation='relu'))
-    model.add(layers.MaxPooling2D((2, 2)))
-    
-    model.add(layers.Conv2D(8, (3, 3), activation='relu'))
-    model.add(layers.MaxPooling2D((2, 2)))
-
-
-    model.add(layers.Flatten())
-
-    model.add(layers.Dense(32, activation='relu'))
-    model.add(layers.Dense(number_of_classes, activation='softmax'))  # Assuming 3 classes
+    for i in range(len(hidden_layers_configuration)):
+        if i == 0:
+            model.add(layers.Conv2D(hlc[i][1][0], hlc[i][1][1], activation=hlc[i][1][2], input_shape=(300, 300, 1)))  # Change input shape to (300, 300, 1)
+        else:
+            type_of_layer = hlc[i][0]
+            if type_of_layer == 'c':
+                model.add(layers.Conv2D(hlc[i][1][0], hlc[i][1][1], activation=hlc[i][1][2])) 
+            elif type_of_layer == 'mp':
+                model.add(layers.MaxPooling2D(hlc[i][1][1]))
+            elif type_of_layer == 'd':
+                model.add(layers.Dense(hlc[i][1][0], activation=hlc[i][1][2]))
+            elif type_of_layer == 'f':
+                model.add(layers.Flatten())
 
     model.summary()
-    exit()
+
 
     ####----Configuring the model for training-----####
     model.compile(loss='categorical_crossentropy', optimizer=keras.optimizers.RMSprop(learning_rate=1e-4), metrics=['acc'])
     return model
 
-def get_parameters(path_base, bs, scalable_factor=1):
-    path_base = path_base.split('-')[0]
+def get_layers_string(layers_configuration):
+    string_rep = f'{len(layers_configuration)}L'
+    for layer in layers_configuration:
+        layer_type = layer[0]
+        if layer_type == 'c':
+            units = layer[1][0]
+            kernel_size = layer[1][1]
+            activation = layer[1][2]
+            string_rep += f'-c{units}({kernel_size[0]},{kernel_size[1]})'
+        elif layer_type == 'mp':
+            pool_size = layer[1][1]
+            string_rep += f'-mp({pool_size[0]},{pool_size[1]})'
+        elif layer_type == 'f':
+            string_rep += '-f'
+        elif layer_type == 'd':
+            units = layer[1][0]
+            activation = layer[1][2]
+            string_rep += f'-d{units}'
+    return string_rep
 
-    classes = path_base.split('_')[:-2]
+def get_parameters(path_base):
+    classes = path_base.split('_')
     number_of_classes = len(classes)
-    samples = (int(path_base.split('_')[-2]) * number_of_classes)//scalable_factor
-    v_samples = (int(path_base.split('_')[-1]) * number_of_classes)//scalable_factor
-    spe = samples//bs
-    vs = v_samples
 
-    return classes, number_of_classes, vs, spe
+    return classes, number_of_classes
 
 if __name__=='__main__':
     # set up
-    main_dir = r'C:\Users\PlicEduard\AI3_full_circle\a_h_k_r_s_x_0_0'
+    main_dir = r'C:\Users\PlicEduard\AI4_SOC\Axx_Dai'
     train_dir = os.path.join(main_dir, 'train')
     val_dir = os.path.join(main_dir, 'val')
     test_dir = os.path.join(main_dir, 'test')
     
     # make parameters
-    scalable_factor = 1
     bs = 32
-    classes, number_of_classes, vs, spe = get_parameters(os.path.basename(main_dir), bs, scalable_factor=scalable_factor)
+    classes, number_of_classes = get_parameters(os.path.basename(main_dir))
     max_counter = 300 
-    layers_string = '3L(32(4X4),16,8)-32'
-    vs = 60
-    spe = 30
+    vs = 38
+    spe = 24
 
     # make model
-    model = build_and_config_model(number_of_classes)
+    number_of_hidden_layers = 3
+    
+    noc = number_of_classes
+    # structure like [  [   convolution/maxpooling/dense/flattern    ,   [number of neurons, size of matrix, activation function]##end of layer config   ]##end of layer, [...new layer...] ]##end of model
+    layers_configuration =[['c',    [32,    (3,3),  'relu'  ]],
+                           ['mp',   [None,  (2,2),  None    ]],
+                           ['c',    [16,    (3,3),  'relu'  ]],
+                           ['mp',   [None,  (2,2),  None    ]],
+                           ['f',    [None,  None,   None    ]],
+                           ['d',    [24,    None,   'relu'  ]],
+                           ['d',    [noc,   None, 'softmax' ]]] # noc = number_of_classes
+    layers_string = get_layers_string(layers_configuration)
+    print(layers_string)
+    model = build_and_config_model(layers_configuration)
 
     # prepare model
     train_generator, val_generator, test_generator = prepare_model()
@@ -190,14 +214,17 @@ if __name__=='__main__':
     # get weight of classes
     weights = list()
     for clss in classes:
-        weights.append(len(os.listdir(os.path.join(val_dir,clss))))
+        weights.append(len(os.listdir(os.path.join(train_dir,clss)))+len(os.listdir(os.path.join(val_dir,clss)))+len(os.listdir(os.path.join(test_dir,clss))))
     sum_of_samples = sum(weights)
     print(weights)
     for i in range(len(weights)):
         weights[i] = round(sum_of_samples/weights[i])
     print(weights)
-    weights = [x ** 0.6 for x in weights]
-    print(weights)
+
+    
+    start_time = time.time()
+    print(f'In time {start_time}: spe je {spe} a vs je {vs}')
+
 
     # train model
     counter = 1
@@ -212,11 +239,19 @@ if __name__=='__main__':
             break
 
         # train model and save data
-        train_history = model.fit(train_generator, epochs=1, steps_per_epoch=spe, validation_data=val_generator, validation_steps=vs, class_weight={0: weights[0], 1: weights[1], 2: weights[2], 3: weights[3], 4: weights[4], 5: weights[5]}) #, validation_steps=50, class_weight={0: 1, 1: 1, 2: 1})
+        train_history = model.fit(train_generator, epochs=1, steps_per_epoch=spe, validation_data=val_generator, validation_steps=vs)#, class_weight={0: weights[0], 1: weights[1], 2: weights[2], 3: weights[3], 4: weights[4], 5: weights[5]}) #, validation_steps=50, class_weight={0: 1, 1: 1, 2: 1})
         acc_list.append(train_history.history['acc'][0])
         loss_list.append(train_history.history['loss'][0])
         val_acc_list.append(train_history.history['val_acc'][0])
         val_loss_list.append(train_history.history['val_loss'][0])
+        
+        now_time = time.time()
+        elapsed_time = (now_time - start_time)/60
+        print("In time: {:.2f} minutes".format(elapsed_time))
+        with open(os.path.join(main_dir, "log.txt"), "a") as log_file:
+            timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
+            log_file.write("In time {}, running {:.2f} minutes the epoch {} has produced loss {}\n".format(timestamp, elapsed_time,counter,val_loss_list[-1]))
+
 
         # if val_loss is low, save model
         best_val_loss = min(val_loss_list)
@@ -248,3 +283,4 @@ if __name__=='__main__':
 
     #test model
     test_model(model)
+    print(f'spe je {spe} a vs je {vs}, nejlepsi epocha {best_epoch} a obrázku {weights}')
