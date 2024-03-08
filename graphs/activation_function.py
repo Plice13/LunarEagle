@@ -49,9 +49,9 @@ plt.plot(x, y_leaky_relu, label='Leaky ReLU', color='#ff7f0e')  # red
 plt.plot(x, y_swish, label='Swish', color='#9467bd')        # purple
 plt.plot(x, y_gelu, label='GELU', color='#8c564b')          # brown
 plt.plot(x, y_relu, label='ReLU', color='#d62728')          # orange
-plt.subplots_adjust(left=0.1, right=0.92, top=0.92, bottom=0.08)
+plt.subplots_adjust(left=0.1, right=0.92, top=0.92, bottom=0.07)
 
-plt.title('Activation Functions')
+plt.title('Aktivační funkce')
 plt.xlabel('Input')
 plt.ylabel('Output')
 plt.axhline(0, color='black',linewidth=0.5)
