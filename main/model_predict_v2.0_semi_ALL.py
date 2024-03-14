@@ -227,39 +227,42 @@ if __name__=='__main__':
     val_acc_list = []
     val_loss_list = []
 
-    # get weight of classes
-    weights = list()
+    # Get weight of classes
+    weights = []
     for clss in classes:
-        weights.append(len(os.listdir(os.path.join(train_dir,clss)))+len(os.listdir(os.path.join(val_dir,clss)))+len(os.listdir(os.path.join(test_dir,clss))))
+        weights.append(len(os.listdir(os.path.join(train_dir, clss))) + 
+                    len(os.listdir(os.path.join(val_dir, clss))) + 
+                    len(os.listdir(os.path.join(test_dir, clss))))
     sum_of_samples = sum(weights)
     print(weights)
     for i in range(len(weights)):
-        weights[i] = round(sum_of_samples/weights[i])
+        weights[i] = round(sum_of_samples / weights[i])
     print(weights)
 
-    
     start_time = time.time()
     print(f'In time {start_time}: spe je {spe} a vs je {vs}')
 
-
-    # train model
+    # Train model
     counter = 1
     while counter <= max_counter:
-        # for knowing when press Q
+        # For knowing when press Q
         print(f'<{counter}>')
         sleep(2)
 
-        # qiut learning before end
+        # Quit learning before the end
         if keyboard.is_pressed('q'):
             print("You pressed 'q'. Exiting the loop.")
             break
 
-        # train model and save data
-        train_history = model.fit(train_generator, epochs=1, steps_per_epoch=spe, validation_data=val_generator, validation_steps=vs)#, class_weight={0: weights[0], 1: weights[1], 2: weights[2], 3: weights[3], 4: weights[4], 5: weights[5]}) #, validation_steps=50, class_weight={0: 1, 1: 1, 2: 1})
+        # Train model and save data
+        train_history = model.fit(train_generator, epochs=1, steps_per_epoch=spe,
+                                validation_data=val_generator, validation_steps=vs,
+                                class_weight={i: weights[i] for i in range(len(weights))})
         acc_list.append(train_history.history['acc'][0])
         loss_list.append(train_history.history['loss'][0])
         val_acc_list.append(train_history.history['val_acc'][0])
         val_loss_list.append(train_history.history['val_loss'][0])
+        counter += 1
         
         now_time = time.time()
         elapsed_time = (now_time - start_time)/60
