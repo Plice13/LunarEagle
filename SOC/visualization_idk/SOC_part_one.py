@@ -77,7 +77,7 @@ class Adjustment:
         img = img.resize((basewidth, hsize), Image.LANCZOS)
 
         # Create a white canvas of size 2000x1800
-        background = Image.new('RGB', (2000, 1800), (0, 0, 255))
+        background = Image.new('RGB', (2000, 1800), (255, 212, 0))
 
         # Calculate position to paste the resized image at the center
         paste_x = (2000 - img.size[0]) // 2
@@ -124,8 +124,8 @@ class Adjustment:
                 y_list.append(y)    
                 r_list.append(r)
                 if visualisation == True:
-                    cv2.circle(visualisation_image, (x, y), r, (0, 255, 0), 1)
-                    cv2.circle(visualisation_image, (x, y), radius=2, color=(0, 128, 255), thickness=-1)
+                    cv2.circle(visualisation_image, (x, y), r, (189, 135, 0), 1)
+                    cv2.circle(visualisation_image, (x, y), radius=2, color=(48, 0, 197), thickness=-1)
         if visualisation == True:
             Maintenance.show_image(picture=visualisation_image, name='2_big_circles')
 
@@ -139,8 +139,8 @@ class Adjustment:
                 x_list.append(x)
                 y_list.append(y)    
                 if visualisation == True:
-                    cv2.circle(visualisation_image, (x, y), r, (255, 0, 0), 1)
-                    cv2.circle(visualisation_image, (x, y), radius=2, color=(128, 0, 255), thickness=-1)
+                    cv2.circle(visualisation_image, (x, y), r, (189, 135, 0), 1)
+                    cv2.circle(visualisation_image, (x, y), radius=2, color=(48, 0, 197), thickness=-1)  
         if visualisation == True:
             Maintenance.show_image(picture=visualisation_image, name='3_small_circles')
 
@@ -155,8 +155,8 @@ class Adjustment:
             pass
             #cv2.circle(image, (x_med,y_med), int(statistics.median(r_list)), (255, 255, 255), int((r_max-r_min)/2)+15)
         else:
-            cv2.circle(visualisation_image, (x_med,y_med), 4, (0, 0, 255), -1)
-            cv2.circle(visualisation_image, (x_med,y_med), int(statistics.median(r_list)), (0, 0, 255), int((r_max-r_min)/2)+15)
+            cv2.circle(visualisation_image, (x_med,y_med), 6, (48, 0, 197), -1)
+            cv2.circle(visualisation_image, (x_med,y_med), int(statistics.median(r_list)), (104, 164, 0), int((r_max-r_min)/2))
             Maintenance.show_image(picture=visualisation_image, name='4_final_circle')
 
 

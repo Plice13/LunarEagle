@@ -16,5 +16,5 @@ def obnov_puvodni_nazvy_slozek(hlavni_slozka):
             os.rename(cesta_k_polozce, os.path.join(hlavni_slozka, puvodni_nazev))
 
 # Zadejte cestu k hlavní složce, ve které chcete obnovit původní názvy složek
-hlavni_slozka = r'C:\Users\PlicEduard\clasifics\znovu_znovu'
+hlavni_slozka = r'C:\Users\PlicEduard\AI4_SOC\classes\final_every_class'
 obnov_puvodni_nazvy_slozek(hlavni_slozka)

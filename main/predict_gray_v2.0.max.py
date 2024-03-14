@@ -7,12 +7,12 @@ from PIL import Image
 from sklearn.metrics import confusion_matrix
 
 # Load the model
-samples_dir = r'C:\Users\PlicEduard\AI2\Axx_Bxi_Bxo_Cai_Cao_Chi_Cho_Cki_Cko_Cri_Cro_Csi_Cso_Dac_Dai_Dao_Dhi_Dkc_Dki_Dko_Dri_Dro_Dsc_Dsi_Dso_Eac_Eai_Ekc_Eki_Eko_Esc_Esi_Fac_Fkc_Fki_Hax_Hhx_Hkx_Hrx_Hsx_0_0\test'
+samples_dir = r'C:\Users\PlicEduard\AI4_SOC\Axx_Bxi_Bxo_Cai_Cao_Chi_Cho_Cki_Cko_Cri_Cro_Csi_Cso_Dac_Dai_Dao_Dhc_Dhi_Dho_Dkc_Dki_Dko_Dri_Dro_Dsc_Dsi_Dso_Eac_Eai_Eao_Ehc_Ehi_Ekc_Eki_Eko_Esc_Esi_Eso_Fac_Fai_Fhc_Fkc_Fki_Fko_Fsi_Hax_Hhx_Hkx_Hrx_Hsx\test'
 model_dir = r'C:\Users\PlicEduard\AI2\Axx_Bxi_Bxo_Cai_Cao_Chi_Cho_Cki_Cko_Cri_Cro_Csi_Cso_Dac_Dai_Dao_Dhi_Dkc_Dki_Dko_Dri_Dro_Dsc_Dsi_Dso_Eac_Eai_Ekc_Eki_Eko_Esc_Esi_Fac_Fkc_Fki_Hax_Hhx_Hkx_Hrx_Hsx_0_0'
 #classes = ['c','i','o','x']
 #classes = ['A', 'B', 'C', 'D', 'E', 'F', 'H']
-classes = ['Axx','Bxi','Bxo','Cai','Cao','Chi','Cho','Cki','Cko','Cri','Cro','Csi','Cso','Dac','Dai','Dao','Dhi','Dkc','Dki','Dko','Dri','Dro','Dsc','Dsi','Dso','Eac','Eai','Ekc','Eki','Eko','Esc','Esi','Fac','Fkc','Fki','Hax','Hhx','Hkx','Hrx','Hsx']
-
+#classes = ['Axx','Bxi','Bxo','Cai','Cao','Chi','Cho','Cki','Cko','Cri','Cro','Csi','Cso','Dac','Dai','Dao','Dhi','Dkc','Dki','Dko','Dri','Dro','Dsc','Dsi','Dso','Eac','Eai','Ekc','Eki','Eko','Esc','Esi','Fac','Fkc','Fki','Hax','Hhx','Hkx','Hrx','Hsx']
+classes = ['Axx' 'Bxi' 'Bxo' 'Cai' 'Cao' 'Chi' 'Cho' 'Cki' 'Cko' 'Cri' 'Cro' 'Csi' 'Cso' 'Dac' 'Dai' 'Dao' 'Dhc' 'Dhi' 'Dho' 'Dkc' 'Dki' 'Dko' 'Dri' 'Dro' 'Dsc' 'Dsi' 'Dso' 'Eac' 'Eai' 'Eao' 'Ehc' 'Ehi' 'Ekc' 'Eki' 'Eko' 'Esc' 'Esi' 'Eso' 'Fac' 'Fai' 'Fhc' 'Fkc' 'Fki' 'Fko' 'Fsi' 'Hax' 'Hhx' 'Hkx' 'Hrx' 'Hsx']
 model_files = [model for model in os.listdir(model_dir) if model.endswith('.h5')]
 for model_file in model_files:
     model = load_model(os.path.join(model_dir, model_file))

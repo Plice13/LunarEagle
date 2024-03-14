@@ -6,8 +6,8 @@ import numpy as np
 from PIL import Image
 
 # Load the model
-main_dir = r'C:\Users\PlicEduard\AI\more\runs_martin\Axx_Cso_Ekc_250'
-model_name = 'model_bw_axx_hsx__e-1000_spe-23.4375_vspe-75.0_bs-32.h5'
+main_dir = r'C:\Users\PlicEduard\AI4_SOC\Axx_Bxo'
+model_name = 'model_bw__e-53_spe-20_vspe-60_bs-32_5L-c16(3,3)-mp(2,2)-f-d16-d2_loss-0.300535.h5'
 model = load_model(os.path.join(main_dir, model_name))
 
 # Print the model summary to verify its architecture
@@ -37,7 +37,7 @@ good_predict = 0
 bad_predict = 0
 for i, (path, predictions) in enumerate(zip(image_paths, predictions_batch)):
     class_index = np.argmax(predictions)
-    classes = ['Axx', 'Cso', 'Ekc']
+    classes = ['Axx', 'Bxo']
     predicted_class = classes[class_index]
     confidence = predictions[class_index]
 
