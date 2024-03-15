@@ -94,11 +94,11 @@ for model_file in model_files:
         plt.matshow(cm, cmap=plt.cm.Greens)
         plt.colorbar()
         tick_marks = np.arange(1, len(classes) + 1)  # Adjust tick positions
-        plt.xticks(tick_marks - 1, tick_marks)  # Adjust tick labels
-        plt.yticks(tick_marks - 1, tick_marks)  # Adjust tick labels
+        plt.xticks(range(len(classes)), classes)  # Adjust tick labels
+        plt.yticks(range(len(classes)), classes)  # Adjust tick labels
         plt.xlabel('Správná třída', fontsize=12) # Customize y-axis label
         plt.ylabel('Predikovaná třída', fontsize=12) # Customize x-axis label
-        plt.title('Konfuzní matice', fontsize=18) # Customize title
+        plt.title('Konfuzní matice 1', fontsize=18) # Customize title
         plt.show()
         
         print(cm)

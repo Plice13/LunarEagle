@@ -21,7 +21,7 @@ def organize_files(source_folder, destination_folder):
                 shutil.copy(sub_item_path, dest_dir)
 
 if __name__ == "__main__":
-    source_folder = r"C:\Users\PlicEduard\AI3_full_circle\classes\everything"  # Replace with the path to your source folder
-    destination_folder = r"C:\Users\PlicEduard\AI3_full_circle\classes\bigAKRSX"  # Replace with the path to your destination folder
+    source_folder = r"C:\Users\PlicEduard\AI4_SOC\classes\every"  # Replace with the path to your source folder
+    destination_folder = r"C:\Users\PlicEduard\AI4_SOC\classes\xrshak"  # Replace with the path to your destination folder
 
     organize_files(source_folder, destination_folder)
