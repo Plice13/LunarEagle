@@ -188,7 +188,7 @@ def get_parameters(path_base):
 
 if __name__=='__main__':
     # set up
-    main_dir = r'C:\Users\PlicEduard\AI4_SOC\Axx_Bxi_Bxo_Cai_Cao_Chi_Cho_Cki_Cko_Cri_Cro_Csi_Cso_Dac_Dai_Dao_Dhc_Dhi_Dho_Dkc_Dki_Dko_Dri_Dro_Dsc_Dsi_Dso_Eac_Eai_Eao_Ehc_Ehi_Ekc_Eki_Eko_Esc_Esi_Eso_Fac_Fai_Fhc_Fkc_Fki_Fko_Fsi_Hax_Hhx_Hkx_Hrx_Hsx'
+    main_dir = r'C:\Users\PlicEduard\AI4_SOC\Axx_Bxi_Bxo_Cai_Cao_Chi_Cho_Cki_Cko_Cri_Cro_Csi_Cso_Dac_Dai_Dao_Dhi_Dkc_Dki_Dko_Dri_Dro_Dsc_Dsi_Dso_Eac_Eai_Ekc_Eki_Eko_Esc_Esi_Eso_Fac_Fkc_Fki_Hax_Hhx_Hkx_Hrx_Hsx'
     train_dir = os.path.join(main_dir, 'train')
     val_dir = os.path.join(main_dir, 'val')
     test_dir = os.path.join(main_dir, 'test')

@@ -7,9 +7,10 @@ from PIL import Image
 from sklearn.metrics import confusion_matrix
 
 # Load the model
-samples_dir = r'C:\Users\PlicEduard\AI4_SOC\Axx_Bxi_Bxo_Cai_Cao_Chi_Cho_Cki_Cko_Cri_Cro_Csi_Cso_Dac_Dai_Dao_Dhc_Dhi_Dho_Dkc_Dki_Dko_Dri_Dro_Dsc_Dsi_Dso_Eac_Eai_Eao_Ehc_Ehi_Ekc_Eki_Eko_Esc_Esi_Eso_Fac_Fai_Fhc_Fkc_Fki_Fko_Fsi_Hax_Hhx_Hkx_Hrx_Hsx\test'
-model_dir = r'C:\Users\PlicEduard\AI4_SOC\Axx_Bxi_Bxo_Cai_Cao_Chi_Cho_Cki_Cko_Cri_Cro_Csi_Cso_Dac_Dai_Dao_Dhc_Dhi_Dho_Dkc_Dki_Dko_Dri_Dro_Dsc_Dsi_Dso_Eac_Eai_Eao_Ehc_Ehi_Ekc_Eki_Eko_Esc_Esi_Eso_Fac_Fai_Fhc_Fkc_Fki_Fko_Fsi_Hax_Hhx_Hkx_Hrx_Hsx'
-model_name = 'model_bw__e-14_spe-32_vspe-54_bs-32_9L-c64(4,4)-mp(3,3)-c32(3,3)-mp(2,2)-c16(2,2)-mp(2,2)-f-d96-d50_loss-3.808242.h5'
+model_dir = r'C:\Users\PlicEduard\AI4_SOC\Axx_Bxi_Cai_Cso'
+samples_dir = os.path.join(model_dir, 'test')
+
+model_name = '0.66'
 
 #classes = ['c','i','o','x']
 #classes = ['A', 'B', 'C', 'D', 'E', 'F', 'H']
@@ -22,7 +23,7 @@ classes = os.path.basename(model_dir).split('_')
 
 model_files = [model for model in os.listdir(model_dir) if model.endswith('.h5')]
 for model_file in model_files:
-    if model_file == model_name:
+    if model_file.startswith(model_name):
         model = load_model(os.path.join(model_dir, model_file))
 
         # Print the model summary to verify its architecture
