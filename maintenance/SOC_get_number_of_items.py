@@ -17,7 +17,7 @@ def folder_summary(folder_path):
 
     return subfolder_names, item_counts_str, total_items_str
 
-folder_path = r'C:\Users\PlicEduard\AI4_SOC\classes\ciox'
+folder_path = r'C:\Users\PlicEduard\AI4_SOC\classes\ahkrsx'
 
 subfolder_names, item_counts_str, total_items_str = folder_summary(folder_path)
 print("Subfolder Names:", subfolder_names)

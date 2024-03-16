@@ -188,7 +188,7 @@ def get_parameters(path_base):
 
 if __name__=='__main__':
     # set up
-    main_dir = r'C:\Users\PlicEduard\AI4_SOC\ak_r_sh_x'   
+    main_dir = r'C:\Users\PlicEduard\AI4_SOC\a_h_k_r_s_x'   
     
     train_dir = os.path.join(main_dir, 'train')
     val_dir = os.path.join(main_dir, 'val')
@@ -291,7 +291,7 @@ if __name__=='__main__':
 
     ## test model
     # load model
-    best_epoch = val_loss_list.index(min(val_loss_list))
+    best_epoch = val_loss_list.index(min(val_loss_list))*2+1
     best_val_loss = min(val_loss_list)
     model_name = f'model_bw__e-{best_epoch + 1}_spe-{spe}_vspe-{vs}_bs-{bs}_{layers_string}_loss-{round(best_val_loss, 6)}.h5'
     model = keras.models.load_model(os.path.join(main_dir, model_name))
