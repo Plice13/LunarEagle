@@ -108,17 +108,21 @@ print("Confusion Matrix:")
 print(conf_matrix)
 
 # Plot confusion matrix
-plt.figure(figsize=(10, 8))
+# Plot confusion matrix
+plt.figure(figsize=(2, 2))
 plt.matshow(conf_matrix, cmap=plt.cm.Greens)
 plt.colorbar()
-# Set ticks along x and y axes using unique_combinations_list
-plt.xticks(range(len(unique_combinations_list)), unique_combinations_list, rotation=90, fontsize=6)  # Adjust fontsize here
-plt.yticks(range(len(unique_combinations_list)), unique_combinations_list, fontsize=6)  # Adjust fontsize here
 
-plt.xlabel('Správná třída', fontsize=16) # Customize y-axis label
-plt.ylabel('Predikovaná třída', fontsize=16) # Customize x-axis label
-plt.title('Konfuzní matice', fontsize=24) # Customize title
+# Set ticks along x and y axes using unique_combinations_list
+tick_indices = range(len(unique_combinations_list))
+plt.xticks(tick_indices, unique_combinations_list, rotation=90, fontsize=11)
+plt.yticks(tick_indices, unique_combinations_list, fontsize=11)
+
+plt.xlabel('Predikovaná třída', fontsize=28) # Customize x-axis label
+plt.ylabel('Správná třída', fontsize=28) # Customize y-axis label
+plt.title('Konfuzní matice', fontsize=32) # Customize title
 plt.show()
+
  
 list_1=all_true_labels
 list_2=all_predicted_labels

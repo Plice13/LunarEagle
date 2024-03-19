@@ -8,10 +8,14 @@ from sklearn.metrics import confusion_matrix
 
 # Load the model
 #model_dir = r'C:\Users\PlicEduard\AI4_SOC\A_B_C_D_E_F_H'
-model_dir = r'C:\Users\PlicEduard\AI4_SOC\Axx_Bxi_Cai_Cso'
+#model_dir = r'C:\Users\PlicEduard\AI4_SOC\Axx_Bxi_Cai_Cso'
+#model_dir =r'C:\Users\PlicEduard\AI4_SOC\Axx_Csi_Eac_Hsx'
+model_dir = r'C:\Users\PlicEduard\AI4_SOC\a_h_k_r_s_x'
+model_dir = r'C:\Users\PlicEduard\AI4_SOC\c_i_o_x'
+
 samples_dir = os.path.join(model_dir, 'test')
 
-model_name = '0.6'
+model_name = 'best'
 
 
 #classes = ['c','i','o','x']
@@ -97,11 +101,11 @@ for model_file in model_files:
         plt.matshow(cm, cmap=plt.cm.Greens)
         plt.colorbar()
         tick_marks = np.arange(1, len(classes) + 1)  # Adjust tick positions
-        plt.xticks(range(len(classes)), classes, rotation=90) # Adjust tick labels
-        plt.yticks(range(len(classes)), classes) # Adjust tick labels
-        plt.xlabel('Správná třída', fontsize=12) # Customize y-axis label
-        plt.ylabel('Predikovaná třída', fontsize=12) # Customize x-axis label
-        plt.title('Konfuzní matice 2', fontsize=18) # Customize title
+        plt.xticks(range(len(classes)), classes, fontsize=12) # Adjust tick labels
+        plt.yticks(range(len(classes)), classes, fontsize=12) # Adjust tick labels
+        plt.xlabel('Správná třída', fontsize=18) # Customize y-axis label
+        plt.ylabel('Predikovaná třída', fontsize=18) # Customize x-axis label
+        plt.title('Konfuzní matice 3', fontsize=22) # Customize title
         plt.show()
  
         
