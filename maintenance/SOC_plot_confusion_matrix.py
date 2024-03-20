@@ -21,11 +21,11 @@ def plot_confusion_matrix(df_confusion, title='Confusion matrix', cmap=plt.cm.Bl
     plt.matshow(df_confusion, cmap=cmap) # imshow
     plt.colorbar()
     tick_marks = np.arange(1, len(df_confusion.columns) + 1)  # Adjust tick positions
-    plt.xticks(tick_marks - 1, tick_marks)  # Adjust tick labels
-    plt.yticks(tick_marks - 1, tick_marks)  # Adjust tick labels
-    plt.xlabel('Správná třída', fontsize=12) # Customize y-axis label
-    plt.ylabel('Predikovaná třída', fontsize=12) # Customize x-axis label
-    plt.title('Konfuzní matice', fontsize=18) # Customize title
+    plt.xticks(tick_marks - 1, tick_marks, fontsize=12)  # Adjust tick labels
+    plt.yticks(tick_marks - 1, tick_marks, fontsize=12)  # Adjust tick labels
+    plt.xlabel('Správná třída', fontsize=18) # Customize y-axis label
+    plt.ylabel('Predikovaná třída', fontsize=18) # Customize x-axis label
+    plt.title('Konfuzní matice', fontsize=22) # Customize title
 
 plt.figure(figsize=(8, 6))
 plot_confusion_matrix(df_confusion, title='Customized Confusion Matrix', cmap=plt.cm.Greens) # Change title and color scheme
