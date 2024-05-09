@@ -188,31 +188,29 @@ def get_parameters(path_base):
 
 if __name__=='__main__':
     # set up
-    main_dir = r'C:\Users\PlicEduard\AI4_SOC\Axx_Bxi_Bxo_Cai_Cao_Chi_Cho_Cki_Cko_Cri_Cro_Csi_Cso_Dac_Dai_Dao_Dhi_Dkc_Dki_Dko_Dri_Dro_Dsc_Dsi_Dso_Eac_Eai_Ekc_Eki_Eko_Esc_Esi_Eso_Fac_Fkc_Fki_Hax_Hhx_Hkx_Hrx_Hsx'
+    main_dir = r'C:\Users\PlicEduard\AI4_SOC\Axx_Csi_Eac_Hsx'
     train_dir = os.path.join(main_dir, 'train')
     val_dir = os.path.join(main_dir, 'val')
     test_dir = os.path.join(main_dir, 'test')
     
     # make parameters
-    bs = 32
+    bs = 20
     classes, number_of_classes = get_parameters(os.path.basename(main_dir))
     max_counter = 300 
-    vs = 54
-    spe = 32
+    vs = 128
+    spe = 96
  
     # make model
     number_of_hidden_layers = 3
     
     noc = number_of_classes
     # structure like [  [   convolution/maxpooling/dense/flattern    ,   [number of neurons, size of matrix, activation function]##end of layer config   ]##end of layer, [...new layer...] ]##end of model
-    layers_configuration =[['c',    [64,    (4,4),  'relu'  ]],
+    layers_configuration =[['c',    [32,    (4,4),  'relu'  ]],
                            ['mp',   [None,  (3,3),  None    ]],
-                           ['c',    [32,    (3,3),  'relu'  ]],
-                           ['mp',   [None,  (2,2),  None    ]],
-                           ['c',    [16,    (2,2),  'relu'  ]],
+                           ['c',    [16,    (3,3),  'relu'  ]],
                            ['mp',   [None,  (2,2),  None    ]],
                            ['f',    [None,  None,   None    ]],
-                           ['d',    [96,    None,   'relu'  ]],
+                           ['d',    [32,    None,   'relu'  ]],
                            ['d',    [noc,   None, 'softmax' ]]] # noc = number_of_classes
     layers_string = get_layers_string(layers_configuration)
     print(layers_string)
@@ -289,6 +287,22 @@ if __name__=='__main__':
     model_name = f'end_of_model_bw__e-{counter}_spe-{spe}_vspe-{vs}_bs-{bs}_{layers_string}_loss-{round(val_loss_list[-1],6)}.h5'
     model.save(os.path.join(main_dir, model_name))
 
+    import csv
+    # Combine lists into a list of tuples
+    combined_lists = zip(acc_list, loss_list, val_acc_list, val_loss_list)
+
+    # Define the file name
+    file_name = "data_for_soc.csv"
+
+    # Write data to CSV file
+    with open(file_name, mode='w', newline='') as file:
+        writer = csv.writer(file)
+        # Write header
+        writer.writerow(['1', '2', '3', '4'])
+        # Write data
+        writer.writerows(combined_lists)
+
+    print("Data has been written to", file_name)
     # plot results
     to_plot_list=[[acc_list,'acc'], [loss_list,'loss'], [val_acc_list,'val_ass'], [val_loss_list,'val_loss']]
     plot_results(to_plot_list)

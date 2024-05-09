@@ -1,8 +1,9 @@
 import os
 import cv2
-from keras.preprocessing.image import ImageDataGenerator
 import numpy as np
+from keras.preprocessing.image import ImageDataGenerator
 from keras import layers, models, optimizers
+from sklearn.metrics import confusion_matrix
 from tensorflow import keras
 import matplotlib.pyplot as plt
 import numpy as np
@@ -10,7 +11,6 @@ from PIL import Image
 import statistics
 import keyboard
 from time import sleep
-from sklearn.metrics import confusion_matrix
 import time
 
 
