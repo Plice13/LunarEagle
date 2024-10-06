@@ -1,0 +1,32 @@
+<svg
+    width="841mm"
+    height="1189mm"
+    viewBox="0 0 841 1189"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <rect width="841" height="1189" fill="#ffffff" />
+
+    <!-- Letterhead -->
+    <rect y="0" width="841" height="100" fill="#0073e6" />
+    <text x="50" y="60" font-family="Arial" font-size="36" fill="#ffffff">
+        Your Institution Name
+    </text>
+    <text x="50" y="90" font-family="Arial" font-size="20" fill="#ffffff">
+        Department or Laboratory Name
+    </text>
+
+    <!-- Content Area -->
+    <rect y="100" width="841" height="989" fill="#f0f0f0" />
+    <text x="50" y="130" font-family="Arial" font-size="24" fill="#000000">
+        Title of Your Research
+    </text>
+    <text x="50" y="170" font-family="Arial" font-size="16" fill="#000000">
+        Brief introduction or overview of the research can go here.
+    </text>
+
+    <!-- Footer -->
+    <rect y="1110" width="841" height="79" fill="#0073e6" />
+    <text x="50" y="1150" font-family="Arial" font-size="14" fill="#ffffff">
+        © Year, Your Institution Name | Contact: your.email@example.com
+    </text>
+</svg>
