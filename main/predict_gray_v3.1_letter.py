@@ -94,37 +94,43 @@ for model_file in model_files:
 
         print(f'Model {model_file} je správně z {total_accuracy*100:.2f} %')
 
-        '''        print(classes)
+        print(classes)
 
-                # Prepend spaces to each class name
-                for n in range(len(classes)):  # Use range(len(classes)) to iterate
-                    classes[n] = '   ' + classes[n]  # Prepend two spaces to each class
+        if model_name == 'best':
+            # Prepend spaces to each class name
+            for n in range(len(classes)):  # Use range(len(classes)) to iterate
+                classes[n] = '   ' + classes[n]  # Prepend two spaces to each class
 
-                print(classes)
-            '''
-        # Print confusion matrix
-        # Plot confusion matrix
+            print(classes)
+
+            
         import matplotlib.pyplot as plt
-        plt.figure(figsize=(10, 8))
-        plt.matshow(cm, cmap=plt.cm.Greens)
+        import numpy as np
+
+        # Plot confusion matrix using the default 'Greens' colormap
+        plt.figure(figsize=(10, 8), facecolor='none')  # Set facecolor to none for transparency
+        plt.matshow(cm, cmap=plt.cm.Greens, vmin=0, vmax=np.max(cm))  # Use the default 'Greens' colormap
         plt.colorbar()
-        tick_marks = np.arange(1, len(classes) + 1)  # Adjust tick positions
-        plt.xticks(range(len(classes)), classes, fontsize=12) # Adjust tick labels
-        plt.yticks(range(len(classes)), classes, fontsize=12) # Adjust tick labels
+
+        tick_marks = np.arange(len(classes))  # Adjust tick positions
+
+        # Set x and y axis labels with bold text
+        plt.xticks(tick_marks, classes, fontsize=12, fontweight='bold')  # Bold class labels on x-axis
+        plt.yticks(tick_marks, classes, fontsize=12, fontweight='bold')  # Bold class labels on y-axis
 
         title = 'Confusion Matrix'
 
-        plt.title(title, fontsize=22) # Customize title
-        # Adjust the position to prevent the title from shifting
+        # Set title with bold text
+        plt.title(title, fontsize=22, fontweight='bold')  # Bold title
         plt.subplots_adjust(top=0.85, bottom=0.2)  # Fix the top and bottom margins
 
-        # Set axis labels
-        plt.xlabel('True Class', fontsize=18)
-        plt.ylabel('Predicted Class', fontsize=18)
+        # Set axis labels with bold text
+        plt.xlabel('True Class', fontsize=18, fontweight='bold')  # Bold x-axis label
+        plt.ylabel('Predicted Class', fontsize=18, fontweight='bold')  # Bold y-axis label
 
-        plt.savefig(f"poster\confusion matrix/{title}.svg") # Save the figure with the same name as the title
+        # Save the figure with a transparent background
+        plt.savefig(f"poster/confusion matrix/new4_{title}.svg", transparent=True)  # Save the figure with transparent background
         plt.show()
 
- 
-        
+                
         print(cm)
