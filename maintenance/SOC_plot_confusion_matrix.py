@@ -30,3 +30,4 @@ def plot_confusion_matrix(df_confusion, title='Confusion matrix', cmap=plt.cm.Bl
 plt.figure(figsize=(8, 6))
 plot_confusion_matrix(df_confusion, title='Customized Confusion Matrix', cmap=plt.cm.Greens) # Change title and color scheme
 plt.show()
+

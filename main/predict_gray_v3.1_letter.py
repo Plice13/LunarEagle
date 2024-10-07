@@ -7,16 +7,16 @@ from PIL import Image
 from sklearn.metrics import confusion_matrix
 
 # Load the model
-model_dir = r'C:\Users\PlicEduard\AI4_SOC\A_B_C_D_E_F_H'
+#model_dir = r'C:\Users\PlicEduard\AI4_SOC\A_B_C_D_E_F_H'
 #model_dir = r'C:\Users\PlicEduard\AI4_SOC\Axx_Bxi_Cai_Cso'
-#model_dir =r'C:\Users\PlicEduard\AI4_SOC\Axx_Csi_Eac_Hsx'
+model_dir =r'C:\Users\PlicEduard\AI4_SOC\Axx_Csi_Eac_Hsx'
 #model_dir = r'C:\Users\PlicEduard\AI4_SOC\a_h_k_r_s_x'
 #model_dir = r'C:\Users\PlicEduard\AI4_SOC\c_i_o_x'
 
 samples_dir = os.path.join(model_dir, 'test')
 
-model_name = 'best'
-
+#model_name = 'best' #0.92 for ACEH
+model_name = '0.92'
 
 #classes = ['c','i','o','x']
 #classes = ['A', 'B', 'C', 'D', 'E', 'F', 'H']
@@ -94,6 +94,14 @@ for model_file in model_files:
 
         print(f'Model {model_file} je správně z {total_accuracy*100:.2f} %')
 
+        '''        print(classes)
+
+                # Prepend spaces to each class name
+                for n in range(len(classes)):  # Use range(len(classes)) to iterate
+                    classes[n] = '   ' + classes[n]  # Prepend two spaces to each class
+
+                print(classes)
+            '''
         # Print confusion matrix
         # Plot confusion matrix
         import matplotlib.pyplot as plt
@@ -103,10 +111,20 @@ for model_file in model_files:
         tick_marks = np.arange(1, len(classes) + 1)  # Adjust tick positions
         plt.xticks(range(len(classes)), classes, fontsize=12) # Adjust tick labels
         plt.yticks(range(len(classes)), classes, fontsize=12) # Adjust tick labels
-        plt.xlabel('Správná třída', fontsize=18) # Customize y-axis label
-        plt.ylabel('Predikovaná třída', fontsize=18) # Customize x-axis label
-        plt.title('Konfuzní matice 2', fontsize=22) # Customize title
+
+        title = 'Confusion Matrix'
+
+        plt.title(title, fontsize=22) # Customize title
+        # Adjust the position to prevent the title from shifting
+        plt.subplots_adjust(top=0.85, bottom=0.2)  # Fix the top and bottom margins
+
+        # Set axis labels
+        plt.xlabel('True Class', fontsize=18)
+        plt.ylabel('Predicted Class', fontsize=18)
+
+        plt.savefig(f"poster\confusion matrix/{title}.svg") # Save the figure with the same name as the title
         plt.show()
+
  
         
         print(cm)
