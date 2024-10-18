@@ -21,8 +21,7 @@ def collect_image_dimensions(main_folder):
             
             except Exception as e:
                 # Print error if file is not an image or cannot be opened
-                print(f"Error processing {file_path}: {e}")
-
+                pass
     return dimension_files
 
 def main():
