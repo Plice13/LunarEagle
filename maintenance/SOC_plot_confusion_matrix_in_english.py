@@ -23,7 +23,7 @@ df_confusion = pd.crosstab(y_actu, y_pred)
 # Define the classes (you may want to customize these names)
 classes = [1, 2, 3, 4]
 
-def plot_confusion_matrix(cm, classes, title='Confusion Matrix', cmap=plt.cm.Greens):
+def plot_confusion_matrix(cm, classes, cmap=plt.cm.Greens):
     plt.figure(figsize=(10, 8))
     plt.matshow(cm, cmap=cmap)
     plt.colorbar()
@@ -31,13 +31,14 @@ def plot_confusion_matrix(cm, classes, title='Confusion Matrix', cmap=plt.cm.Gre
     plt.xticks(range(len(classes)), classes, fontsize=12)  # Adjust tick labels
     plt.yticks(range(len(classes)), classes, fontsize=12)  # Adjust tick labels
 
-    plt.title(title, fontsize=22)  # Customize title
     plt.subplots_adjust(top=0.85, bottom=0.2)  # Fix the top and bottom margins
-    plt.xlabel('True Class', fontsize=18)  # Set x-axis label
-    plt.ylabel('Predicted Class', fontsize=18)  # Set y-axis label
+    plt.xlabel('Predicted Class', fontsize=18)  # Set x-axis label
+    plt.ylabel('True Class', fontsize=18)  # Set y-axis label
+    plt.title('Confusion Matrix', fontsize=22) # Customize title
 
-    plt.savefig(f"none{title}.svg")  # Save the figure
+
+    plt.savefig(f"sample_Confusion_Matrix.svg")  # Save the figure
     plt.show()
 
 # Plot the confusion matrix
-plot_confusion_matrix(df_confusion, classes, title='Confusion Matrix', cmap=plt.cm.Greens)
+plot_confusion_matrix(df_confusion, classes, cmap=plt.cm.Greens)
