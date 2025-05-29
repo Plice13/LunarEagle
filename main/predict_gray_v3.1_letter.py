@@ -8,15 +8,15 @@ from sklearn.metrics import confusion_matrix
 
 # Load the model
 #model_dir = r'C:\Users\PlicEduard\AI4_SOC\A_B_C_D_E_F_H'
-#model_dir = r'C:\Users\PlicEduard\AI4_SOC\Axx_Bxi_Cai_Cso'
-model_dir =r'C:\Users\PlicEduard\AI4_SOC\Axx_Csi_Eac_Hsx'
+model_dir = r'C:\Users\PlicEduard\AI4_SOC\Axx_Bxi_Cai_Cso'
+#model_dir =r'C:\Users\PlicEduard\AI4_SOC\Axx_Csi_Eac_Hsx'
 #model_dir = r'C:\Users\PlicEduard\AI4_SOC\a_h_k_r_s_x'
 #model_dir = r'C:\Users\PlicEduard\AI4_SOC\c_i_o_x'
 
 samples_dir = os.path.join(model_dir, 'test')
 
-#model_name = 'best' #0.92 for ACEH
-model_name = '0.92'
+model_name = 'best' #0.92 for ACEH
+#model_name = '0.92'
 
 #classes = ['c','i','o','x']
 #classes = ['A', 'B', 'C', 'D', 'E', 'F', 'H']
@@ -125,11 +125,11 @@ for model_file in model_files:
         plt.subplots_adjust(top=0.85, bottom=0.2)  # Fix the top and bottom margins
 
         # Set axis labels with bold text
-        plt.xlabel('True Class', fontsize=18, fontweight='bold')  # Bold x-axis label
-        plt.ylabel('Predicted Class', fontsize=18, fontweight='bold')  # Bold y-axis label
+        plt.xlabel('Predicted Class', fontsize=18, fontweight='bold')  # Bold x-axis label
+        plt.ylabel('True Class', fontsize=18, fontweight='bold')  # Bold y-axis label
 
         # Save the figure with a transparent background
-        plt.savefig(f"poster/confusion matrix/new4_{title}.svg", transparent=True)  # Save the figure with transparent background
+        plt.savefig(f"EUCYS/{title}+{classes}.svg", transparent=True)  # Save the figure with transparent background
         plt.show()
 
                 
