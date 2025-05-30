@@ -8,10 +8,10 @@ from sklearn.metrics import confusion_matrix
 
 # Load the model
 #model_dir = r'C:\Users\PlicEduard\AI4_SOC\A_B_C_D_E_F_H'
-model_dir = r'C:\Users\PlicEduard\AI4_SOC\Axx_Bxi_Cai_Cso'
+#model_dir = r'C:\Users\PlicEduard\AI4_SOC\Axx_Bxi_Cai_Cso'
 #model_dir =r'C:\Users\PlicEduard\AI4_SOC\Axx_Csi_Eac_Hsx'
 #model_dir = r'C:\Users\PlicEduard\AI4_SOC\a_h_k_r_s_x'
-#model_dir = r'C:\Users\PlicEduard\AI4_SOC\c_i_o_x'
+model_dir = r'C:\Users\PlicEduard\AI4_SOC\c_i_o_x'
 
 samples_dir = os.path.join(model_dir, 'test')
 
@@ -19,7 +19,7 @@ model_name = 'best' #0.92 for ACEH
 #model_name = '0.92'
 
 #classes = ['c','i','o','x']
-#classes = ['A', 'B', 'C', 'D', 'E', 'F', 'H']
+#classes = ['A', 'B', 'C', 'D', 'E', 'F', 'H']  
 #classes = ['Axx','Bxi','Bxo','Cai','Cao','Chi','Cho','Cki','Cko','Cri','Cro','Csi','Cso','Dac','Dai','Dao','Dhi','Dkc','Dki','Dko','Dri','Dro','Dsc','Dsi','Dso','Eac','Eai','Ekc','Eki','Eko','Esc','Esi','Fac','Fkc','Fki','Hax','Hhx','Hkx','Hrx','Hsx']
 #classes = ['Axx', 'Bxi', 'Bxo', 'Cai', 'Cao', 'Chi', 'Cho', 'Cki', 'Cko', 'Cri', 'Cro', 'Csi', 'Cso', 'Dac', 'Dai', 'Dao', 'Dhc', 'Dhi', 'Dho', 'Dkc', 'Dki', 'Dko', 'Dri', 'Dro', 'Dsc', 'Dsi', 'Dso', 'Eac', 'Eai', 'Eao', 'Ehc', 'Ehi', 'Ekc', 'Eki', 'Eko', 'Esc', 'Esi', 'Eso', 'Fac', 'Fai', 'Fhc', 'Fkc', 'Fki', 'Fko', 'Fsi', 'Hax', 'Hhx', 'Hkx', 'Hrx', 'Hsx']
 

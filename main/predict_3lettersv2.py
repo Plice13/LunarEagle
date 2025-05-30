@@ -118,9 +118,9 @@ tick_indices = range(len(unique_combinations_list))
 plt.xticks(tick_indices, unique_combinations_list, rotation=90, fontsize=11)
 plt.yticks(tick_indices, unique_combinations_list, fontsize=11)
 
-plt.xlabel('Predikovaná třída', fontsize=28) # Customize x-axis label
-plt.ylabel('Správná třída', fontsize=28) # Customize y-axis label
-plt.title('Konfuzní matice', fontsize=32) # Customize title
+plt.xlabel('Predicted Class', fontsize=28) # Customize x-axis label
+plt.ylabel('True Class', fontsize=28) # Customize y-axis label
+plt.title('Confusion Matrix', fontsize=36) # Customize title
 plt.show()
 
  
